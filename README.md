@@ -1,4 +1,4 @@
-##Application de Gestion Bancaire
+### Application de Gestion Bancaire
 
 Une application de gestion bancaire moderne développée avec JavaFX (JDK 17), permettant la gestion des clients, des comptes et des opérations bancaires.
 
