@@ -1,5 +1,6 @@
 Application de Gestion Bancaire
 Une application de gestion bancaire moderne développée avec JavaFX (JDK 17), permettant la gestion des clients, des comptes et des opérations bancaires.
+
 📋 Fonctionnalités
 
 Gestion des Clients
@@ -45,33 +46,34 @@ Configurer la base de données
 Dans le package database, vous y trouverez la base de données MySQL que vous importiez.
 
 📁 Structure du Projet
-  src/
-  ├── main/
-  │   ├── java/
-  │   │   ├── com/
-  │   │   │   ├── banking/
-  │   │   │   │   ├── controller/
-  │   │   │   │   ├── database/
-  │   │   │   │   ├── entity/
-  │   │   │   │   ├── enums/
-  │   │   │   │   ├── service/
-  │   │   │   │   ├── tools/
-  │   │   │   │   └── App.java
-  │   │   │   
-  │   ├── resources/
-  │   │   ├── fxml/
-  │   │   ├── css/
-  │   │   ├── images/
+
+      src/
+      ├── main/
+      │   ├── java/
+      │   │   ├── com/
+      │   │   │   ├── banking/
+      │   │   │   │   ├── controller/
+      │   │   │   │   ├── database/
+      │   │   │   │   ├── entity/
+      │   │   │   │   ├── enums/
+      │   │   │   │   ├── service/
+      │   │   │   │   ├── tools/
+      │   │   │   │   └── App.java
+      │   │   │   
+      │   ├── resources/
+      │   │   ├── fxml/
+      │   │   ├── css/
+      │   │   ├── images/
 
 🛠️ Technologies Utilisées
 
-JavaFX 17 - Framework d'interface utilisateur
-Maven - Gestion des dépendances et build
-MySQL - Base de données
-Lombok - Dépendance de génération des constructeurs, getters, setters, ...
-Scene Builder - Création des interafces
-TrayNotification - Dépendance pour les notifications
-BCrypt - Dépendance pour le hashage des mots de passe
+    JavaFX 17 - Framework d'interface utilisateur
+    Maven - Gestion des dépendances et build
+    MySQL - Base de données
+    Lombok - Dépendance de génération des constructeurs, getters, setters, ...
+    Scene Builder - Création des interafces
+    TrayNotification - Dépendance pour les notifications
+    BCrypt - Dépendance pour le hashage des mots de passe
 
 📱 Captures d'écran
 À venir
@@ -80,27 +82,28 @@ BCrypt - Dépendance pour le hashage des mots de passe
 Architecture
 L'application suit une architecture MVC (Model-View-Controller) avec les composants suivants :
 
-entity : Représentation des entités métier (Client, Compte, Operation)
-fxml : Interfaces FXML pour l'UI
-controller : Logique de contrôle et gestion des événements
-service : Logique métier
-impl : Accès aux données
+    entity : Représentation des entités métier (Client, Compte, Operation)
+    fxml : Interfaces FXML pour l'UI
+    controller : Logique de contrôle et gestion des événements
+    service : Logique métier
+    impl : Accès aux données
 
 Guides d'utilisation
+
 Gestion des Clients
 
-Pour créer un nouveau client : Menu → Clients → Nouveau Client
-Pour modifier un client : Sélectionner le client → Clic droit → Modifier
-Pour rechercher : Utiliser la barre de recherche en haut de la liste des clients
+    Pour créer un nouveau client : Menu → Clients → Nouveau Client
+    Pour modifier un client : Sélectionner le client → Clic droit → Modifier
+    Pour rechercher : Utiliser la barre de recherche en haut de la liste des clients
 
 Gestion des Comptes
 
-Pour créer un compte : Sélectionner un client → Menu → Comptes → Nouveau Compte
-Pour effectuer une opération : Sélectionner le compte → Opérations → Choisir l'opération
+    Pour créer un compte : Sélectionner un client → Menu → Comptes → Nouveau Compte
+    Pour effectuer une opération : Sélectionner le compte → Opérations → Choisir l'opération
 
 🤝 Contribution
 
-Fork le projet
+    Fork le projet
 
     Créer une branche pour votre fonctionnalité
     
@@ -118,8 +121,8 @@ Fork le projet
 
 📝 License
 Ce projet est sous licence MIT - voir le fichier LICENSE.md pour plus de détails.
-👥 Auteurs
 
+👥 Auteurs
 Abdoulaye GAYE - Développement initial - abdoulayegaye
 
 🙏 Remerciements
