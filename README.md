@@ -132,4 +132,5 @@ Abdoulaye GAYE - Développement initial - abdoulayegaye
 🙏 Remerciements
 
 L'équipe JavaFX pour leur excellent framework
+
 Tous les contributeurs (les étudiants de L3IAGE et L3GDA) qui participent à l'amélioration de ce projet
