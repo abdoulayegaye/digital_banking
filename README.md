@@ -1,4 +1,5 @@
-Application de Gestion Bancaire
+##Application de Gestion Bancaire
+
 Une application de gestion bancaire moderne développée avec JavaFX (JDK 17), permettant la gestion des clients, des comptes et des opérations bancaires.
 
 📋 Fonctionnalités
@@ -76,10 +77,11 @@ Dans le package database, vous y trouverez la base de données MySQL que vous im
     BCrypt - Dépendance pour le hashage des mots de passe
 
 📱 Captures d'écran
+
 À venir
 
 📖 Documentation
-Architecture
+
 L'application suit une architecture MVC (Model-View-Controller) avec les composants suivants :
 
     entity : Représentation des entités métier (Client, Compte, Operation)
@@ -120,9 +122,11 @@ Gestion des Comptes
     Ouvrir une Pull Request
 
 📝 License
+
 Ce projet est sous licence MIT - voir le fichier LICENSE.md pour plus de détails.
 
 👥 Auteurs
+
 Abdoulaye GAYE - Développement initial - abdoulayegaye
 
 🙏 Remerciements
