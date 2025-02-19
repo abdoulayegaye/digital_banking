@@ -105,7 +105,7 @@ Gestion des Comptes
 
 🤝 Contribution
 
-    Fork le projet
+    Cloner le projet
 
     Créer une branche pour votre fonctionnalité
     
