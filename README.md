@@ -109,7 +109,7 @@ Gestion des Comptes
 
     Créer une branche pour votre fonctionnalité
     
-    git checkout -b feature/nouvelle-fonctionnalite
+    git checkout -b feature/NOM_Prenoms_classe
     
     Commit vos changements
     
