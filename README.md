@@ -117,7 +117,7 @@ Gestion des Comptes
     
     Push vers la branche
     
-    git push origin feature/nouvelle-fonctionnalite
+    git push origin feature/NOM_Prenoms_classe
     
     Ouvrir une Pull Request
 
