@@ -15,7 +15,7 @@ public class Db {
 
     private void connect(){
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             cnx = DriverManager.getConnection(URL, USER, PASSWORD);
         }catch (Exception e){
             System.out.println("Erreur de connexion á la BD : " + e.getMessage());

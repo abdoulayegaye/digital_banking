@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="454.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.InterfaceClientController">
+   <children>
+      <Text layoutX="200.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTION DES CLIENTS">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TableView fx:id="clientTbl" layoutX="91.0" layoutY="104.0" prefHeight="316.0" prefWidth="418.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="38.66668701171875" text="ID" />
+          <TableColumn fx:id="nomCol" prefWidth="95.33333587646484" text="NOM" />
+            <TableColumn fx:id="prenomCol" prefWidth="120.66670227050781" text="PRENOM" />
+            <TableColumn fx:id="emailCol" prefWidth="160.0" text="EMAIL" />
+        </columns>
+      </TableView>
+      <TextField fx:id="searchField" layoutX="340.0" layoutY="71.0" prefHeight="25.0" prefWidth="131.0" promptText="Recherche" />
+      <Button fx:id="ajoutClientBtn" layoutX="91.0" layoutY="71.0" mnemonicParsing="false" onAction="#pageAjoutClient" prefHeight="25.0" prefWidth="79.0" text="Ajout Client" />
+      <Button fx:id="rechercheBtn" layoutX="477.0" layoutY="71.0" mnemonicParsing="false" onAction="#searchClients" prefHeight="25.0" prefWidth="31.0" text="🔍" />
+      <Button fx:id="rechargeBtn" layoutX="63.0" layoutY="201.0" mnemonicParsing="false" onAction="#recharge" text="🔄" />
+      <Button fx:id="homeBtn" layoutX="7.0" layoutY="15.0" mnemonicParsing="false" onAction="#home" text="🏠" />
+   </children>
+</AnchorPane>

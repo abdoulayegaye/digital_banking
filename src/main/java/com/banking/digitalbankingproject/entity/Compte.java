@@ -1,10 +1,15 @@
 package com.banking.digitalbankingproject.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import java.time.Instant;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Compte {
     private int id;
     private String numero;

@@ -19,6 +19,17 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        //Méthode pour ajouter un nouveau utilisateur
+        /*IUser iUser = new UserImpl();
+        User user = new User();
+        user.setUsername("admin");
+        user.setPassword("admin");
+        boolean ok = iUser.createUser(user);
+        if (ok) {
+            System.out.println("User created");
+        }*/
+
         launch();
+
     }
 }

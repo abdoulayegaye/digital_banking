@@ -17,7 +17,7 @@ public class UserImpl implements IUser {
 
     @Override
     public boolean createUser(User user) {
-        String sql = "INSERT INTO users VALUES(NULL, ?, ?)";
+        String sql = "INSERT INTO users VALUES(DEFAULT, ?, ?)";
         try{
             db.initPrepar(sql);
             db.getPstm().setString(1, user.getUsername());

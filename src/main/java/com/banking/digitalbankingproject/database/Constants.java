@@ -1,10 +1,10 @@
 package com.banking.digitalbankingproject.database;
 
 public class Constants {
-    public static final String HOST = "localhost";
-    public static final String USER = "root";
-    public static final String PASSWORD = "";
-    public static final String DATABASE = "digital_banking_db";
-    public static final int PORT = 3306;
-    public static final String URL = "jdbc:mysql://"+HOST+":"+PORT+"/"+DATABASE;
+    public static String HOST = "localhost";
+    public static String USER = "postgres";
+    public static String PASSWORD = "Diaoprince30";
+    public static String DATABASE = "digital_banking_db";
+    public static int PORT = 5433;
+    public static String URL = "jdbc:postgresql://"+HOST+":"+PORT+"/"+DATABASE;
 }
