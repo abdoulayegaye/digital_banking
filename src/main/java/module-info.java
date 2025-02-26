@@ -3,7 +3,7 @@ module com.banking.digitalbankingproject {
     requires javafx.fxml;
     requires java.sql;
     requires static lombok;
-    //requires TrayNotification; // Ensure the appropriate library is added as a dependency
+    requires TrayNotification;
     requires jbcrypt;
 
 
