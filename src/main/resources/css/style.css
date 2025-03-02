@@ -1,0 +1,78 @@
+/* Style général pour toute l'application */
+.root {
+    -fx-background-color: #f4f4f4;
+    -fx-font-family: 'Segoe UI', sans-serif;
+}
+
+/* Titres */
+.label {
+    -fx-text-fill: #333;
+    -fx-font-size: 14px;
+}
+
+/* Champs de texte */
+.text-field, .password-field {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Boutons */
+.button {
+    -fx-background-color: #0078D7;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-padding: 7px 15px;
+}
+
+.button:hover {
+    -fx-background-color: #005a9e;
+}
+
+/* TableView - Apparence des tableaux */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #3399FF;
+}
+
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-border-color: #ddd;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #0078D7;
+    -fx-text-fill: white;
+}
+
+#numCompteLabel {
+    -fx-text-fill: #D32F2F;
+    -fx-font-weight: bold;
+}
+
+#clientLabel {
+    -fx-text-fill: #007A33;
+    -fx-font-weight: bold;
+}
+

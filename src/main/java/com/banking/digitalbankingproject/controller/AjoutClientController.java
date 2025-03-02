@@ -9,26 +9,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
 
 public class AjoutClientController {
 
     @FXML
     private Button ajouterBtn;
-
     @FXML
     private TextField emailTfd;
-
     @FXML
     private TextField nomTfd;
-
     @FXML
     private TextField prenomTfd;
-
     @FXML
     void retour(ActionEvent event) throws IOException {
-        Outils.load(event, "Gestion des Clients", "/FXML/InterfaceClients.fxml");
+        Outils.load(event, "Gestion des Clients", "/FXML/interfaceClients.fxml");
     }
 
     @FXML
@@ -45,14 +40,13 @@ public class AjoutClientController {
         }
 
         Client client = new Client(0, nom, prenom, email);
-
         try {
             int ok = iClient.addClient(client);
 
             if (ok > 0) {
                 Notification.NotifSuccess("Succès", "Client ajouté avec succès !");
                 clearFields();
-                Outils.load(event, "Gestion des Clients", "/fxml/InterfaceClients.fxml");
+                Outils.load(event, "Gestion des Clients", "/fxml/interfaceClients.fxml");
             } else {
                 Notification.NotifError("Erreur", "Échec de l'ajout du client !");
             }
@@ -67,5 +61,4 @@ public class AjoutClientController {
         nomTfd.setText("");
         emailTfd.setText("");
     }
-
 }

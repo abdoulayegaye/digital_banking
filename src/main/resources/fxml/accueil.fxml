@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,43 +9,69 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.AccueilController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.AccueilController">
    <children>
-      <Text layoutX="268.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIGITAL BANKING">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="56.0" fitWidth="73.0" layoutX="21.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="144.0" fitWidth="152.0" layoutX="217.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/profil.png" />
+            <Image url="@../images/Digital-Banking.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="56.0" fitWidth="69.0" layoutX="193.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/banque.png" />
-         </image>
-      </ImageView>
-      <VBox alignment="CENTER" layoutX="8.0" layoutY="65.0" prefHeight="311.0" prefWidth="100.0" spacing="100.0">
+      <VBox alignment="CENTER" layoutX="8.0" layoutY="65.0" prefHeight="311.0" prefWidth="121.0" spacing="70.0">
          <children>
-            <Button fx:id="clientsBtn" mnemonicParsing="false" onAction="#pageClients" text="Clients" />
-            <Button fx:id="compteBtn" mnemonicParsing="false" onAction="#pageCompte" text="Comptes" />
-            <Button fx:id="operationsBtn" mnemonicParsing="false" onAction="#pageOperations" text="Opérations" />
+            <Button fx:id="clientsBtn" mnemonicParsing="false" onAction="#pageClients" text="Clients">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Button fx:id="compteBtn" mnemonicParsing="false" onAction="#pageCompte" text="Comptes">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Button fx:id="operationsBtn" mnemonicParsing="false" onAction="#pageOperations" prefHeight="32.0" prefWidth="113.0" text="Opérations">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
          </children>
       </VBox>
-      <Button fx:id="seDeconnecterBtn" layoutX="558.0" layoutY="10.0" mnemonicParsing="false" onAction="#seDeconnecter" text="⏻" />
-      <Text layoutX="249.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total des clients 👤 ">
+      <Button fx:id="seDeconnecterBtn" layoutX="551.0" layoutY="14.0" mnemonicParsing="false" onAction="#seDeconnecter" text="⏻" />
+      <Text layoutX="243.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total des clients 👤  :">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="tatalClientsTfd" layoutX="383.0" layoutY="94.0" prefHeight="25.0" prefWidth="63.0" />
-      <Text layoutX="249.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de comptes actifs 🏦 ">
+      <Text layoutX="245.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de comptes actifs 🏦  :">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="totalComptesTfd" layoutX="459.0" layoutY="187.0" prefHeight="16.0" prefWidth="63.0" />
+      <Label fx:id="labelTotalClients" layoutX="393.0" layoutY="152.0" text="0" textFill="#2492ce">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Text layoutX="239.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de comptes fermés 🏦  :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="243.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total des clients ayant un compte 👤 :" wrappingWidth="250.7822265625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="labelTotalClientsCompte" layoutX="508.0" layoutY="189.0" text="0" textFill="#2492ce">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTotalComptesActif" layoutX="466.0" layoutY="246.0" prefHeight="20.0" prefWidth="50.0" text="0" textFill="#2492ce">
+
+      <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTotalComptesferme" layoutX="471.0" layoutY="284.0" text="0" textFill="#2492ce">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

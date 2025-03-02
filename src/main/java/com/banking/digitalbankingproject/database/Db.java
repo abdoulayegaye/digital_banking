@@ -62,4 +62,8 @@ public class Db {
     public PreparedStatement getPstm() {
         return pstm;
     }
+
+    public Connection getConn() {
+        return cnx;
+    }
 }

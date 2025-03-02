@@ -5,6 +5,10 @@ module com.banking.digitalbankingproject {
     requires static lombok;
     requires TrayNotification;
     requires jbcrypt;
+    requires jdk.dynalink;
+    requires org.postgresql.jdbc;
+    requires itextpdf;
+    requires mysql.connector.java;
 
 
     opens com.banking.digitalbankingproject to javafx.fxml;

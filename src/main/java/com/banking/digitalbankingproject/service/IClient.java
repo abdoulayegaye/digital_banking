@@ -12,5 +12,6 @@ public interface IClient {
     Client getClientById(int id);
     List<Client> searchClientsByName(String name);
     List<Client> searchClientsByEmail(String email);
+    int countClients();
 
 }

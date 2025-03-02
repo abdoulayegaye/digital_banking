@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserImpl implements IUser {
-
     private Db db = new Db();
     private ResultSet rs;
     private int ok;

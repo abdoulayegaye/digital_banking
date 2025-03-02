@@ -16,4 +16,10 @@ public class Operation {
     private double amount;
     private TypeOperation type;
     private Compte compte;
+
+    private double soldeApres;
+
+    public double getSoldeApres() {
+        return soldeApres;
+    }
 }

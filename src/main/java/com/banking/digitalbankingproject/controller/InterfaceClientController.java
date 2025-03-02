@@ -13,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -54,7 +53,7 @@ public class InterfaceClientController {
 
         contextMenu.getItems().addAll(modifierItem, supprimerItem);
 
-        // Associer le menu au tableau (clic droit)
+        //Associer le menu au tableau (clic droit)
         clientTbl.setRowFactory(tv -> {
             TableRow<Client> row = new TableRow<>();
 
@@ -69,10 +68,9 @@ public class InterfaceClientController {
 
     @FXML
     void pageAjoutClient(ActionEvent event) throws IOException {
-        Outils.load(event, "Ajout Client", "/FXML/AjoutClients.fxml");
+        Outils.load(event, "Ajout Client", "/FXML/ajoutClients.fxml");
     }
 
-    //Méthode pour charger les clients
     public void loadTable() {
         IClient iClient = new ClientImpl();
         ObservableList<Client> liste = FXCollections.observableArrayList(iClient.getAllClients());
@@ -85,19 +83,16 @@ public class InterfaceClientController {
         emailCol.setCellValueFactory(new PropertyValueFactory<Client, String>("email"));
     }
 
-    //Méthode pour recharger la table après avoir terminé la recherche
     @FXML
     void recharge(ActionEvent event) {
         loadTable();
     }
 
-    //Méthode retourner à l'acceuil
     @FXML
     void home(ActionEvent event) throws IOException {
         Outils.load(event, "Bienvenue à Digital Banking", "/fxml/accueil.fxml");
     }
 
-    //Méthode pour supprimé un client
     public void deleteClient() {
         Client client = clientTbl.getSelectionModel().getSelectedItem();
 
@@ -120,7 +115,6 @@ public class InterfaceClientController {
         });
     }
 
-    //Méthode pour ouvrir la page modifier un client avec les infos du client concerné
     public void updateClient() {
         Client client = clientTbl.getSelectionModel().getSelectedItem();
 
@@ -130,7 +124,7 @@ public class InterfaceClientController {
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/ModifierClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/modifierClient.fxml"));
             Parent root = loader.load();
 
             // Récupérer le contrôleur de la fenêtre de modification
@@ -146,7 +140,6 @@ public class InterfaceClientController {
         }
     }
 
-    //Méthode pour rechercher un client via le nom ou l'email
     public void searchClients() {
         String searchText = searchField.getText();
 
@@ -165,5 +158,4 @@ public class InterfaceClientController {
         ObservableList<Client> list = FXCollections.observableArrayList(results);
         clientTbl.setItems(list);
     }
-
 }

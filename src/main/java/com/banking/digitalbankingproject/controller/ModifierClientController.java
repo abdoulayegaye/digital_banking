@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
 
 public class ModifierClientController {
@@ -17,22 +16,18 @@ public class ModifierClientController {
 
     @FXML
     private TextField emailTfd;
-
     @FXML
     private Button modifierBtn;
-
     @FXML
     private TextField nomTfd;
-
     @FXML
     private TextField prenomTfd;
-
     @FXML
     private Button retourBtn;
 
     @FXML
     void retour(ActionEvent event) throws IOException {
-        Outils.load(event, "Gestion des Clients", "/FXML/InterfaceClients.fxml");
+        Outils.load(event, "Gestion des Clients", "/FXML/interfaceClients.fxml");
     }
 
     @FXML
@@ -42,19 +37,16 @@ public class ModifierClientController {
         String nom = nomTfd.getText();
         String prenom = prenomTfd.getText();
         String email = emailTfd.getText();
-
         if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty()) {
             Notification.NotifError("Erreur", "Tous les champs sont obligatoires !");
             return;
         }
 
-        // Vérifier si un client est bien sélectionné
         if (client == null) {
             Notification.NotifError("Erreur", "Aucun client sélectionné !");
             return;
         }
 
-        // Mettre à jour les informations du client existant
         client.setNom(nom);
         client.setPrenom(prenom);
         client.setEmail(email);
@@ -64,7 +56,7 @@ public class ModifierClientController {
 
             if (ok > 0) {
                 Notification.NotifSuccess("Succès", "Client modifié avec succès !");
-                Outils.load(event, "Gestion des Clients", "/fxml/InterfaceClients.fxml");
+                Outils.load(event, "Gestion des Clients", "/fxml/interfaceClients.fxml");
             } else {
                 Notification.NotifError("Erreur", "Échec de la modification du client !");
             }
@@ -83,5 +75,4 @@ public class ModifierClientController {
             emailTfd.setText(client.getEmail());
         }
     }
-
 }

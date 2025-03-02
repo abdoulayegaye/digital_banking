@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.AjoutClientController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.AjoutClientController">
    <children>
       <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="201.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -27,7 +27,7 @@
       <Text layoutX="160.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
       <TextField fx:id="emailTfd" layoutX="161.0" layoutY="269.0" promptText="email" />
       <Button fx:id="ajouterBtn" layoutX="274.0" layoutY="330.0" mnemonicParsing="false" onAction="#ajout" text="Ajouter" />
-      <Button fx:id="retourBtn" cancelButton="true" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour" prefHeight="25.0" prefWidth="41.0" text="⬅" textAlignment="CENTER">
+      <Button fx:id="retourBtn" cancelButton="true" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour" prefHeight="28.0" prefWidth="52.0" text="⬅" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>

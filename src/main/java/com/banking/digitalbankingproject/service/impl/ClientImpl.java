@@ -15,7 +15,6 @@ public class ClientImpl implements IClient {
     private int ok;
     private int id;
 
-
     @Override
     public int addClient(Client client) {
         String sql = "INSERT INTO clients VALUES(DEFAULT,?,?,?)";
@@ -162,4 +161,23 @@ public class ClientImpl implements IClient {
         return clients;
     }
 
+    @Override
+    public int countClients() {
+        String sql = "SELECT COUNT(*) FROM clients";
+        int total = 0;
+
+        try {
+            db.initPrepar(sql);
+            ResultSet rs = db.executeSelect();
+
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+
+            db.closeConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
 }
