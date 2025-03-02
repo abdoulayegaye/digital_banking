@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane fx:id="modifierClientPane" prefHeight="258.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.ModifierClientController">
+    <children>
+        <HBox layoutX="10.0" layoutY="10.0">
+            <Button fx:id="btnRetour" onAction="#retourGestionClients" style="-fx-background-color: transparent;">
+                <graphic>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../../../../../Users/CnG/Pictures/fleche%20de%20retour.jpg" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+        <Label layoutX="210.0" layoutY="37.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Modifier un Client" />
+
+        <Label layoutX="20.0" layoutY="80.0" text="Nom:" />
+        <TextField fx:id="txtNom" layoutX="100.0" layoutY="80.0" prefWidth="200.0" />
+
+        <Label layoutX="20.0" layoutY="120.0" text="Prénom:" />
+        <TextField fx:id="txtPrenom" layoutX="100.0" layoutY="120.0" prefWidth="200.0" />
+
+        <Label layoutX="20.0" layoutY="160.0" text="Email:" />
+        <TextField fx:id="txtEmail" layoutX="100.0" layoutY="160.0" prefWidth="200.0" />
+
+        <Button fx:id="btnModifier" layoutX="240.0" layoutY="208.0" onAction="#modifierClient" prefHeight="27.0" prefWidth="99.0" text="Modifier Client" />
+      <ImageView fitHeight="110.0" fitWidth="116.0" layoutX="325.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icone%20Modifier%20un%20Client%20digital%20banking.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

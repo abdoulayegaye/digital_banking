@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="rootPane" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.banking.digitalbankingproject.controller.AjouterClientController">
+    <children>
+        <!-- Titre "Ajouter un Client" -->
+        <Label fx:id="lblTitle" layoutX="200.0" layoutY="20.0" prefHeight="40.0" prefWidth="200.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Ajouter un Client" />
+
+        <!-- Champ "Nom" -->
+        <Label fx:id="lblNom" layoutX="50.0" layoutY="80.0" text="Nom:" />
+        <TextField fx:id="txtNom" layoutX="150.0" layoutY="75.0" prefWidth="300.0" />
+
+        <!-- Champ "Prénom" -->
+        <Label fx:id="lblPrenom" layoutX="50.0" layoutY="130.0" text="Prénom:" />
+        <TextField fx:id="txtPrenom" layoutX="150.0" layoutY="125.0" prefWidth="300.0" />
+
+        <!-- Champ "Email" -->
+        <Label fx:id="lblEmail" layoutX="50.0" layoutY="180.0" text="Email:" />
+        <TextField fx:id="txtEmail" layoutX="150.0" layoutY="175.0" prefWidth="300.0" />
+
+        <!-- Bouton "Ajouter" -->
+        <Button fx:id="btnAjouter" layoutX="250.0" layoutY="250.0" onAction="#ajouterClient" prefHeight="40.0" prefWidth="100.0" text="Ajouter" />
+
+        <!-- Bouton "Retour" avec image -->
+        <Button fx:id="btnRetour" layoutX="50.0" layoutY="250.0" onAction="#retourGestionClients" prefHeight="40.0" prefWidth="100.0">
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/retour.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <text>Retour</text>
+        </Button>
+    </children>
+</AnchorPane>
