@@ -38,10 +38,7 @@ public class AssocierClientController {
 
     @FXML
     private void initialize() {
-        // Charger la liste des clients dans le ComboBox
         chargerClients();
-
-        // Configurer le ComboBox pour afficher le prénom et le nom des clients
         comboClient.setCellFactory(param -> new ListCell<Client>() {
             @Override
             protected void updateItem(Client item, boolean empty) {
@@ -83,16 +80,12 @@ public class AssocierClientController {
             Outils.showError("Erreur", "Veuillez sélectionner un client.");
             return;
         }
-
-        // Associer le client au compte
         compte.setClient(clientSelectionne);
         compteService.updateCompte(compte);
-        // Rafraîchir la liste des comptes dans le contrôleur principal
         if (gestionComptesController != null) {
             gestionComptesController.chargerComptes();
             gestionComptesController.getTableViewComptes().refresh();
         }
-        // Afficher un message de succès et fermer la fenêtre
         Outils.showSuccess("Succès", "Client associé avec succès.");
         Stage stage = (Stage) btnRetour.getScene().getWindow();
         stage.close();
