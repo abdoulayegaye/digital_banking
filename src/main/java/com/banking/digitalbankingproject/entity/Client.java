@@ -6,18 +6,15 @@ public class Client {
     private String prenom;
     private String email;
 
-    // Constructeur sans arguments
     public Client() {
     }
 
-    // Constructeur avec arguments
     public Client(String nom, String prenom, String email) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }
