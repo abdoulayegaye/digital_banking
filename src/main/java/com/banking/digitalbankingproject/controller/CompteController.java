@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import com.banking.digitalbankingproject.tools.Outils;
 import javafx.event.ActionEvent;
 
-import java.io.IOException; // Ajout de l'importation manquante
+import java.io.IOException;
 
 public class CompteController {
 
