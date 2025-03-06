@@ -21,8 +21,6 @@ public class Compte {
         this.client = client;
     }
 
-    // Getter and Setter methods
-
     public int getId() {
         return id;
     }
