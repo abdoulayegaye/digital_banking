@@ -14,12 +14,6 @@ public class Db {
 
     private static final Logger logger = Logger.getLogger(Db.class.getName());
 
-    /**
-     * Établit une connexion à la base de données.
-     *
-     * @return Une connexion à la base de données.
-     * @throws SQLException Si la connexion échoue.
-     */
     public Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -30,12 +24,6 @@ public class Db {
         }
     }
 
-    /**
-     * Exécute une requête SQL de type SELECT.
-     *
-     * @param sql La requête SQL à exécuter.
-     * @return Un ResultSet contenant les résultats de la requête.
-     */
     public ResultSet executeSelect(String sql) {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -47,13 +35,6 @@ public class Db {
             return null;
         }
     }
-
-    /**
-     * Exécute une requête SQL de type INSERT, UPDATE ou DELETE.
-     *
-     * @param sql La requête SQL à exécuter.
-     * @return Le nombre de lignes affectées.
-     */
     public int executeUpdate(String sql) {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -62,22 +43,14 @@ public class Db {
 
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Erreur lors de l'exécution de la requête UPDATE/INSERT/DELETE", e);
-            return -1; // Retourne -1 en cas d'erreur
+            return -1;
         }
     }
 
-    /**
-     * Exécute une requête SQL de type INSERT, UPDATE ou DELETE avec des paramètres.
-     *
-     * @param sql    La requête SQL à exécuter.
-     * @param params Les paramètres à passer à la requête.
-     * @return Le nombre de lignes affectées.
-     */
     public int executeUpdate(String sql, Object... params) {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-            // Définir les paramètres
             for (int i = 0; i < params.length; i++) {
                 preparedStatement.setObject(i + 1, params[i]);
             }
@@ -86,15 +59,10 @@ public class Db {
 
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Erreur lors de l'exécution de la requête paramétrée", e);
-            return -1; // Retourne -1 en cas d'erreur
+            return -1; 
         }
     }
 
-    /**
-     * Ferme une connexion à la base de données.
-     *
-     * @param connection La connexion à fermer.
-     */
     public void closeConnection(Connection connection) {
         if (connection != null) {
             try {
@@ -105,11 +73,6 @@ public class Db {
         }
     }
 
-    /**
-     * Ferme un ResultSet.
-     *
-     * @param resultSet Le ResultSet à fermer.
-     */
     public void closeResultSet(ResultSet resultSet) {
         if (resultSet != null) {
             try {
@@ -120,11 +83,6 @@ public class Db {
         }
     }
 
-    /**
-     * Ferme un PreparedStatement.
-     *
-     * @param preparedStatement Le PreparedStatement à fermer.
-     */
     public void closePreparedStatement(PreparedStatement preparedStatement) {
         if (preparedStatement != null) {
             try {
