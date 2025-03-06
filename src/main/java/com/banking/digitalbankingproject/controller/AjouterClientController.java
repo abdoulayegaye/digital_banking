@@ -51,7 +51,6 @@ public class AjouterClientController {
     @FXML
     private void retourGestionClients(ActionEvent event) {
         try {
-            // Charger la vue de gestion des clients
             javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/fxml/gestionClients.fxml"));
             javafx.scene.Parent root = loader.load();
             javafx.stage.Stage stage = (javafx.stage.Stage) btnRetour.getScene().getWindow();
