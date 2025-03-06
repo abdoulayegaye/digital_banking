@@ -42,19 +42,16 @@ public class ModifierClientController {
             String prenom = txtPrenom.getText();
             String email = txtEmail.getText();
 
-            // Vérifier que les champs ne sont pas vides
             if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty()) {
                 Outils.showError("Erreur", "Tous les champs doivent être remplis.");
                 return;
             }
 
-            // Mettre à jour le client
             client.setNom(nom);
             client.setPrenom(prenom);
             client.setEmail(email);
             clientService.modifierClient(client);
 
-            // Afficher un message de succès et fermer la fenêtre
             Outils.showSuccess("Succès", "Client modifié avec succès.");
             Stage stage = (Stage) btnModifier.getScene().getWindow();
             stage.close();
