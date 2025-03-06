@@ -121,6 +121,5 @@ public class VirementController {
 
     @FXML
     private void filtrerComptesDestinataire(ActionEvent event) {
-        // Implement the logic to filter destination accounts if needed
     }
 }
