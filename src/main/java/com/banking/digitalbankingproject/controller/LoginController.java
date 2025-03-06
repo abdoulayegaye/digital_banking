@@ -13,15 +13,14 @@ import java.io.IOException;
 public class LoginController {
 
     @FXML
-    private TextField usernameTfd; // Correspond à fx:id="usernameTfd" dans le FXML
+    private TextField usernameTfd;
     @FXML
-    private PasswordField passwordTfd; // Correspond à fx:id="passwordTfd" dans le FXML
+    private PasswordField passwordTfd;
     @FXML
-    private Button loginBtn; // Correspond à fx:id="loginBtn" dans le FXML
+    private Button loginBtn;
 
     @FXML
     private void initialize() {
-        // Initialisation facultative
     }
 
     @FXML
@@ -32,7 +31,6 @@ public class LoginController {
         if (username.isEmpty() || password.isEmpty()) {
             Notification.NotifError("Erreur", "Veuillez remplir tous les champs.");
         } else {
-            // Logique de connexion ici
             Notification.NotifSuccess("Succès", "Connexion réussie !");
             try {
                 Outils.load(event, "Accueil", "/fxml/accueil.fxml");
