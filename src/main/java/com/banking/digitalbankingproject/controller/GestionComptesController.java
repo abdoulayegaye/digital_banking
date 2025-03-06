@@ -65,7 +65,6 @@ public class GestionComptesController {
 
     @FXML
     public void initialize() {
-        // Configurer les colonnes du TableView
         colNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         colClient.setCellValueFactory(cellData -> {
             Compte compte = cellData.getValue();
@@ -84,14 +83,8 @@ public class GestionComptesController {
                     .withZone(ZoneId.systemDefault());
             return new SimpleStringProperty(formatter.format(instant));
         });
-
-        // Charger les comptes dans le TableView
         chargerComptes();
-
-        // Configurer la barre de recherche
         configurerBarreRecherche();
-
-        // Ajouter le menu contextuel
         tableViewComptes.setRowFactory(tv -> {
             TableRow<Compte> row = new TableRow<>();
             ContextMenu contextMenu = new ContextMenu();
@@ -133,42 +126,27 @@ public class GestionComptesController {
     }
 
     private void configurerBarreRecherche() {
-        // Créer une FilteredList pour filtrer les comptes
         FilteredList<Compte> filteredList = new FilteredList<>(comptesList, p -> true);
-
-        // Lier la barre de recherche au filtre
         txtRecherche.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredList.setPredicate(compte -> {
-                // Si la barre de recherche est vide, afficher tous les comptes
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-
-                // Convertir la recherche en minuscules pour une recherche insensible à la casse
                 String rechercheMinuscule = newValue.toLowerCase();
-
-                // Vérifier si le numéro de compte ou le nom du client contient la recherche
                 if (compte.getNumero().toLowerCase().contains(rechercheMinuscule) ||
                         (compte.getClient() != null && (compte.getClient().getNom() + " " + compte.getClient().getPrenom()).toLowerCase().contains(rechercheMinuscule))) {
                     return true;
                 }
-
-                // Aucun résultat trouvé
                 return false;
             });
         });
-
-        // Créer une SortedList pour trier les résultats filtrés
         SortedList<Compte> sortedList = new SortedList<>(filteredList);
-
-        // Lier le TableView à la SortedList
         sortedList.comparatorProperty().bind(tableViewComptes.comparatorProperty());
         tableViewComptes.setItems(sortedList);
     }
 
     @FXML
     private void rechercherCompte(ActionEvent event) {
-        // La recherche est déjà gérée par le Listener, cette méthode peut rester vide
     }
 
     @FXML
@@ -195,12 +173,8 @@ public class GestionComptesController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/modifierCompte.fxml"));
             Parent root = loader.load();
-
-            // Passer le compte sélectionné au contrôleur
             ModifierCompteController controller = loader.getController();
             controller.setCompte(compteSelectionne);
-
-            // Afficher la vue
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Modifier Compte");
@@ -222,31 +196,21 @@ public class GestionComptesController {
     }
 
     private void allerSupprimerCompte(Compte compteSelectionne) {
-        // Supprimer le compte
         compteService.supprimerCompte(compteSelectionne);
-
-        // Rafraîchir la liste des comptes
         chargerComptes();
     }
 
     private void associerClient(Compte compteSelectionne) {
-        // Ouvrir une fenêtre pour sélectionner un client et associer le compte
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/associerClient.fxml"));
             Parent root = loader.load();
-
-            // Passer le compte sélectionné au contrôleur
             AssocierClientController controller = loader.getController();
             controller.setCompte(compteSelectionne);
             controller.setGestionComptesController(this);
-
-            // Afficher la vue
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Associer Client");
             stage.showAndWait();
-
-            // Rafraîchir la liste des comptes après association
             chargerComptes();
             tableViewComptes.refresh();
         } catch (IOException e) {
