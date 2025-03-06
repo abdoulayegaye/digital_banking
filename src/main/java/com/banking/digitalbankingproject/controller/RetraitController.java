@@ -80,8 +80,6 @@ public class RetraitController {
         compteSelectionne.setBalance(compteSelectionne.getBalance() - montant);
         compteService.updateCompte(compteSelectionne);
         Outils.showSuccess("Succès", "Retrait effectué avec succès.");
-
-        // Redirection vers la page de gestion des opérations
         try {
             Outils.load(event, "Gestion des Opérations", "/fxml/gestionOperations.fxml");
         } catch (IOException e) {
