@@ -47,21 +47,17 @@ public class ModifierCompteController {
             double solde = Double.parseDouble(txtSolde.getText());
             boolean actif = chkActif.isSelected();
 
-            // Vérifier que les champs ne sont pas vides
             if (txtSolde.getText().isEmpty()) {
                 Outils.showError("Erreur", "Tous les champs doivent être remplis.");
                 return;
             }
 
-            // Mettre à jour le compte
             compte.setBalance(solde);
             compte.setActif(actif);
             compteService.updateCompte(compte);
 
-            // Afficher un message de succès
             Outils.showSuccess("Succès", "Compte modifié avec succès.");
 
-            // Revenir à la vue de gestion des comptes
             retourGestionComptes(event);
         } catch (NumberFormatException e) {
             Outils.showError("Erreur", "Le solde doit être un nombre valide.");
