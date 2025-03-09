@@ -2,64 +2,14 @@ package com.banking.digitalbankingproject.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
-import static com.banking.digitalbankingproject.database.Constants.*;
+import java.sql.SQLException;
 
 public class Db {
-    private Connection cnx;
-    private PreparedStatement pstm;
-    private ResultSet rs;
-    private int ok;
+    private static final String URL = "jdbc:mysql://localhost:3306/digital_banking_db";
+    private static final String USER = "root";
+    private static final String PASSWORD = ""; // Remplacez par votre mot de passe
 
-    private void connect(){
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            cnx = DriverManager.getConnection(URL, USER, PASSWORD);
-        }catch (Exception e){
-            System.out.println("Erreur de connexion á la BD : " + e.getMessage());
-        }
-    }
-
-    public void initPrepar(String sql){
-        try{
-            connect();
-            pstm = cnx.prepareStatement(sql);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public ResultSet executeSelect(){
-        rs = null;
-        try{
-            rs = pstm.executeQuery();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return rs;
-    }
-
-    public int executeMaj(){
-        try{
-            ok = pstm.executeUpdate();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return ok;
-    }
-
-    public void closeConnection(){
-        try{
-            if (cnx != null)
-                cnx.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public PreparedStatement getPstm() {
-        return pstm;
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }

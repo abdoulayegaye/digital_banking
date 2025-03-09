@@ -32,14 +32,19 @@ public class UserController {
                 User user = userDao.getUserByUsername(username);
                 if (user == null) {
                     Notification.NotifError("Error", "Username et/ou Password incorrects !");
-                } else if(Utils.checkPassword(password, user.getPassword())) {
-                    Notification.NotifSuccess("Success", "Connexion réussie !");
-                    Outils.load(event, "Bienvenue à Digital Banking", "/fxml/accueil.fxml");
+                } else {
+                    System.out.println("User found: " + user.getUsername()); // Log
+                    System.out.println("Hashed password in DB: " + user.getPassword()); // Log
+                    if (Utils.checkPassword(password, user.getPassword())) {
+                        Notification.NotifSuccess("Success", "Connexion réussie !");
+                        Outils.load(event, "Bienvenue à Digital Banking", "/fxml/accueil.fxml");
+                    } else {
+                        Notification.NotifError("Error", "Username et/ou Password incorrects !");
+                    }
                 }
-            }catch (Exception e) {
-                System.out.println(e);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
-
 }

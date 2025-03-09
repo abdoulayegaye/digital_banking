@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="460.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.GestionOperationsController">
+    <children>
+        <!-- Titre de la page -->
+        <Label layoutX="152.0" layoutY="27.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Gestion des Opérations" />
+
+        <!-- Boutons pour les opérations -->
+        <Button fx:id="btnDepot" layoutX="90.0" layoutY="321.0" mnemonicParsing="false" onAction="#allerDepot" text="Dépôt" />
+        <Button fx:id="btnRetrait" layoutX="190.0" layoutY="321.0" mnemonicParsing="false" onAction="#allerRetrait" text="Retrait" />
+        <Button fx:id="btnVirement" layoutX="290.0" layoutY="321.0" mnemonicParsing="false" onAction="#allerVirement" text="Virement" />
+        <Button fx:id="btnHistorique" layoutX="390.0" layoutY="321.0" mnemonicParsing="false" onAction="#allerHistorique" text="Historique" />
+
+        <!-- Bouton de retour -->
+        <Button fx:id="btnRetour" layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#retourAccueil">
+            <graphic>
+                <ImageView fx:id="imgRetour" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/retour.png" />
+                </ImageView>
+            </graphic>
+            <text>Retour</text>
+        </Button>
+        <ImageView fitHeight="192.0" fitWidth="229.0" layoutX="183.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/Gestion%20des%20Opérations%20digital%20banking%20icons.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

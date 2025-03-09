@@ -3,71 +3,56 @@ package com.banking.digitalbankingproject.service.impl;
 import com.banking.digitalbankingproject.database.Db;
 import com.banking.digitalbankingproject.entity.User;
 import com.banking.digitalbankingproject.service.IUser;
-import com.banking.digitalbankingproject.tools.Utils;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 public class UserImpl implements IUser {
 
-    private Db db = new Db();
-    private ResultSet rs;
-    private int ok;
+    @Override
+    public User getUserByUsername(String username) {
+        User user = null;
+        String sql = "SELECT * FROM users WHERE username = ?";
+
+        try (Connection connection = Db.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
 
     @Override
     public boolean createUser(User user) {
-        String sql = "INSERT INTO users VALUES(NULL, ?, ?)";
-        try{
-            db.initPrepar(sql);
-            db.getPstm().setString(1, user.getUsername());
-            db.getPstm().setString(2, Utils.hashPassword(user.getPassword()));
-            ok = db.executeMaj();
-            db.closeConnection();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return ok == 1;
-    }
+        String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        boolean isSuccess = false;
 
-    @Override
-    public List<User> getAllUsers() {
-        String sql = "SELECT * FROM users ORDER BY username ASC";
-        List<User> users = new ArrayList<User>();
-        try {
-            db.initPrepar(sql);
-            rs = db.executeSelect();
-            while (rs.next()) {
-                User user = new User();
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-                users.add(user);
-            }
-            db.closeConnection();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return users;
-    }
+        try (Connection connection = Db.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-    @Override
-    public User getUserByUsername(String username) {
-        String sql = "SELECT * FROM users WHERE username = ?";
-        User user = null;
-        try {
-            db.initPrepar(sql);
-            db.getPstm().setString(1, username);
-            rs = db.executeSelect();
-            if (rs.next()) {
-                user = new User();
-                user.setId(rs.getInt("id"));
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-            }
-            db.closeConnection();
-        }catch (Exception e){
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            int rowsAffected = preparedStatement.executeUpdate();
+            isSuccess = rowsAffected > 0;
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return user;
+
+        return isSuccess;
     }
 }
