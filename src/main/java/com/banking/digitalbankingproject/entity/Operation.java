@@ -16,4 +16,5 @@ public class Operation {
     private double amount;
     private TypeOperation type;
     private Compte compte;
+
 }

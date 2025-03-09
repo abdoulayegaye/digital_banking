@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.CompteController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="557.0" prefWidth="1171.0" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.banking.digitalbankingproject.controller.CompteController">
+    <children>
+        <!-- Titre principal -->
+        <Button layoutX="461.0" layoutY="12.0" mnemonicParsing="false"
+                style="-fx-background-color: #2c3e50;" text="GESTION DES COMPTES" textFill="white">
+            <font>
+                <Font size="23.0" />
+            </font>
+        </Button>
 
+        <!-- Formulaire de création de compte -->
+        <Text layoutX="50.0" layoutY="150.0" text="Client :" style="-fx-font-size: 16;"/>
+        <ComboBox fx:id="clientCombo" layoutX="50.0" layoutY="160.0" prefWidth="300.0"
+                  promptText="Sélectionnez un client"/>
+
+        <Text layoutX="50.0" layoutY="220.0" text="Numéro de compte :" style="-fx-font-size: 16;"/>
+        <TextField fx:id="numCompteTfd" layoutX="50.0" layoutY="230.0" promptText="Généré automatiquement"
+                   prefWidth="300.0" disable="true"/>
+
+        <Text layoutX="50.0" layoutY="290.0" text="Date d'ouverture :" style="-fx-font-size: 16;"/>
+        <DatePicker fx:id="dateOuverturePicker" layoutX="50.0" layoutY="300.0" prefWidth="300.0"/>
+
+        <Text layoutX="50.0" layoutY="360.0" text="Solde initial :" style="-fx-font-size: 16;"/>
+        <TextField fx:id="soldeTfd" layoutX="50.0" layoutY="370.0" promptText="0.0"
+                   prefWidth="300.0"/>
+
+        <!-- Tableau des comptes -->
+        <TableView fx:id="compteTable" layoutX="400.0" layoutY="100.0" prefHeight="400.0" prefWidth="700.0">
+            <columns>
+                <TableColumn fx:id="numCol" text="N° Compte" prefWidth="120"/>
+                <TableColumn fx:id="soldeCol" text="Solde" prefWidth="100"/>
+                <TableColumn fx:id="dateCol" text="Date Ouverture" prefWidth="150"/>
+                <TableColumn fx:id="clientCol" text="Client" prefWidth="200"/>
+                <TableColumn fx:id="statusCol" text="Statut" prefWidth="100"/>
+            </columns>
+        </TableView>
+
+        <!-- Boutons d'actions -->
+        <ButtonBar layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="300.0">
+            <buttons>
+                <Button fx:id="enregistrerBtn" text="Créer" style="-fx-background-color: #27ae60;"
+                        onAction="#enregistrer"/>
+                <Button fx:id="fermerBtn" text="Fermer" style="-fx-background-color: #e74c3c;"
+                        onAction="#fermerCompte"/>
+                <Button fx:id="effacerBtn" text="Effacer" style="-fx-background-color: #95a5a6;"
+                        onAction="#effacer"/>
+            </buttons>
+        </ButtonBar>
+
+        <!-- Recherche -->
+        <TextField fx:id="searchTfd" layoutX="400.0" layoutY="70.0"
+                   promptText="Rechercher par numéro de compte" prefWidth="500.0"/>
+        <Button fx:id="searchBtn" layoutX="910.0" layoutY="70.0" text="🔍"
+                style="-fx-background-color: transparent;"/>
+
+        <!-- Bouton Retour -->
+        <Button fx:id="retourBtn" layoutX="20.0" layoutY="20.0" text="← Retour"
+                style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+    </children>
 </AnchorPane>
