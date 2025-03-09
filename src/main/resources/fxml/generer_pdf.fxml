@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="197.0" prefWidth="329.0" spacing="20" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafx.controllers.GenererPDFController">
+    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Générer un Relevé Bancaire en PDF" />
+
+    <!-- Champ de saisie pour le numéro de compte -->
+    <TextField fx:id="numeroCompteField" prefHeight="25.0" prefWidth="277.0" promptText="Numéro de compte" />
+
+    <!-- Bouton pour générer le PDF -->
+    <Button onAction="#genererPDF" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #132A13;" text="Générer PDF" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Button>
+
+    <!-- Label pour afficher le résultat -->
+    <Label fx:id="resultLabel" style="-fx-font-size: 16px;" text="" />
+</VBox>

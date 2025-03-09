@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="291.0" prefWidth="273.0" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafx.controllers.FermetureController">
+    <stylesheets>
+        <URL value="@../css/fermer.css" />
+    </stylesheets>
+<Label style="-fx-font-size: 18px;" text="Fermeture de Compte" />
+
+<TextField fx:id="compteIdField" promptText="ID du Compte" />
+
+<Button onAction="#verifierSolde" prefHeight="0.0" style="-fx-background-color: #132A13;" text="Vérifier Solde" />
+
+<Label fx:id="soldeLabel" text="Solde : " />
+
+<Button onAction="#fermerCompte" style="-fx-background-color: #6D2323;" text="Fermer le Compte" />
+
+<Label fx:id="resultLabel" text="" />
+
+</VBox>

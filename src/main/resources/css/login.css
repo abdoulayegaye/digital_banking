@@ -1,0 +1,115 @@
+.login_container{
+    -fx-background-color: #EEEEEE;
+}
+.login_logo_container{
+    -fx-background-color:#132A13;
+    -fx-alignment:center;
+}
+.login_logo_container Text{
+    -fx-font-size: 2em;
+    -fx-fill:#FFFFFF;
+}
+.login_logo_container FontAwesomeIconView{
+    -fx-fill: #ECF39E;
+}
+
+
+/* Style global */
+.root {
+    -fx-font-family: "Arial";
+    -fx-background-color: #f4f4f4;
+}
+
+/* Style des menus */
+.menu-bar {
+    -fx-background-color: #132A13;
+    -fx-text-fill: white;
+}
+
+.menu {
+    -fx-text-fill: white;
+}
+
+.menu-item {
+    -fx-text-fill: #2c3e50;
+}
+
+/* Titres */
+.title-label {
+    -fx-text-fill: #34495e;
+    -fx-font-size: 24px;
+    -fx-padding: 10px 0;
+}
+
+.subtitle-label {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 18px;
+}
+
+/* Boutons */
+.primary-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #132A13;
+}
+
+/* Informations */
+.info-label {
+    -fx-text-fill: #7f8c8d;
+    -fx-font-size: 14px;
+}
+
+/* Pied de page */
+.footer-label {
+    -fx-text-fill: #95a5a6;
+    -fx-font-size: 12px;
+    -fx-padding: 10px 0;
+    -fx-alignment: center;
+}
+
+
+/* Style général */
+.root {
+    -fx-font-family: 'Arial';
+    -fx-background-color: #f4f4f4;
+}
+
+/* Titre */
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-padding: 0 0 20px 0;
+}
+
+/* Boutons avec icônes */
+.icon-button {
+    -fx-background-color: #132A13; /* Vert */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1); /* Ombre */
+}
+
+.icon-button:hover {
+    -fx-background-color: #132A13 /* Vert plus foncé au survol */
+}
+
+/* Icônes FontAwesomeFX */
+.icon {
+    -fx-fill: white; /* Couleur des icônes */
+    -fx-font-size: 16px; /* Taille des icônes */
+    -fx-padding: 0 5px 0 0; /* Espacement entre l'icône et le texte */
+}
+

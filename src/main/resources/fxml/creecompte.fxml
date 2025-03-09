@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="435.0" prefWidth="631.0" styleClass="login_container" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafx.controllers.CreerCompte">
+   <children>
+      <Label layoutX="29.0" layoutY="101.0" text="Numero" />
+      <Label layoutX="28.0" layoutY="158.0" text="Solde" />
+      <Label layoutX="31.0" layoutY="209.0" text="Date-Ouverture" />
+      <Label layoutX="28.0" layoutY="269.0" text="Client" />
+      <TextField fx:id="numerotfd" layoutX="29.0" layoutY="125.0" />
+      <TextField fx:id="soldetfd" layoutX="28.0" layoutY="175.0" />
+      <DatePicker fx:id="datetfd" layoutX="28.0" layoutY="231.0" />
+      <ComboBox fx:id="clienttfd" layoutX="29.0" layoutY="293.0" prefHeight="25.0" prefWidth="149.0" />
+      <Button fx:id="validertfd" layoutX="28.0" layoutY="352.0" mnemonicParsing="false" onAction="#insert" prefHeight="25.0" prefWidth="149.0" styleClass="login_logo_container" stylesheets="@../css/login.css" text="Valider" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tablecompte" layoutX="224.0" layoutY="119.0" prefHeight="256.0" prefWidth="397.0" AnchorPane.leftAnchor="223.66666666666669" AnchorPane.rightAnchor="9.666666666666686">
+        <columns>
+          <TableColumn fx:id="idcolum" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="numerocolum" prefWidth="75.0" text="Numero" />
+            <TableColumn fx:id="soldecolum" prefWidth="75.0" text="Solde" />
+            <TableColumn fx:id="datecolum" prefWidth="91.33328247070312" text="Date-Ouverture" />
+            <TableColumn fx:id="clientcolum" prefWidth="78.3333740234375" text="Client" />
+        </columns>
+      </TableView>
+      <Button fx:id="annulertfd" layoutX="27.0" layoutY="396.0" mnemonicParsing="false" onAction="#reset" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #3F4F44;" text="Annuler" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <FontAwesomeIconView fill="WHITE" glyphName="CHECK" layoutX="53.0" layoutY="370.0" />
+      <Button fx:id="fermertfd" layoutX="354.0" layoutY="381.0" mnemonicParsing="false" onAction="#Fermer" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #6D2323;" text="Fermer Compte" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <FontAwesomeIconView fill="WHITE" glyphName="TIMES" layoutX="362.0" layoutY="401.0" />
+      <Button fx:id="consulterTfd" layoutX="329.0" layoutY="55.0" mnemonicParsing="false" onAction="#consulterSolde" prefHeight="29.0" prefWidth="287.0" style="-fx-background-color: #3F4F44;" text="Conulter Solde" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="genererTfd" layoutX="27.0" layoutY="55.0" mnemonicParsing="false" onAction="#genererPDF" prefHeight="25.0" prefWidth="149.0" styleClass="login_logo_container" stylesheets="@../css/login.css" text="Générer PDF" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <FontAwesomeIconView fill="WHITE" glyphName="FILE" layoutX="35.0" layoutY="76.0" size="20" />
+      <Text layoutX="211.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTION DES COMPTES" underline="true" wrappingWidth="208.000020345052">
+         <font>
+            <Font name="Book Antiqua" size="17.0" />
+         </font>
+      </Text>
+      <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" layoutX="362.0" layoutY="76.0" size="20" />
+   </children>
+</AnchorPane>
