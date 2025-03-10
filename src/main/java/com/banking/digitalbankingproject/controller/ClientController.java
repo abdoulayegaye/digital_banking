@@ -74,7 +74,6 @@ public class ClientController {
         prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        // Charger les clients dans la table
         loadClients();
     }
 
@@ -169,15 +168,12 @@ public class ClientController {
     void searchClients(ActionEvent event) {
         String searchText = searchTfd.getText().trim();
         if (searchText.isEmpty()) {
-            // Si le champ de recherche est vide, charger tous les clients
             loadClients();
         } else {
-            // Rechercher les clients par nom
             List<Client> searchResults = clientService.searchClientsByName(searchText);
             if (searchResults.isEmpty()) {
                 showAlert("Information", "Aucun client trouvé avec ce nom.");
             } else {
-                // Afficher les résultats dans la table
                 clientsList.clear();
                 clientsList.addAll(searchResults);
                 clientTable.setItems(clientsList);
@@ -188,14 +184,11 @@ public class ClientController {
     @FXML
     void retour(ActionEvent event) {
         try {
-            // Charger la scène précédente (par exemple, le menu principal)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/accueil.fxml"));
             Parent root = loader.load();
 
-            // Obtenir la scène actuelle
             Scene scene = retourBtn.getScene();
 
-            // Changer la scène
             scene.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();

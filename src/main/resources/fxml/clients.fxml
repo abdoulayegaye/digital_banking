@@ -59,7 +59,7 @@
     </ButtonBar>
 
     <TextField fx:id="searchTfd" layoutX="300.0" layoutY="70.0" prefWidth="500.0" promptText="Rechercher par nom ou email" />
-    <Button fx:id="searchBtn" layoutX="810.0" layoutY="70.0" style="-fx-background-color: transparent;" text="🔍" />
+    <Button fx:id="searchBtn" layoutX="810.0" layoutY="70.0" style="-fx-background-color: transparent;" text="🔍" onAction="#searchClients"/>
 
     <Button fx:id="retourBtn" layoutX="20.0" layoutY="20.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Retour" onAction="#retour"/>
 </children>

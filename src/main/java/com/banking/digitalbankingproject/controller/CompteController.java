@@ -74,31 +74,23 @@ public class CompteController {
 
     @FXML
     public void initialize() {
-        // Désactiver et rendre en lecture seule le champ numCompteTfd
         numCompteTfd.setDisable(true);
         numCompteTfd.setEditable(false);
-
-        // Initialisation des colonnes de la table
         numCol.setCellValueFactory(new PropertyValueFactory<>("numero"));
         soldeCol.setCellValueFactory(new PropertyValueFactory<>("balance"));
-
-        // Afficher la date de création
         dateCol.setCellValueFactory(cellData -> {
             Compte compte = cellData.getValue();
             LocalDate localDate = compte.getCreatedAt().atZone(ZoneId.systemDefault()).toLocalDate();
             return new SimpleObjectProperty<>(localDate);
         });
 
-        // Afficher le nom du client
         clientCol.setCellValueFactory(cellData -> {
             Compte compte = cellData.getValue();
             return new SimpleStringProperty(compte.getClient().getNom());
         });
 
-        // Charger les comptes dans la table
         loadComptes();
 
-        // Charger les clients dans la ComboBox
         loadClients();
     }
 
@@ -121,11 +113,9 @@ public class CompteController {
 
     @FXML
     void enregistrer(ActionEvent event) {
-        // Générer le numéro de compte automatiquement
         String numero = compteService.generateAccountNumber();
-        numCompteTfd.setText(numero); // Afficher le numéro généré
+        numCompteTfd.setText(numero);
 
-        // Récupérer les autres valeurs saisies par l'utilisateur
         double solde;
         try {
             solde = Double.parseDouble(soldeTfd.getText().trim());
@@ -137,23 +127,19 @@ public class CompteController {
         LocalDate dateOuverture = dateOuverturePicker.getValue();
         Client client = clientCombo.getSelectionModel().getSelectedItem();
 
-        // Validation des champs obligatoires
         if (client == null || dateOuverture == null) {
             showAlert("Erreur", "Tous les champs sont obligatoires !");
             return;
         }
 
-        // Créer un nouvel objet Compte
         Compte compte = new Compte();
-        compte.setNumero(numero); // Utiliser le numéro généré
+        compte.setNumero(numero);
         compte.setBalance(solde);
         compte.setCreatedAt(dateOuverture.atStartOfDay(ZoneId.systemDefault()).toInstant());
         compte.setClient(client);
 
-        // Ajouter le compte à la base de données
         int result = compteService.addCompte(compte);
 
-        // Afficher un message de succès ou d'erreur
         if (result > 0) {
             showAlert("Succès", "Compte ajouté avec succès !");
             clearFields();
@@ -185,15 +171,12 @@ public class CompteController {
     void searchComptes(ActionEvent event) {
         String searchText = searchTfd.getText().trim();
         if (searchText.isEmpty()) {
-            // Si le champ de recherche est vide, charger tous les comptes
             loadComptes();
         } else {
-            // Rechercher les comptes par numéro
             List<Compte> searchResults = compteService.searchCompteByNumero(searchText);
             if (searchResults.isEmpty()) {
                 showAlert("Information", "Aucun compte trouvé avec ce numéro.");
             } else {
-                // Afficher les résultats dans la table
                 comptesList.clear();
                 comptesList.addAll(searchResults);
                 compteTable.setItems(comptesList);
@@ -204,14 +187,9 @@ public class CompteController {
     @FXML
     void retour(ActionEvent event) {
         try {
-            // Charger la scène précédente (par exemple, le menu principal)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/accueil.fxml"));
             Parent root = loader.load();
-
-            // Obtenir la scène actuelle
             Scene scene = retourBtn.getScene();
-
-            // Changer la scène
             scene.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -220,7 +198,7 @@ public class CompteController {
     }
 
     private void clearFields() {
-        numCompteTfd.clear(); // Réinitialiser le champ numCompteTfd
+        numCompteTfd.clear();
         soldeTfd.clear();
         dateOuverturePicker.setValue(null);
         clientCombo.getSelectionModel().clearSelection();

@@ -54,7 +54,7 @@
 
         <!-- Recherche -->
         <TextField fx:id="searchTfd" layoutX="400.0" layoutY="70.0" prefWidth="500.0" promptText="Rechercher par numéro de compte" />
-        <Button fx:id="searchBtn" layoutX="910.0" layoutY="70.0" style="-fx-background-color: transparent;" text="🔍" />
+        <Button fx:id="searchBtn" layoutX="910.0" layoutY="70.0" style="-fx-background-color: transparent;" text="🔍" onAction="#searchComptes"/>
 
         <!-- Bouton Retour -->
         <Button fx:id="retourBtn" layoutX="20.0" layoutY="20.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Retour" onAction="#retour" />

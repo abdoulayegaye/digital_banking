@@ -76,11 +76,9 @@ public class OperationController {
 
     @FXML
     public void initialize() {
-        // Initialisation des ComboBox
         loadComptes();
         loadTypesOperation();
 
-        // Gérer la visibilité du ComboBox pour le compte source
         typeOperationCombo.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal == TypeOperation.RETRAIT) {
                 compteSourceCombo.setVisible(true);
@@ -89,12 +87,10 @@ public class OperationController {
             }
         });
 
-        // Recharger les opérations lorsque le compte source change
         compteSourceCombo.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             loadOperations();
         });
 
-        // Initialisation des colonnes de la table
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         montantCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -108,7 +104,6 @@ public class OperationController {
                 javafx.beans.binding.Bindings.createStringBinding(() ->
                         cellData.getValue().getCompte().getNumero()));
 
-        // Charger toutes les opérations dans la table
         loadOperations();
     }
 
@@ -126,28 +121,23 @@ public class OperationController {
 
     private void loadOperations() {
         operationsList.clear();
-        // Charger toutes les opérations, quel que soit le compte
         operationsList.addAll(operationService.consulterHistorique());
         transactionsTable.setItems(operationsList);
     }
 
     @FXML
     void genererPDF(ActionEvent event) {
-        // Chemin où le PDF sera enregistré
         String filePath = "operations.pdf";
 
         try {
-            // Créer un document PDF
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(filePath));
             document.open();
 
-            // Ajouter un titre
             Paragraph title = new Paragraph("Historique des Opérations");
             title.setAlignment(Element.ALIGN_CENTER);
             document.add(title);
 
-            // Ajouter un saut de ligne
             document.add(new Paragraph("\n"));
 
             // Créer un tableau pour afficher les opérations
@@ -160,7 +150,6 @@ public class OperationController {
             table.addCell("Type");
             table.addCell("Date");
 
-            // Remplir le tableau avec les opérations
             for (Operation operation : operationsList) {
                 table.addCell(String.valueOf(operation.getId()));
                 table.addCell(String.valueOf(operation.getAmount()));
@@ -168,13 +157,10 @@ public class OperationController {
                 table.addCell(operation.getDateOp().toString());
             }
 
-            // Ajouter le tableau au document
             document.add(table);
 
-            // Fermer le document
             document.close();
 
-            // Afficher un message de succès
             showAlert("Succès", "Le PDF a été généré avec succès : " + filePath);
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
@@ -185,14 +171,11 @@ public class OperationController {
     @FXML
     void retour(ActionEvent event) {
         try {
-            // Charger la scène précédente (par exemple, le menu principal)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/accueil.fxml"));
             Parent root = loader.load();
 
-            // Obtenir la scène actuelle
             Scene scene = retourBtn.getScene();
 
-            // Changer la scène
             scene.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -202,7 +185,6 @@ public class OperationController {
 
     @FXML
     void validerOperation(ActionEvent event) {
-        // Récupérer les valeurs des champs
         Compte compteSource = compteSourceCombo.getSelectionModel().getSelectedItem();
         TypeOperation typeOperation = typeOperationCombo.getSelectionModel().getSelectedItem();
         double montant;
@@ -218,7 +200,6 @@ public class OperationController {
         }
         LocalDate dateOperation = dateOperationPicker.getValue();
 
-        // Validation des champs
         if (typeOperation == TypeOperation.RETRAIT && compteSource == null) {
             showAlert("Erreur", "Veuillez sélectionner un compte source pour le retrait !");
             return;
@@ -228,7 +209,6 @@ public class OperationController {
             return;
         }
 
-        // Exécuter l'opération
         boolean success = false;
         try {
             if (typeOperation == TypeOperation.DEPOT) {
