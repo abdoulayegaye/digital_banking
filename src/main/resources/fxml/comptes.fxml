@@ -1,14 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.CompteController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(to bottom right, #f4f4f4, #e0e0e0);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.CompteController">
+
+    <!-- Titre principal avec ombre -->
+    <Label layoutX="50.0" layoutY="40.0" text="GESTION DES COMPTES" textFill="#0A74DA">
+        <font>
+            <Font name="Arial Bold" size="42.0" />
+        </font>
+        <effect>
+            <DropShadow color="#00000033" radius="10.0" />
+        </effect>
+    </Label>
+
+    <!-- Section Formulaire -->
+    <AnchorPane layoutX="50.0" layoutY="120.0" prefHeight="150.0" prefWidth="900.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-padding: 20;">
+        <TextField fx:id="numeroTfd" layoutX="20.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="Numéro de compte" style="-fx-background-radius: 8; -fx-font-size: 14px;" />
+        <TextField fx:id="balanceTfd" layoutX="190.0" layoutY="20.0" prefHeight="40.0" prefWidth="130.0" promptText="Solde" style="-fx-background-radius: 8; -fx-font-size: 14px;" />
+        <ComboBox fx:id="typeCombo" layoutX="340.0" layoutY="20.0" prefHeight="40.0" prefWidth="130.0" promptText="Type" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-cursor: hand;" />
+        <ComboBox fx:id="clientCombo" layoutX="490.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="Client" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-cursor: hand;" />
+        <ComboBox fx:id="statutCombo" layoutX="660.0" layoutY="20.0" prefHeight="40.0" prefWidth="130.0" promptText="Statut" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-cursor: hand;" />
+        <DatePicker fx:id="dateOuverturePicker" layoutX="810.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="Date ouverture" style="-fx-background-radius: 8; -fx-font-size: 14px;" />
+
+        <!-- Bouton Ajouter -->
+        <Button layoutX="20.0" layoutY="80.0" onAction="#addCompte" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="Ajouter un Compte">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+    </AnchorPane>
+
+    <!-- Boutons d'action intermédiaires -->
+    <HBox layoutX="50.0" layoutY="300.0" spacing="20.0">
+        <Button onAction="#historiqueCompte" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="Historique">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+        <Button onAction="#fermerCompte" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="Fermer un compte">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+        <Button onAction="#ouvrirCompte" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffc107; -fx-text-fill: black; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="Ouvrir un compte">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+    </HBox>
+
+    <!-- TableView des Comptes -->
+    <TableView fx:id="comptesTable" layoutX="50.0" layoutY="360.0" prefHeight="300.0" prefWidth="900.0" style="-fx-background-color: #ffffff; -fx-border-color: #0A74DA; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 5;">
+        <columns>
+            <TableColumn fx:id="numeroCol" prefWidth="170.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="NUMÉRO DE COMPTE" />
+            <TableColumn fx:id="typeCol" prefWidth="130.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="TYPE" />
+            <TableColumn fx:id="clientCol" prefWidth="180.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="CLIENT" />
+            <TableColumn fx:id="balanceCol" prefWidth="140.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="SOLDE" />
+            <TableColumn fx:id="statutCol" prefWidth="140.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="STATUT" />
+            <TableColumn fx:id="dateOuvertureCol" prefWidth="135.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="DATE OUVERTURE" />
+        </columns>
+    </TableView>
+
+    <!-- Zone de recherche et retour -->
+    <HBox alignment="CENTER_LEFT" layoutX="60.0" layoutY="672.0" spacing="20.0">
+        <TextField fx:id="searchTfd" onKeyReleased="#searchCompte" prefHeight="40.0" prefWidth="300.0" promptText="Rechercher un compte" style="-fx-background-radius: 8; -fx-font-size: 14px;" />
+        <Button onAction="#retour" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="Retour à l'accueil">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+    </HBox>
 
 </AnchorPane>

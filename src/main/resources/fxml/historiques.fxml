@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom right, #f4f4f4, #e0e0e0);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.HistoriqueController">
+
+    <!-- Titre avec informations du compte -->
+    <Label fx:id="compteInfoLabel" layoutX="50.0" layoutY="50.0" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #0A74DA;" text="Historique du Compte">
+        <font>
+            <Font name="Arial Bold" size="32.0" />
+        </font>
+        <effect>
+            <DropShadow color="#00000033" radius="10.0" />
+        </effect>
+    </Label>
+
+    <!-- Section Filtre -->
+    <AnchorPane layoutX="50.0" layoutY="116.0" prefHeight="108.0" prefWidth="830.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-padding: 20;">
+        <DatePicker fx:id="dateDebutPicker" layoutX="20.0" layoutY="20.0" prefHeight="40.0" prefWidth="200.0" promptText="Date de début" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-border-color: #3498db; -fx-border-radius: 8;" />
+        <DatePicker fx:id="dateFinPicker" layoutX="240.0" layoutY="20.0" prefHeight="40.0" prefWidth="200.0" promptText="Date de fin" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-border-color: #3498db; -fx-border-radius: 8;" />
+        <Button layoutX="470.0" layoutY="20.0" onAction="#filtrerParDate" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="Filtrer par date">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+        <Button layoutX="640.0" layoutY="20.0" onAction="#genererReleve" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="Générer Relevé">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+    </AnchorPane>
+
+    <!-- TableView des opérations -->
+    <TableView fx:id="operationsTable" layoutX="50.0" layoutY="237.0" prefHeight="350.0" prefWidth="800.0" style="-fx-background-color: #ffffff; -fx-border-color: #3498db; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 5;">
+        <columns>
+            <TableColumn fx:id="amountCol" prefWidth="250.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="MONTANT" />
+            <TableColumn fx:id="typeCol" prefWidth="250.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="TYPE" />
+            <TableColumn fx:id="dateCol" prefWidth="298.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="DATE OPÉRATION" />
+        </columns>
+    </TableView>
+
+    <!-- Bouton Retour -->
+    <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="610.0" spacing="20.0" />
+     <Button layoutX="78.0" layoutY="596.0" onAction="#retour" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="Retour">
+         <font>
+             <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+             <DropShadow color="#00000033" radius="5.0" />
+         </effect>
+     </Button>
+
+</AnchorPane>

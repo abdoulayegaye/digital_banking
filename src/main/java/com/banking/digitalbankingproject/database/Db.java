@@ -62,4 +62,43 @@ public class Db {
     public PreparedStatement getPstm() {
         return pstm;
     }
+
+    public void beginTransaction() {
+        try {
+            if (cnx == null || cnx.isClosed()) {
+                connect(); // S'assurer que la connexion est bien établie
+            }
+            cnx.setAutoCommit(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void commitTransaction() {
+        try {
+            if (cnx != null) {
+                cnx.commit();
+                cnx.setAutoCommit(true); // Remet en mode auto-commit après la transaction
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void rollbackTransaction() {
+        try {
+            if (cnx != null) {
+                cnx.rollback();
+                cnx.setAutoCommit(true); // Remet en mode auto-commit après l'annulation
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Connection getConnection() {
+        return cnx;
+    }
+
+
 }

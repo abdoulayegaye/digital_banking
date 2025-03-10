@@ -1,35 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to right, #ecf0f1, #dfe6e9);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.UserController">
 
-<AnchorPane prefHeight="400.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.UserController">
-   <children>
-      <AnchorPane prefHeight="400.0" prefWidth="251.0">
-         <children>
-            <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="26.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/logo-user.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <Text layoutX="304.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connexion">
-         <font>
-            <Font size="31.0" />
-         </font>
-      </Text>
-      <Text layoutX="274.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-      <TextField fx:id="usernameTfd" layoutX="274.0" layoutY="160.0" prefHeight="25.0" prefWidth="224.0" promptText="Votre username ici" />
-      <Text layoutX="274.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
-      <PasswordField fx:id="passwordTfd" layoutX="274.0" layoutY="242.0" prefHeight="25.0" prefWidth="224.0" promptText="Votre mot de passe ici" />
-      <Button layoutX="343.0" layoutY="313.0" mnemonicParsing="false" onAction="#login" text="Se Connecter" />
-   </children>
+    <!-- Conteneur de gauche avec image -->
+    <Pane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #2c3e50;">
+        <ImageView fitHeight="600.0" fitWidth="280.0" layoutX="10.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/logo-user1.png" />
+            </image>
+        </ImageView>
+    </Pane>
+
+    <!-- Section principale -->
+    <AnchorPane layoutX="300.0" layoutY="0.0" prefHeight="600.0" prefWidth="600.0">
+
+        <!-- Titre principal -->
+        <Label layoutX="58.0" layoutY="70.0" prefHeight="56.0" prefWidth="485.0" text="Bienvenue à Digital Banking" textFill="#2980b9">
+            <font>
+                <Font name="Arial Bold" size="36.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="10.0" />
+            </effect>
+        </Label>
+
+        <!-- Sous-titre Connexion -->
+        <Label layoutX="219.0" layoutY="164.0" text="Connexion" textFill="#2c3e50">
+            <font>
+                <Font name="System Bold" size="28.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Label>
+
+        <!-- Champ Username -->
+        <Label layoutX="50.0" layoutY="226.0" text="Nom d'utilisateur" textFill="#2c3e50">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <TextField fx:id="usernameTfd" layoutX="50.0" layoutY="256.0" prefHeight="45.0" prefWidth="400.0" promptText="Entrez votre username" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-background-color: #ffffff; -fx-border-color: #2980b9; -fx-border-radius: 8;">
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </TextField>
+
+        <!-- Champ Mot de passe -->
+        <Label layoutX="50.0" layoutY="326.0" text="Mot de passe" textFill="#2c3e50">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <PasswordField fx:id="passwordTfd" layoutX="50.0" layoutY="356.0" prefHeight="45.0" prefWidth="400.0" promptText="Entrez votre mot de passe" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-background-color: #ffffff; -fx-border-color: #2980b9; -fx-border-radius: 8;">
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </PasswordField>
+
+        <!-- Bouton de connexion -->
+        <Button layoutX="200.0" layoutY="446.0" onAction="#login" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 8; -fx-cursor: hand;" text="Se Connecter">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="8.0" />
+            </effect>
+        </Button>
+
+    </AnchorPane>
+
 </AnchorPane>

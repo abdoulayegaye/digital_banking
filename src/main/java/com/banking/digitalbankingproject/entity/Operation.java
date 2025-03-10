@@ -15,5 +15,6 @@ public class Operation {
     private Instant dateOp;
     private double amount;
     private TypeOperation type;
-    private Compte compte;
+    private Compte compte; // Compte source
+    private Compte compteDestination; // Nouvelle colonne pour le compte destination
 }

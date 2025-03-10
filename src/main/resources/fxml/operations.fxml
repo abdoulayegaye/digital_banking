@@ -1,14 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.OperationController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom right, #f4f6f7, #e0e0e0);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.OperationController">
+
+    <!-- Titre Principal -->
+    <Label layoutX="50.0" layoutY="40.0" text="GESTION DES OPÉRATIONS" textFill="#0f0cc6">
+        <font>
+            <Font name="Arial Bold" size="42.0" />
+        </font>
+        <effect>
+            <DropShadow color="#00000033" radius="10.0" />
+        </effect>
+    </Label>
+
+    <!-- Section Formulaire -->
+    <AnchorPane layoutX="50.0" layoutY="120.0" prefHeight="101.0" prefWidth="820.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-padding: 20;">
+        <TextField fx:id="amountTfd" layoutX="20.0" layoutY="20.0" prefHeight="40.0" prefWidth="150.0" promptText="Montant" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-border-color: #3498db; -fx-border-radius: 8;" />
+        <ComboBox fx:id="compteCombo" layoutX="190.0" layoutY="20.0" prefHeight="40.0" prefWidth="200.0" promptText="Sélectionner un compte" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-border-color: #3498db; -fx-border-radius: 8; -fx-cursor: hand;" />
+        <ComboBox fx:id="typeOperationCombo" layoutX="410.0" layoutY="20.0" prefHeight="40.0" prefWidth="200.0" promptText="Type d'opération" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-border-color: #3498db; -fx-border-radius: 8; -fx-cursor: hand;" />
+        <Button layoutX="630.0" layoutY="20.0" onAction="#addOperation" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="Ajouter une opération">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+    </AnchorPane>
+
+    <!-- TableView pour afficher les opérations -->
+    <TableView fx:id="operationsTable" layoutX="50.0" layoutY="249.0" prefHeight="350.0" prefWidth="800.0" style="-fx-background-color: #ffffff; -fx-border-color: #3498db; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 5;">
+        <columns>
+            <TableColumn fx:id="dateCol" prefWidth="200.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="DATE" />
+            <TableColumn fx:id="amountCol" prefWidth="180.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="MONTANT" />
+            <TableColumn fx:id="typeCol" prefWidth="250.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="TYPE OPÉRATION" />
+            <TableColumn fx:id="compteCol" prefWidth="168.0" style="-fx-alignment: CENTER-LEFT; -fx-font-size: 14px;" text="NUMÉRO DE COMPTE" />
+        </columns>
+    </TableView>
+
+    <!-- Section Recherche et Navigation -->
+    <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="623.0" spacing="20.0">
+        <Button onAction="#retour" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="ACCUEIL">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+        <Button onAction="#ouvrirTransfer" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="VIREMENT BANCAIRE">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+        <DatePicker fx:id="dateSearchPicker" prefHeight="40.0" prefWidth="200.0" promptText="Sélectionner une date" style="-fx-background-radius: 8; -fx-font-size: 14px; -fx-border-color: #3498db; -fx-border-radius: 8;" />
+        <Button onAction="#searchOperationsByDate" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand;" text="Rechercher">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="5.0" />
+            </effect>
+        </Button>
+    </HBox>
 
 </AnchorPane>

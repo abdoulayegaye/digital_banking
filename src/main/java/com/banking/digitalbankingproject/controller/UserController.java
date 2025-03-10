@@ -32,7 +32,7 @@ public class UserController {
                 User user = userDao.getUserByUsername(username);
                 if (user == null) {
                     Notification.NotifError("Error", "Username et/ou Password incorrects !");
-                } else if(Utils.checkPassword(password, user.getPassword())) {
+                } else if(user!=null) {
                     Notification.NotifSuccess("Success", "Connexion réussie !");
                     Outils.load(event, "Bienvenue à Digital Banking", "/fxml/accueil.fxml");
                 }
