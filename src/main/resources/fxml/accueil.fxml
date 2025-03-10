@@ -57,7 +57,7 @@
                         <graphic>
                             <VBox alignment="CENTER" spacing="10">
                                 <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
-                                    <Image url="@../images/comptes.jpg" />
+                                    <Image url="@../images/comptes1.png" />
                                 </ImageView>
                                 <Text fill="white" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Gestion Comptes" />
                             </VBox>
@@ -98,7 +98,7 @@
         </children>
     </VBox>
 
-                     <Button fx:id="deconnexionBtn" layoutX="441.0" layoutY="439.0" onAction="#deconnecter" style="-fx-background-color: #e74c3c;" text="Déconnexion">
+    <Button fx:id="deconnexionBtn" layoutX="441.0" layoutY="439.0" onAction="#deconnecter" style="-fx-background-color: #e74c3c;" text="Déconnexion">
           <graphic>
               <ImageView fitHeight="20.0" fitWidth="20.0">
                   <Image url="@../images/decon.jpg" />

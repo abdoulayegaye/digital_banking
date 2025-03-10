@@ -1,27 +1,39 @@
 package com.banking.digitalbankingproject.controller;
 
+import com.banking.digitalbankingproject.entity.Client;
+import com.banking.digitalbankingproject.entity.Compte;
+import com.banking.digitalbankingproject.service.ICompte;
+import com.banking.digitalbankingproject.service.impl.CompteImpl;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.List;
 
 public class CompteController {
 
     @FXML
-    private TableColumn<?, ?> clientCol;
+    private TableColumn<Compte, String> clientCol;
 
     @FXML
-    private ComboBox<?> clientCombo;
+    private ComboBox<Client> clientCombo;
 
     @FXML
-    private TableView<?> compteTable;
+    private TableView<Compte> compteTable;
 
     @FXML
-    private TableColumn<?, ?> dateCol;
+    private TableColumn<Compte, LocalDate> dateCol;
 
     @FXML
     private DatePicker dateOuverturePicker;
@@ -36,7 +48,7 @@ public class CompteController {
     private Button fermerBtn;
 
     @FXML
-    private TableColumn<?, ?> numCol;
+    private TableColumn<Compte, String> numCol;
 
     @FXML
     private TextField numCompteTfd;
@@ -51,27 +63,174 @@ public class CompteController {
     private TextField searchTfd;
 
     @FXML
-    private TableColumn<?, ?> soldeCol;
+    private TableColumn<Compte, Double> soldeCol;
 
     @FXML
     private TextField soldeTfd;
 
+    private final ICompte compteService = new CompteImpl();
+    private ObservableList<Compte> comptesList = FXCollections.observableArrayList();
+    private ObservableList<Client> clientsList = FXCollections.observableArrayList();
+
     @FXML
-    private TableColumn<?, ?> statusCol;
+    public void initialize() {
+        // Désactiver et rendre en lecture seule le champ numCompteTfd
+        numCompteTfd.setDisable(true);
+        numCompteTfd.setEditable(false);
+
+        // Initialisation des colonnes de la table
+        numCol.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        soldeCol.setCellValueFactory(new PropertyValueFactory<>("balance"));
+
+        // Afficher la date de création
+        dateCol.setCellValueFactory(cellData -> {
+            Compte compte = cellData.getValue();
+            LocalDate localDate = compte.getCreatedAt().atZone(ZoneId.systemDefault()).toLocalDate();
+            return new SimpleObjectProperty<>(localDate);
+        });
+
+        // Afficher le nom du client
+        clientCol.setCellValueFactory(cellData -> {
+            Compte compte = cellData.getValue();
+            return new SimpleStringProperty(compte.getClient().getNom());
+        });
+
+        // Charger les comptes dans la table
+        loadComptes();
+
+        // Charger les clients dans la ComboBox
+        loadClients();
+    }
+
+    private void loadComptes() {
+        comptesList.clear();
+        comptesList.addAll(compteService.getAllComptes());
+        compteTable.setItems(comptesList);
+    }
+
+    private void loadClients() {
+        clientsList.clear();
+        clientsList.addAll(compteService.loadClients());
+        clientCombo.setItems(clientsList);
+    }
 
     @FXML
     void effacer(ActionEvent event) {
-
+        clearFields();
     }
 
     @FXML
     void enregistrer(ActionEvent event) {
+        // Générer le numéro de compte automatiquement
+        String numero = compteService.generateAccountNumber();
+        numCompteTfd.setText(numero); // Afficher le numéro généré
 
+        // Récupérer les autres valeurs saisies par l'utilisateur
+        double solde;
+        try {
+            solde = Double.parseDouble(soldeTfd.getText().trim());
+        } catch (NumberFormatException e) {
+            showAlert("Erreur", "Le solde doit être un nombre valide !");
+            return;
+        }
+
+        LocalDate dateOuverture = dateOuverturePicker.getValue();
+        Client client = clientCombo.getSelectionModel().getSelectedItem();
+
+        // Validation des champs obligatoires
+        if (client == null || dateOuverture == null) {
+            showAlert("Erreur", "Tous les champs sont obligatoires !");
+            return;
+        }
+
+        // Créer un nouvel objet Compte
+        Compte compte = new Compte();
+        compte.setNumero(numero); // Utiliser le numéro généré
+        compte.setBalance(solde);
+        compte.setCreatedAt(dateOuverture.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        compte.setClient(client);
+
+        // Ajouter le compte à la base de données
+        int result = compteService.addCompte(compte);
+
+        // Afficher un message de succès ou d'erreur
+        if (result > 0) {
+            showAlert("Succès", "Compte ajouté avec succès !");
+            clearFields();
+            loadComptes();
+        } else {
+            showAlert("Erreur", "Échec de l'ajout du compte !");
+        }
     }
 
     @FXML
     void fermerCompte(ActionEvent event) {
+        Compte selectedCompte = compteTable.getSelectionModel().getSelectedItem();
+        if (selectedCompte == null) {
+            showAlert("Erreur", "Veuillez sélectionner un compte à fermer !");
+            return;
+        }
 
+        int result = compteService.fermerCompte(selectedCompte.getId());
+
+        if (result > 0) {
+            showAlert("Succès", "Compte fermé avec succès !");
+            loadComptes();
+        } else {
+            showAlert("Erreur", "Échec de la fermeture du compte !");
+        }
     }
 
+    @FXML
+    void searchComptes(ActionEvent event) {
+        String searchText = searchTfd.getText().trim();
+        if (searchText.isEmpty()) {
+            // Si le champ de recherche est vide, charger tous les comptes
+            loadComptes();
+        } else {
+            // Rechercher les comptes par numéro
+            List<Compte> searchResults = compteService.searchCompteByNumero(searchText);
+            if (searchResults.isEmpty()) {
+                showAlert("Information", "Aucun compte trouvé avec ce numéro.");
+            } else {
+                // Afficher les résultats dans la table
+                comptesList.clear();
+                comptesList.addAll(searchResults);
+                compteTable.setItems(comptesList);
+            }
+        }
+    }
+
+    @FXML
+    void retour(ActionEvent event) {
+        try {
+            // Charger la scène précédente (par exemple, le menu principal)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/accueil.fxml"));
+            Parent root = loader.load();
+
+            // Obtenir la scène actuelle
+            Scene scene = retourBtn.getScene();
+
+            // Changer la scène
+            scene.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Impossible de charger l'écran précédent.");
+        }
+    }
+
+    private void clearFields() {
+        numCompteTfd.clear(); // Réinitialiser le champ numCompteTfd
+        soldeTfd.clear();
+        dateOuverturePicker.setValue(null);
+        clientCombo.getSelectionModel().clearSelection();
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
