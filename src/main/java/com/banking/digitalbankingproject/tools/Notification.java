@@ -1,26 +1,49 @@
 package com.banking.digitalbankingproject.tools;
 
-import javafx.util.Duration;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.StageStyle;
+
 
 public class Notification {
 
-    public static void NotifSuccess(String titre, String message){
-        NotificationType type = NotificationType.SUCCESS;
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(titre);
-        tray.setMessage(message);
-        tray.setNotificationType(type);
-        tray.showAndDismiss(Duration.seconds(2));
+
+    public static void NotifSuccess(String titre, String message) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.show();
     }
 
-    public static void NotifError(String titre, String message){
-        NotificationType type = NotificationType.ERROR;
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(titre);
-        tray.setMessage(message);
-        tray.setNotificationType(type);
-        tray.showAndDismiss(Duration.seconds(2));
+
+    public static void NotifError(String titre, String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.show();
+    }
+
+    public static void NotifWarning(String titre, String message) {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.show();
+    }
+
+    public static boolean NotifConfirm(String titre, String message) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initStyle(StageStyle.UTILITY);
+        return alert.showAndWait()
+                .filter(response -> response == javafx.scene.control.ButtonType.OK)
+                .isPresent();
     }
 }

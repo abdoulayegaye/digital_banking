@@ -8,12 +8,17 @@ import com.banking.digitalbankingproject.tools.Outils;
 import com.banking.digitalbankingproject.tools.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class UserController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    private IUser userDao = new UserImpl();
+public class UserController implements Initializable {
+
+    private final IUser userDao = new UserImpl();
 
     @FXML
     private PasswordField passwordTfd;
@@ -21,25 +26,53 @@ public class UserController {
     @FXML
     private TextField usernameTfd;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // Style des champs
+        usernameTfd.setStyle("-fx-background-radius: 5; -fx-border-radius: 5; " +
+                           "-fx-border-color: #dee2e6; -fx-background-color: white; -fx-padding: 8;");
+        passwordTfd.setStyle("-fx-background-radius: 5; -fx-border-radius: 5; " +
+                           "-fx-border-color: #dee2e6; -fx-background-color: white; -fx-padding: 8;");
+    }
+
     @FXML
-    void login(ActionEvent event) {
+    private void login(ActionEvent event) {
         String username = usernameTfd.getText().trim();
         String password = passwordTfd.getText().trim();
+        
         if (username.isEmpty() || password.isEmpty()) {
-            Notification.NotifError("Error", "Tous les champs sont obligatoires");
-        } else {
-            try {
-                User user = userDao.getUserByUsername(username);
-                if (user == null) {
-                    Notification.NotifError("Error", "Username et/ou Password incorrects !");
-                } else if(Utils.checkPassword(password, user.getPassword())) {
-                    Notification.NotifSuccess("Success", "Connexion réussie !");
-                    Outils.load(event, "Bienvenue à Digital Banking", "/fxml/accueil.fxml");
-                }
-            }catch (Exception e) {
-                System.out.println(e);
+            Notification.NotifError("Erreur", "Tous les champs sont obligatoires");
+            return;
+        }
+        
+        try {
+            User user = userDao.getUserByUsername(username);
+            if (user == null) {
+                Notification.NotifError("Erreur", "Nom d'utilisateur ou mot de passe incorrect");
+                return;
             }
+            
+            if (!Utils.checkPassword(password, user.getPassword())) {
+                Notification.NotifError("Erreur", "Nom d'utilisateur ou mot de passe incorrect");
+                return;
+            }
+            
+            try {
+                Outils.load(event, "Digital Banking - Accueil", "/fxml/accueil.fxml");
+            } catch (IOException e) {
+                Notification.NotifError("Erreur", "Impossible de charger la page d'accueil");
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            Notification.NotifError("Erreur", "Une erreur est survenue lors de la connexion");
+            e.printStackTrace();
         }
     }
 
+    @FXML
+    private void clearFields() {
+        usernameTfd.clear();
+        passwordTfd.clear();
+        usernameTfd.requestFocus();
+    }
 }

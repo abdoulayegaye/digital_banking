@@ -9,9 +9,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class Outils {
 
-    private void loadPage(ActionEvent event, String title, String url) throws IOException{
+    private void loadPage(ActionEvent event, String title, String url) throws IOException {
         ((Node) event.getSource()).getScene().getWindow().hide();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(url));
         Parent root = fxmlLoader.load();
@@ -19,10 +20,13 @@ public class Outils {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle(title);
+        stage.setResizable(false);
+        stage.centerOnScreen();
+
         stage.show();
     }
 
-    public static void load(ActionEvent event, String title, String url) throws IOException{
+    public static void load(ActionEvent event, String title, String url) throws IOException {
         new Outils().loadPage(event, title, url);
     }
 }

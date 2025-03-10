@@ -1,14 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.banking.digitalbankingproject.controller.OperationController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="700.0" prefWidth="1400.0"
+            stylesheets="@../css/style.css">
+            
+    <top>
+        <VBox spacing="0">
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #6C63FF; -fx-padding: 15 20;">
+                <Label text="Opérations Bancaires" style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Retour à l'accueil" onAction="#goToAccueil" styleClass="button-light"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <left>
+        <VBox spacing="20" style="-fx-padding: 20; -fx-background-color: #f8f9fa;">
+            <VBox spacing="25">
+                <!-- Section Dépôt/Retrait -->
+                <VBox spacing="15" styleClass="operation-card">
+                    <Label text="Dépôt / Retrait" styleClass="section-title"/>
+                    
+                    <VBox spacing="10">
+                        <Label text="Compte" styleClass="field-label"/>
+                        <ComboBox fx:id="compteSourceCombo" maxWidth="Infinity"/>
+                        
+                        <Label text="Montant" styleClass="field-label"/>
+                        <TextField fx:id="montantTfd" styleClass="amount-field"/>
+                        
+                        <HBox spacing="10">
+                            <Button text="Effectuer un dépôt" onAction="#depot" styleClass="button-success"/>
+                            <Button text="Effectuer un retrait" onAction="#retrait" styleClass="button-warning"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
 
-</AnchorPane>
+                <!-- Section Virement -->
+                <VBox spacing="15" styleClass="operation-card">
+                    <Label text="Virement" styleClass="section-title"/>
+                    
+                    <VBox spacing="10">
+                        <Label text="Compte Source" styleClass="field-label"/>
+                        <ComboBox fx:id="compteSourceVirementCombo" maxWidth="Infinity"/>
+                        
+                        <Label text="Compte Destination" styleClass="field-label"/>
+                        <ComboBox fx:id="compteDestCombo" maxWidth="Infinity"/>
+                        
+                        <Label text="Montant" styleClass="field-label"/>
+                        <TextField fx:id="montantVirementTfd" styleClass="amount-field"/>
+                        
+                        <Button text="Effectuer le virement" onAction="#virement" styleClass="button-primary" maxWidth="Infinity"/>
+                    </VBox>
+                </VBox>
+            </VBox>
+        </VBox>
+    </left>
+    
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: white;">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Historique des Opérations" styleClass="section-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Générer Relevé" onAction="#genererReleve" styleClass="button-info"/>
+            </HBox>
+            
+            <TableView fx:id="operationTable" VBox.vgrow="ALWAYS" styleClass="operation-table">
+                <columns>
+                    <TableColumn fx:id="dateCol" text="Date" prefWidth="150"/>
+                    <TableColumn fx:id="typeCol" text="Type" prefWidth="120"/>
+                    <TableColumn fx:id="montantCol" text="Montant" prefWidth="120"/>
+                    <TableColumn fx:id="compteCol" text="Compte" prefWidth="150"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+        </VBox>
+    </center>
+    
+</BorderPane>

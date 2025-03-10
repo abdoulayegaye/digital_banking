@@ -82,8 +82,7 @@ CREATE TABLE `users` (
 -- Index pour la table `clients`
 --
 ALTER TABLE `clients`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `comptes`
@@ -91,14 +90,14 @@ ALTER TABLE `clients`
 ALTER TABLE `comptes`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `numero` (`numero`),
-  ADD KEY `client_id` (`client_id`);
+  ADD KEY `fk_client` (`client_id`);
 
 --
 -- Index pour la table `operations`
 --
 ALTER TABLE `operations`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `compte_id` (`compte_id`);
+  ADD KEY `fk_compte` (`compte_id`);
 
 --
 -- Index pour la table `users`
@@ -143,13 +142,14 @@ ALTER TABLE `users`
 -- Contraintes pour la table `comptes`
 --
 ALTER TABLE `comptes`
-  ADD CONSTRAINT `comptes_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`);
+  ADD CONSTRAINT `fk_client` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `operations`
 --
 ALTER TABLE `operations`
-  ADD CONSTRAINT `operations_ibfk_1` FOREIGN KEY (`compte_id`) REFERENCES `comptes` (`id`);
+  ADD CONSTRAINT `fk_compte` FOREIGN KEY (`compte_id`) REFERENCES `comptes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
