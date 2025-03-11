@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/banking-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.SoldeController">
+   <children>
+      <VBox alignment="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="360.0" prefWidth="560.0" spacing="20.0" styleClass="history-container">
+         <children>
+            <Label styleClass="history-title" text="Consultation du Solde" />
+            
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Label prefWidth="100.0" styleClass="form-label" text="N° Compte:" />
+                  <TextField fx:id="txtCompte" prefHeight="36.0" prefWidth="250.0" styleClass="form-field" promptText="Entrez le numéro de compte" />
+                  <Button mnemonicParsing="false" onAction="#findclick" prefHeight="40.0" prefWidth="100.0" styleClass="animated-button" text="Rechercher" />
+               </children>
+            </HBox>
+            
+            <VBox alignment="CENTER" spacing="10.0" styleClass="animated-panel">
+               <children>
+                  <Label styleClass="history-subtitle" text="Informations du compte">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  
+                  <TextArea fx:id="txtfield" prefHeight="200.0" prefWidth="500.0" styleClass="form-field" wrapText="true" editable="false">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextArea>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

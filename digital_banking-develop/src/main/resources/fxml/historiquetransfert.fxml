@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../css/banking-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.Historiquetransfert">
+   <children>
+      <VBox layoutX="20.0" layoutY="20.0" prefHeight="460.0" prefWidth="760.0" spacing="20.0" styleClass="history-container">
+         <children>
+            <Label styleClass="history-title" text="Historique des Transferts" />
+            
+            <TableView fx:id="table" prefHeight="350.0" prefWidth="720.0" styleClass="history-table">
+              <columns>
+                <TableColumn fx:id="id" prefWidth="60.0" text="ID" />
+                <TableColumn fx:id="F_account" prefWidth="150.0" text="Compte Source" />
+                <TableColumn fx:id="T_account" prefWidth="150.0" text="Compte Destinataire" />
+                <TableColumn fx:id="Solde" prefWidth="120.0" text="Montant" />
+                <TableColumn fx:id="Date" prefWidth="240.0" text="Date" />
+              </columns>
+              <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+              </columnResizePolicy>
+            </TableView>
+            
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#clicklister" prefHeight="50.0" prefWidth="200.0" styleClass="pulse-button" text="Afficher tous les transferts">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/banking-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.CompteController">
+   <children>
+      <VBox layoutX="20.0" layoutY="20.0" prefHeight="360.0" prefWidth="560.0" spacing="20.0" styleClass="form-container">
+         <children>
+            <Label styleClass="panel-header" text="Gestion des Comptes" />
+            
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Label fx:id="label9" styleClass="account-balance" text="Numéro de compte" />
+               </children>
+            </HBox>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label prefWidth="120.0" styleClass="form-label" text="ID Utilisateur:" />
+                  <TextField fx:id="useridtxt" prefHeight="36.0" prefWidth="230.0" styleClass="form-field" />
+                  <Button mnemonicParsing="false" onAction="#clickfind" prefHeight="40.0" prefWidth="100.0" text="Rechercher" />
+               </children>
+            </HBox>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label prefWidth="120.0" styleClass="form-label" text="Solde:" />
+                  <TextField fx:id="soldetxt" prefHeight="36.0" prefWidth="230.0" styleClass="form-field" />
+               </children>
+            </HBox>
+            
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#clickajouter" prefHeight="40.0" prefWidth="150.0" styleClass="button-action" text="Ajouter" />
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

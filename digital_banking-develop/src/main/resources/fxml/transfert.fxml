@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" stylesheets="@../css/banking-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.TransfertController">
+   <children>
+      <VBox layoutX="20.0" layoutY="20.0" prefHeight="460.0" prefWidth="560.0" spacing="20.0" styleClass="form-container">
+         <children>
+            <Label styleClass="panel-header" text="Transfert entre comptes" />
+            
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Label styleClass="form-label" text="Compte source:" />
+                  <Label fx:id="accid" styleClass="account-balance" text="---" />
+               </children>
+            </HBox>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label prefWidth="120.0" styleClass="form-label" text="ID Compte:" />
+                  <TextField fx:id="idtxt" prefHeight="36.0" prefWidth="230.0" styleClass="form-field" />
+                  <Button mnemonicParsing="false" onAction="#clickfind" prefHeight="40.0" prefWidth="100.0" text="Rechercher" />
+               </children>
+            </HBox>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label prefWidth="120.0" styleClass="form-label" text="Solde disponible:" />
+                  <TextField fx:id="balancetxt" prefHeight="36.0" prefWidth="230.0" styleClass="form-field" />
+               </children>
+            </HBox>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label prefWidth="120.0" styleClass="form-label" text="Compte destinataire:" />
+                  <TextField fx:id="acctxt" prefHeight="36.0" prefWidth="230.0" styleClass="form-field" />
+               </children>
+            </HBox>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label prefWidth="120.0" styleClass="form-label" text="Montant:" />
+                  <TextField fx:id="montanttxt" prefHeight="36.0" prefWidth="230.0" styleClass="form-field" />
+               </children>
+            </HBox>
+            
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#clicktransfer" prefHeight="40.0" prefWidth="150.0" styleClass="button-action" text="Effectuer le transfert" />
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

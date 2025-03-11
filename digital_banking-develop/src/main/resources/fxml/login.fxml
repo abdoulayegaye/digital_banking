@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../css/banking-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.UserController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="500.0" prefWidth="800.0">
+         <children>
+            <!-- Partie gauche avec l'image -->
+            <VBox alignment="CENTER" prefHeight="500.0" prefWidth="400.0" styleClass="panel">
+               <children>
+                  <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo-user.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            
+            <!-- Partie droite avec le formulaire de connexion -->
+            <VBox alignment="CENTER" prefHeight="500.0" prefWidth="400.0" spacing="20.0" styleClass="form-container">
+               <children>
+                  <Label styleClass="panel-header" text="Connexion" />
+                  
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label styleClass="form-label" text="Nom d'utilisateur" />
+                        <TextField fx:id="usernameTfd" prefHeight="40.0" prefWidth="300.0" promptText="Votre nom d'utilisateur" styleClass="form-field" />
+                     </children>
+                  </VBox>
+                  
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label styleClass="form-label" text="Mot de passe" />
+                        <PasswordField fx:id="passwordTfd" prefHeight="40.0" prefWidth="300.0" promptText="Votre mot de passe" styleClass="form-field" />
+                     </children>
+                  </VBox>
+                  
+                  <Button mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="200.0" text="Se Connecter">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
