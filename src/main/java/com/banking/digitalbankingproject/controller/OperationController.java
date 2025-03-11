@@ -80,11 +80,7 @@ public class OperationController {
         loadTypesOperation();
 
         typeOperationCombo.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal == TypeOperation.RETRAIT) {
-                compteSourceCombo.setVisible(true);
-            } else {
-                compteSourceCombo.setVisible(false);
-            }
+            compteSourceCombo.setVisible(true);
         });
 
         compteSourceCombo.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {

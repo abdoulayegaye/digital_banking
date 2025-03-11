@@ -141,7 +141,6 @@ public class ClientImpl implements IClient {
         }
     }
 
-    // Méthodes utilitaires
     private List<Client> searchClients(String field, String value) {
         List<Client> clients = new ArrayList<>();
         String sql = String.format("SELECT * FROM clients WHERE %s LIKE ?", field);

@@ -1,0 +1,146 @@
+/* Style général pour les boutons */
+.title-button {
+    -fx-background-color: #2c3e50;
+    -fx-text-fill: white;
+    -fx-font-size: 23;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+}
+
+/* Style pour les labels du formulaire */
+.form-label {
+    -fx-font-size: 16;
+    -fx-fill: #2c3e50;
+    -fx-font-weight: bold;
+}
+
+/* Style pour les champs de texte du formulaire */
+.form-textfield {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-font-size: 14;
+}
+
+.form-textfield:focused {
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.3), 10, 0, 0, 2);
+}
+
+/* Style pour le tableau */
+.custom-table {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.table-column {
+    -fx-alignment: CENTER;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+
+/* Style pour la barre de boutons */
+.button-bar {
+    -fx-background-color: transparent;
+    -fx-spacing: 10;
+}
+
+.save-button {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+}
+
+.save-button:hover {
+    -fx-background-color: #219653;
+}
+
+.delete-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+}
+
+.delete-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+.clear-button {
+    -fx-background-color: #95a5a6;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+}
+
+.clear-button:hover {
+    -fx-background-color: #7f8c8d;
+}
+
+.edit-button {
+    -fx-background-color: #f1c40f;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+}
+
+.edit-button:hover {
+    -fx-background-color: #f39c12;
+}
+
+/* Style pour la barre de recherche */
+.search-textfield {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-font-size: 14;
+}
+
+.search-textfield:focused {
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.3), 10, 0, 0, 2);
+}
+
+.search-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 16;
+    -fx-cursor: hand;
+}
+
+.search-button:hover {
+    -fx-text-fill: #3498db;
+}
+
+/* Style pour le bouton de retour */
+.back-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: #2980b9;
+}

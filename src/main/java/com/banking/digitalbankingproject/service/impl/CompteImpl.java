@@ -222,6 +222,5 @@ public class CompteImpl implements ICompte {
     private void handleException(Exception e) {
         System.err.println("Erreur base de données : ");
         e.printStackTrace();
-        // Logger professionnel recommandé
     }
 }

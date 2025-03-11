@@ -26,7 +26,7 @@ public class OperationImpl implements IOperation {
         String updateSoldeSql = "UPDATE comptes SET balance = balance + ? WHERE id = ?";
 
         try {
-            // Insert operation record
+
             db.initPrepar(sql);
             db.getPstm().setTimestamp(1, Timestamp.from(Instant.now()));
             db.getPstm().setDouble(2, montant);
@@ -45,7 +45,7 @@ public class OperationImpl implements IOperation {
             handleException(e);
             return false;
         } finally {
-            db.closeConnection(); // Fermer la connexion ici
+            db.closeConnection();
         }
     }
 
@@ -84,7 +84,7 @@ public class OperationImpl implements IOperation {
             handleException(e);
             return false;
         } finally {
-            db.closeConnection(); // Fermer la connexion ici
+            db.closeConnection();
         }
     }
 
@@ -186,7 +186,7 @@ public class OperationImpl implements IOperation {
     }
 
     private void handleException(SQLException e) {
-        e.printStackTrace(); // ou utilisez un logger
+        e.printStackTrace();
         throw new RuntimeException("Erreur lors de l'exécution de la requête SQL", e);
     }
 }
