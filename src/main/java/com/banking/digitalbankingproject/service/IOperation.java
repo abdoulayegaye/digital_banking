@@ -9,6 +9,6 @@ public interface IOperation {
     boolean createOperation(Operation operation);
     List<Operation> getAllOperations();
     List<Operation> getOperationsByCompteId(int compteId);
-    List<Operation> getOperationsByDate(Instant startDate, Instant endDate); // Nouvelle méthode
+    List<Operation> getOperationsByDate(Instant startDate, Instant endDate);
     int countOperations();
 }

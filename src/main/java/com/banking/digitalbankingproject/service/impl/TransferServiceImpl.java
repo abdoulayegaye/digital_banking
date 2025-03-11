@@ -12,17 +12,15 @@ import java.time.Instant;
 
 public class TransferServiceImpl implements ITransferService {
 
-    private IOperation operationDao = new OperationImpl(); // Réutilisation de la logique d'opération
-    private Db db = new Db(); // Utilisation de la classe Db pour gérer les transactions
+    private IOperation operationDao = new OperationImpl();
+    private Db db = new Db();
 
     @Override
     public boolean transferer(Compte source, Compte destination, double montant) {
         try {
-            // Démarrer une transaction
             System.out.println("Début de la transaction");
             db.beginTransaction();
 
-            // Vérifier le solde du compte source
             if (source.getBalance() < montant) {
                 Notification.NotifError("Erreur", "Solde insuffisant pour le virement");
                 db.rollbackTransaction(); // Annuler la transaction
@@ -30,7 +28,6 @@ public class TransferServiceImpl implements ITransferService {
                 return false;
             }
 
-            // Créer une seule opération de type VIREMENT
             Operation operation = new Operation();
             operation.setDateOp(Instant.now());
             operation.setAmount(montant);
@@ -38,15 +35,12 @@ public class TransferServiceImpl implements ITransferService {
             operation.setCompte(source); // Compte source
             operation.setCompteDestination(destination); // Compte destination
 
-            // Débiter le compte source
             source.setBalance(source.getBalance() - montant);
             updateCompteBalanceInDatabase(source);
 
-            // Créditer le compte destination
             destination.setBalance(destination.getBalance() + montant);
             updateCompteBalanceInDatabase(destination);
 
-            // Enregistrer l'opération dans la base de données
             if (operationDao.createOperation(operation)) {
                 db.commitTransaction();
                 Notification.NotifSuccess("Succès", "Virement effectué avec succès");
@@ -58,7 +52,6 @@ public class TransferServiceImpl implements ITransferService {
                 return false;
             }
         } catch (Exception e) {
-            // En cas d'exception, annuler la transaction
             db.rollbackTransaction();
             e.printStackTrace();
             Notification.NotifError("Erreur", "Une erreur s'est produite lors du virement : " + e.getMessage());

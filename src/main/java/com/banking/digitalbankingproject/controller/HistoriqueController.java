@@ -48,18 +48,15 @@ public class HistoriqueController {
     private TableColumn<Operation, String> typeCol;
 
     @FXML
-    private DatePicker dateDebutPicker; // DatePicker pour la date de début
+    private DatePicker dateDebutPicker;
     @FXML
-    private DatePicker dateFinPicker;   // DatePicker pour la date de fin
+    private DatePicker dateFinPicker;
 
     @FXML
     void initialize() {
-        // Initialisation des colonnes de la TableView
-        //idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
 
-        // Configuration de la colonne de date pour formater l'affichage
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         dateCol.setCellValueFactory(cellData -> {
             Operation operation = cellData.getValue();
@@ -73,9 +70,6 @@ public class HistoriqueController {
         });
     }
 
-    /**
-     * Méthode pour transmettre le compte sélectionné et charger son historique.
-     */
     public void setCompte(Compte compte) {
         this.compte = compte;
         if (compte != null && compte.getClient() != null) {
@@ -97,9 +91,6 @@ public class HistoriqueController {
         }
     }
 
-    /**
-     * Méthode pour filtrer les opérations par plage de dates.
-     */
     @FXML
     void filtrerParDate(ActionEvent event) {
         LocalDate dateDebut = dateDebutPicker.getValue();

@@ -66,7 +66,7 @@ public class Db {
     public void beginTransaction() {
         try {
             if (cnx == null || cnx.isClosed()) {
-                connect(); // S'assurer que la connexion est bien établie
+                connect();
             }
             cnx.setAutoCommit(false);
         } catch (Exception e) {
@@ -78,7 +78,7 @@ public class Db {
         try {
             if (cnx != null) {
                 cnx.commit();
-                cnx.setAutoCommit(true); // Remet en mode auto-commit après la transaction
+                cnx.setAutoCommit(true);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,7 +89,7 @@ public class Db {
         try {
             if (cnx != null) {
                 cnx.rollback();
-                cnx.setAutoCommit(true); // Remet en mode auto-commit après l'annulation
+                cnx.setAutoCommit(true);
             }
         } catch (Exception e) {
             e.printStackTrace();

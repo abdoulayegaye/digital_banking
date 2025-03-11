@@ -31,11 +31,9 @@ public class OperationController {
     @FXML
     private TextField amountTfd;
 
-    // ComboBox pour sélectionner le compte sur lequel porter l'opération
     @FXML
     private ComboBox<Compte> compteCombo;
 
-    // ComboBox pour sélectionner le type d'opération
     @FXML
     private ComboBox<TypeOperation> typeOperationCombo;
 
@@ -55,16 +53,13 @@ public class OperationController {
     private TableColumn<Operation, String> typeCol;
 
     @FXML
-    private TableColumn<Operation, String> compteCol; // Nouvelle colonne pour le numéro de compte
+    private TableColumn<Operation, String> compteCol;
 
     @FXML
     void initialize() {
-        // Initialisation des colonnes de la TableView
-        //idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("dateOp"));
         amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
-        // Configuration de la colonne typeCol pour afficher les numéros de compte pour les virements
         typeCol.setCellValueFactory(cellData -> {
             Operation operation = cellData.getValue();
             if (operation.getType() == TypeOperation.VIREMENT) {
@@ -80,7 +75,6 @@ public class OperationController {
             }
         });
 
-        // Configuration de la colonne compteCol pour afficher le numéro de compte
         compteCol.setCellValueFactory(cellData -> {
             Operation operation = cellData.getValue();
             Compte compte = operation.getCompte();
@@ -88,7 +82,6 @@ public class OperationController {
             return new SimpleStringProperty(numeroCompte);
         });
 
-        // Configuration de la colonne de date pour formater l'affichage
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         dateCol.setCellValueFactory(cellData -> {
             Operation operation = cellData.getValue();
@@ -101,7 +94,6 @@ public class OperationController {
             }
         });
 
-        // Configuration du ComboBox pour afficher le nom, le prénom et le numéro de compte
         compteCombo.setCellFactory(param -> new ListCell<Compte>() {
             @Override
             protected void updateItem(Compte compte, boolean empty) {
@@ -114,7 +106,6 @@ public class OperationController {
             }
         });
 
-        // Configuration du ComboBox pour afficher le nom, le prénom et le numéro de compte dans la sélection
         compteCombo.setButtonCell(new ListCell<Compte>() {
             @Override
             protected void updateItem(Compte compte, boolean empty) {
@@ -127,13 +118,10 @@ public class OperationController {
             }
         });
 
-        // Charger la liste des comptes disponibles dans la ComboBox
         compteCombo.getItems().setAll(new CompteImpl().getAllComptes());
 
-        // Charger les types d'opération (VERSEMENT et RETRAIT uniquement) dans la ComboBox
         typeOperationCombo.getItems().setAll(TypeOperation.VERSEMENT, TypeOperation.RETRAIT);
 
-        // Charger les opérations dans la table
         loadOperations();
     }
 
@@ -143,25 +131,21 @@ public class OperationController {
         Compte selectedCompte = compteCombo.getSelectionModel().getSelectedItem();
         TypeOperation selectedType = typeOperationCombo.getSelectionModel().getSelectedItem();
 
-        // Vérifier si le montant est vide
         if (amountText.isEmpty()) {
             Notification.NotifError("Erreur", "Le montant est obligatoire");
             return;
         }
 
-        // Vérifier si un compte est sélectionné
         if (selectedCompte == null) {
             Notification.NotifError("Erreur", "Veuillez sélectionner un compte");
             return;
         }
 
-        // Vérifier si un type d'opération est sélectionné
         if (selectedType == null) {
             Notification.NotifError("Erreur", "Veuillez sélectionner un type d'opération");
             return;
         }
 
-        // Vérifier si le compte est fermé
         if ("FERME".equals(selectedCompte.getStatut())) {
             Notification.NotifError("Erreur", "Les opérations sont refusées pour les comptes fermés.");
             return;
@@ -175,7 +159,6 @@ public class OperationController {
             operation.setDateOp(java.time.Instant.now());
             operation.setCompte(selectedCompte);
 
-            // Gestion spécifique pour les dépôts (VERSEMENT)
             if (selectedType == TypeOperation.VERSEMENT) {
                 if (new CompteImpl().deposer(selectedCompte.getId(), amount)) {
                     Notification.NotifSuccess("Succès", "Dépôt effectué avec succès");
@@ -185,7 +168,6 @@ public class OperationController {
                 }
             }
 
-            // Ajouter l'opération à la base de données
             if (operationDao.createOperation(operation)) {
                 Notification.NotifSuccess("Succès", "Opération ajoutée avec succès");
                 loadOperations();
@@ -208,7 +190,6 @@ public class OperationController {
         typeOperationCombo.getSelectionModel().clearSelection();
     }
     public void retour(ActionEvent event) {
-        // Charge la page d'accueil par exemple
         Outils.load(event, "Accueil", "/fxml/accueil.fxml");
     }
 
@@ -217,8 +198,6 @@ public class OperationController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/transfer.fxml"));
             Parent root = loader.load();
-            // Si besoin, vous pouvez récupérer le contrôleur TransferController et passer des paramètres
-            // TransferController transferController = loader.getController();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -250,11 +229,9 @@ public class OperationController {
             return;
         }
 
-        // Convertir LocalDate en Instant (pour correspondre au format de dateOp dans Operation)
         Instant startOfDay = selectedDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
         Instant endOfDay = selectedDate.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant();
 
-        // Charger les opérations pour la date sélectionnée
         List<Operation> operations = operationDao.getOperationsByDate(startOfDay, endOfDay);
         operationsTable.getItems().setAll(operations);
     }

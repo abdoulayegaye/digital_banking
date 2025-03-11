@@ -60,40 +60,34 @@ public class CompteController {
     private TableColumn<Compte, String> clientCol;
 
     @FXML
-    private ComboBox<String> statutCombo; // Ajout de la ComboBox pour le statut
+    private ComboBox<String> statutCombo;
 
     @FXML
-    private TableColumn<Compte, String> statutCol; // Ajout de la colonne statut
+    private TableColumn<Compte, String> statutCol;
 
     @FXML
-    private DatePicker dateOuverturePicker; // Ajout du DatePicker
+    private DatePicker dateOuverturePicker;
 
     @FXML
-    private TableColumn<Compte, LocalDate> dateOuvertureCol; // Ajout de la colonne dateOuverture
+    private TableColumn<Compte, LocalDate> dateOuvertureCol;
 
     @FXML
     void initialize() {
-        // Configuration des colonnes de la TableView
-        //idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         numeroCol.setCellValueFactory(new PropertyValueFactory<>("numero"));
         balanceCol.setCellValueFactory(new PropertyValueFactory<>("balance"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("typeCompte"));
         statutCol.setCellValueFactory(new PropertyValueFactory<>("statut"));
-        dateOuvertureCol.setCellValueFactory(new PropertyValueFactory<>("dateOuverture")); // Ajout de la colonne dateOuverture
+        dateOuvertureCol.setCellValueFactory(new PropertyValueFactory<>("dateOuverture"));
 
-        // Configuration de la colonne clientCol pour afficher le nom et le prénom du client
         clientCol.setCellValueFactory(cellData -> {
             Client client = cellData.getValue().getClient();
             return new SimpleStringProperty(client != null ? client.getNom() + " " + client.getPrenom() : "N/A");
         });
 
-        // Remplissage de la ComboBox des types de compte
         typeCombo.getItems().setAll("COURANT", "EPARGNE");
 
-        // Remplissage de la ComboBox des statuts
         statutCombo.getItems().setAll("ACTIF", "INACTIF");
 
-        // Configuration de la ComboBox pour afficher le nom, le prénom et l'email du client
         clientCombo.setCellFactory(param -> new ListCell<Client>() {
             @Override
             protected void updateItem(Client client, boolean empty) {
@@ -101,13 +95,11 @@ public class CompteController {
                 if (empty || client == null) {
                     setText(null);
                 } else {
-                    // Afficher le nom, le prénom et l'email du client
                     setText(client.getNom() + " " + client.getPrenom() + " (" + client.getEmail() + ")");
                 }
             }
         });
 
-        // Configuration de la ComboBox pour afficher le nom, le prénom et l'email dans la sélection
         clientCombo.setButtonCell(new ListCell<Client>() {
             @Override
             protected void updateItem(Client client, boolean empty) {
@@ -115,16 +107,12 @@ public class CompteController {
                 if (empty || client == null) {
                     setText(null);
                 } else {
-                    // Afficher le nom, le prénom et l'email du client
                     setText(client.getNom() + " " + client.getPrenom() + " (" + client.getEmail() + ")");
                 }
             }
         });
 
-        // Chargement des clients dans la ComboBox
         clientCombo.getItems().setAll(new ClientImpl().getAllClients());
-
-        // Charger les comptes dans la TableView
         loadComptes();
     }
 
@@ -134,7 +122,7 @@ public class CompteController {
         String balanceText = balanceTfd.getText().trim();
         String selectedType = typeCombo.getSelectionModel().getSelectedItem();
         String selectedStatut = statutCombo.getSelectionModel().getSelectedItem();
-        LocalDate selectedDate = dateOuverturePicker.getValue(); // Récupération de la date d'ouverture
+        LocalDate selectedDate = dateOuverturePicker.getValue();
         Client selectedClient = clientCombo.getSelectionModel().getSelectedItem();
 
         if (numero.isEmpty() || balanceText.isEmpty() || selectedType == null || selectedStatut == null || selectedDate == null) {
@@ -147,8 +135,7 @@ public class CompteController {
                 compte.setBalance(balance);
                 compte.setTypeCompte(selectedType);
                 compte.setStatut(selectedStatut);
-                compte.setDateOuverture(selectedDate); // Définition de la date d'ouverture
-                // Association du client si sélectionné (facultatif)
+                compte.setDateOuverture(selectedDate);
                 if (selectedClient != null) {
                     compte.setClient(selectedClient);
                 }
@@ -199,15 +186,12 @@ public class CompteController {
             return;
         }
         try {
-            // Charger le fichier historiques.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/historiques.fxml"));
             Parent root = loader.load();
 
-            // Récupérer le contrôleur HistoriqueController et lui transmettre le compte sélectionné
             HistoriqueController historiqueController = loader.getController();
             historiqueController.setCompte(selectedCompte);
 
-            // Afficher la nouvelle scène
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -221,12 +205,10 @@ public class CompteController {
 
     @FXML
     void retour(ActionEvent event) {
-        // Retour à la page d'accueil
         Outils.load(event, "Accueil", "/fxml/accueil.fxml");
     }
     @FXML
     void fermerCompte() {
-        // Récupérer le compte sélectionné dans la table
         Compte selectedCompte = comptesTable.getSelectionModel().getSelectedItem();
 
         if (selectedCompte == null) {
@@ -234,7 +216,6 @@ public class CompteController {
             return;
         }
 
-        // Appeler la méthode de fermeture dans CompteImpl
         if (compteDao.fermerCompte(selectedCompte.getId())) {
             Notification.NotifSuccess("Succès", "Compte fermé avec succès");
             loadComptes(); // Recharger la liste des comptes
@@ -245,7 +226,6 @@ public class CompteController {
 
     @FXML
     void ouvrirCompte() {
-        // Récupérer le compte sélectionné dans la table
         Compte selectedCompte = comptesTable.getSelectionModel().getSelectedItem();
 
         if (selectedCompte == null) {
@@ -253,10 +233,9 @@ public class CompteController {
             return;
         }
 
-        // Appeler la méthode d'ouverture dans CompteImpl
         if (compteDao.ouvrirCompte(selectedCompte.getId())) {
             Notification.NotifSuccess("Succès", "Compte ouvert avec succès");
-            loadComptes(); // Recharger la liste des comptes
+            loadComptes();
         } else {
             Notification.NotifError("Erreur", "Échec de l'ouverture du compte");
         }

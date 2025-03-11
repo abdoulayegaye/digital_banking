@@ -10,9 +10,9 @@ public interface ICompte {
     boolean deleteCompte(int id);
     List<Compte> getAllComptes();
     Compte getCompteById(int id);
-    boolean fermerCompte(int id); // Nouvelle méthode pour fermer un compte
-    boolean ouvrirCompte(int id); // Nouvelle méthode pour ouvrir un compte
-    boolean deposer(int compteId, double montant); // Nouvelle méthode
+    boolean fermerCompte(int id);
+    boolean ouvrirCompte(int id);
+    boolean deposer(int compteId, double montant);
     int countComptes();
 
     boolean updateBalance(int compteId, double nouveauSolde);

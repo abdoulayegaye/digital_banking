@@ -16,14 +16,12 @@ public class CompteImpl implements ICompte {
 
     @Override
     public boolean createCompte(Compte compte) {
-        // Vérifier si le numéro de compte existe déjà
         String checkSql = "SELECT COUNT(*) FROM comptes WHERE numero = ?";
         try {
             db.initPrepar(checkSql);
             db.getPstm().setString(1, compte.getNumero());
             ResultSet rs = db.executeSelect();
             if (rs.next() && rs.getInt(1) > 0) {
-                // Le numéro de compte existe déjà
                 Notification.NotifError("Erreur", "Le numéro de compte existe déjà");
                 return false;
             }
@@ -32,7 +30,6 @@ public class CompteImpl implements ICompte {
             return false;
         }
 
-        // Si le numéro de compte n'existe pas, procéder à l'insertion
         String sql = "INSERT INTO comptes (numero, balance, client_id, typeCompte, statut, dateOuverture) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             db.initPrepar(sql);
@@ -62,7 +59,7 @@ public class CompteImpl implements ICompte {
             db.getPstm().setInt(3, compte.getClient().getId());
             db.getPstm().setString(4, compte.getTypeCompte());
             db.getPstm().setString(5, compte.getStatut());
-            db.getPstm().setDate(6, java.sql.Date.valueOf(compte.getDateOuverture())); // Ajout de dateOuverture
+            db.getPstm().setDate(6, java.sql.Date.valueOf(compte.getDateOuverture()));
             db.getPstm().setInt(7, compte.getId());
             db.executeMaj();
             return true;
@@ -105,15 +102,13 @@ public class CompteImpl implements ICompte {
                 compte.setTypeCompte(rs.getString("typeCompte"));
                 compte.setStatut(rs.getString("statut"));
 
-                // Gestion de dateOuverture (vérification de NULL)
                 java.sql.Date dateOuverture = rs.getDate("dateOuverture");
                 if (dateOuverture != null) {
                     compte.setDateOuverture(dateOuverture.toLocalDate());
                 } else {
-                    compte.setDateOuverture(null); // Ou une valeur par défaut si nécessaire
+                    compte.setDateOuverture(null);
                 }
 
-                // Récupération de l'id du client et chargement du client associé
                 int clientId = rs.getInt("client_id");
                 if (clientId > 0) {
                     Client client = new ClientImpl().getClientById(clientId);
@@ -144,8 +139,7 @@ public class CompteImpl implements ICompte {
                 compte.setBalance(rs.getDouble("balance"));
                 compte.setTypeCompte(rs.getString("typeCompte"));
                 compte.setStatut(rs.getString("statut"));
-                compte.setDateOuverture(rs.getDate("dateOuverture").toLocalDate()); // Récupération de dateOuverture
-                // Récupération du client associé si nécessaire
+                compte.setDateOuverture(rs.getDate("dateOuverture").toLocalDate());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -217,7 +211,7 @@ public class CompteImpl implements ICompte {
             db.initPrepar(sql);
             ResultSet rs = db.executeSelect();
             if (rs.next()) {
-                return rs.getInt(1); // Retourne le nombre de comptes
+                return rs.getInt(1);
             }
         } catch (Exception e) {
             e.printStackTrace();

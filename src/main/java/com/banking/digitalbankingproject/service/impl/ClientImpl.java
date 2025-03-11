@@ -122,7 +122,7 @@ public class ClientImpl implements IClient {
             ResultSet rs = db.executeSelect();
             if (rs.next()) {
                 int count = rs.getInt(1);
-                return count > 0; // Retourne true si un client existe déjà
+                return count > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -141,7 +141,7 @@ public class ClientImpl implements IClient {
             ResultSet rs = db.executeSelect();
             if (rs.next()) {
                 int count = rs.getInt(1);
-                return count > 0; // Retourne true si le client a des comptes associés
+                return count > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -158,7 +158,7 @@ public class ClientImpl implements IClient {
             db.initPrepar(sql);
             ResultSet rs = db.executeSelect();
             if (rs.next()) {
-                return rs.getInt(1); // Retourne le nombre de clients
+                return rs.getInt(1);
             }
         } catch (Exception e) {
             e.printStackTrace();

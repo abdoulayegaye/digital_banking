@@ -18,11 +18,11 @@ import java.util.ResourceBundle;
 public class AccueilController implements Initializable {
 
     @FXML
-    private Label clientsCountLabel; // Label pour afficher le nombre de clients
+    private Label clientsCountLabel;
     @FXML
-    private Label comptesCountLabel; // Label pour afficher le nombre de comptes
+    private Label comptesCountLabel;
     @FXML
-    private Label operationsCountLabel; // Label pour afficher le nombre d'opérations
+    private Label operationsCountLabel;
 
     private IClient clientDao = new ClientImpl();
     private ICompte compteDao = new CompteImpl();
@@ -30,22 +30,17 @@ public class AccueilController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Charger les données au démarrage
         refreshStats();
     }
 
-    // Méthode pour rafraîchir les statistiques
     @FXML
     void refreshStats() {
-        // Récupérer et afficher le nombre de clients
         int clientsCount = clientDao.countClients();
         clientsCountLabel.setText("Clients : " + clientsCount);
 
-        // Récupérer et afficher le nombre de comptes
         int comptesCount = compteDao.countComptes();
         comptesCountLabel.setText("Comptes : " + comptesCount);
 
-        // Récupérer et afficher le nombre d'opérations
         int operationsCount = operationDao.countOperations();
         operationsCountLabel.setText("Opérations : " + operationsCount);
     }
@@ -67,7 +62,6 @@ public class AccueilController implements Initializable {
 
     @FXML
     void deconnecter(ActionEvent event) {
-        // Rediriger vers la page de connexion
         Outils.load(event, "Connexion", "/fxml/login.fxml");
     }
 }

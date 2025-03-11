@@ -18,26 +18,22 @@ public class OperationImpl implements IOperation {
 
     @Override
     public boolean createOperation(Operation operation) {
-        // Vérifier si le compte source est null
         if (operation.getCompte() == null) {
             Notification.NotifError("Erreur", "Le compte source est obligatoire");
             return false;
         }
 
-        // Vérifier si le compte de destination est requis pour un virement
         if (operation.getType() == TypeOperation.VIREMENT && operation.getCompteDestination() == null) {
             Notification.NotifError("Erreur", "Le compte destination est obligatoire pour un virement");
             return false;
         }
 
-        // Vérifier si le compte source est fermé
         Compte compteSource = operation.getCompte();
         if ("FERME".equals(compteSource.getStatut())) {
             Notification.NotifError("Erreur", "Le compte source est fermé");
             return false;
         }
 
-        // Calculer le nouveau solde du compte source
         double nouveauSoldeSource = compteSource.getBalance();
         switch (operation.getType()) {
             case VERSEMENT:
@@ -52,20 +48,17 @@ public class OperationImpl implements IOperation {
                 return false;
         }
 
-        // Vérifier si le solde est suffisant pour un retrait ou un virement
         if (nouveauSoldeSource < 0) {
             Notification.NotifError("Erreur", "Solde insuffisant pour effectuer cette opération");
             return false;
         }
 
-        // Mettre à jour le solde du compte source
         CompteImpl compteDao = new CompteImpl();
         if (!compteDao.updateBalance(compteSource.getId(), nouveauSoldeSource)) {
             Notification.NotifError("Erreur", "Échec de la mise à jour du solde du compte source");
             return false;
         }
 
-        // Pour un virement, mettre à jour le solde du compte destination
         if (operation.getType() == TypeOperation.VIREMENT) {
             Compte compteDestination = operation.getCompteDestination();
             if ("FERME".equals(compteDestination.getStatut())) {
@@ -80,7 +73,6 @@ public class OperationImpl implements IOperation {
             }
         }
 
-        // Enregistrer l'opération dans la base de données
         String sql = "INSERT INTO operations (date_op, amount, type, compte_id, compte_destination_id) VALUES (?, ?, ?, ?, ?)";
         try {
             db.initPrepar(sql);
@@ -89,14 +81,12 @@ public class OperationImpl implements IOperation {
             db.getPstm().setString(3, operation.getType().name());
             db.getPstm().setInt(4, operation.getCompte().getId());
 
-            // Définir l'ID du compte de destination (peut être null pour les opérations non-virement)
             if (operation.getType() == TypeOperation.VIREMENT) {
                 db.getPstm().setInt(5, operation.getCompteDestination().getId());
             } else {
                 db.getPstm().setNull(5, java.sql.Types.INTEGER); // Définir comme NULL pour les opérations non-virement
             }
 
-            // Exécuter la requête
             int result = db.executeMaj();
             return result > 0;
         } catch (Exception e) {
@@ -122,10 +112,10 @@ public class OperationImpl implements IOperation {
                 newBalance -= operation.getAmount();
                 break;
             default:
-                return; // Ne rien faire si le type d'opération est inconnu
+                return;
         }
 
-        if (newBalance == oldBalance) return; // Éviter une mise à jour inutile
+        if (newBalance == oldBalance) return;
 
         compte.setBalance(newBalance);
 
@@ -159,19 +149,17 @@ public class OperationImpl implements IOperation {
                 operation.setAmount(rs.getDouble("amount"));
                 operation.setType(TypeOperation.valueOf(rs.getString("type")));
 
-                // Charger le compte source
                 Compte compteSource = new Compte();
                 compteSource.setId(rs.getInt("compte_source_id"));
                 compteSource.setBalance(rs.getDouble("compte_source_balance"));
-                compteSource.setNumero(rs.getString("compte_source_numero")); // Récupérer le numéro de compte
+                compteSource.setNumero(rs.getString("compte_source_numero"));
                 operation.setCompte(compteSource);
 
-                // Charger le compte destination (si applicable)
                 if (rs.getObject("compte_destination_id") != null) {
                     Compte compteDestination = new Compte();
                     compteDestination.setId(rs.getInt("compte_destination_id"));
                     compteDestination.setBalance(rs.getDouble("compte_destination_balance"));
-                    compteDestination.setNumero(rs.getString("compte_destination_numero")); // Récupérer le numéro de compte
+                    compteDestination.setNumero(rs.getString("compte_destination_numero"));
                     operation.setCompteDestination(compteDestination);
                 }
 
@@ -268,7 +256,7 @@ public class OperationImpl implements IOperation {
             db.initPrepar(sql);
             ResultSet rs = db.executeSelect();
             if (rs.next()) {
-                return rs.getInt(1); // Retourne le nombre d'opérations
+                return rs.getInt(1);
             }
         } catch (Exception e) {
             e.printStackTrace();

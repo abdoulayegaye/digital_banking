@@ -23,24 +23,15 @@ public class StatementGenerator {
 
         Document document = new Document();
         try {
-            // Créer un fichier PDF
             PdfWriter.getInstance(document, new FileOutputStream(filename));
             document.open();
 
-            // Ajouter un en-tête avec le logo (remplacez "logo.png" par le chemin de votre logo)
-            //Image logo = Image.getInstance("src/main/resources/images/logo.png"); // Chemin vers le logo
-            //logo.scaleToFit(100, 100); // Redimensionner le logo
-            //logo.setAlignment(Element.ALIGN_CENTER);
-            //document.add(logo);
-
-            // Titre du relevé
             Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.DARK_GRAY);
             Paragraph title = new Paragraph("DIGITAL BANKING - RELEVÉ BANCAIRE", titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
             title.setSpacingAfter(20);
             document.add(title);
 
-            // Informations du compte
             Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK);
             Font contentFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
 
@@ -49,15 +40,13 @@ public class StatementGenerator {
             document.add(new Paragraph("Période : " + dateDebut.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
                     " à " + dateFin.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), contentFont));
             document.add(new Paragraph("Solde actuel : " + compte.getBalance() + " FRANS CFA", contentFont));
-            document.add(new Paragraph(" ")); // Espacement
+            document.add(new Paragraph(" "));
 
-            // Tableau des opérations
-            PdfPTable table = new PdfPTable(3); // 3 colonnes : Date, Type, Montant
-            table.setWidthPercentage(100); // Largeur du tableau à 100%
+            PdfPTable table = new PdfPTable(3);
+            table.setWidthPercentage(100);
             table.setSpacingBefore(10);
             table.setSpacingAfter(10);
 
-            // En-têtes du tableau
             Font tableHeaderFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
             PdfPCell cell;
 
@@ -76,7 +65,6 @@ public class StatementGenerator {
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
-            // Remplir le tableau avec les opérations
             for (Operation op : operations) {
                 LocalDate opDate = op.getDateOp().atZone(ZoneId.systemDefault()).toLocalDate();
                 if (!opDate.isBefore(dateDebut) && !opDate.isAfter(dateFin)) {
@@ -88,7 +76,6 @@ public class StatementGenerator {
 
             document.add(table);
 
-            // Pied de page
             Font footerFont = FontFactory.getFont(FontFactory.HELVETICA_OBLIQUE, 10, BaseColor.GRAY);
             Paragraph footer = new Paragraph("Merci de faire confiance à Digital Banking.", footerFont);
             footer.setAlignment(Element.ALIGN_CENTER);

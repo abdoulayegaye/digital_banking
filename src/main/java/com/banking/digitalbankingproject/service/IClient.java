@@ -9,7 +9,7 @@ public interface IClient {
     boolean deleteClient(int id);
     List<Client> getAllClients();
     Client getClientById(int id);
-    boolean clientExists(String nom, String prenom, String email); // Nouvelle méthode
-    boolean hasLinkedAccounts(int clientId); // Nouvelle méthode
+    boolean clientExists(String nom, String prenom, String email);
+    boolean hasLinkedAccounts(int clientId);
     int countClients();
 }
