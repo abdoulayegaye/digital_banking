@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="506.0" prefWidth="393.0" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projet_java_fx.controllers.OperationController">
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GESTION DES OPERATIONS" underline="true">
+        <font>
+            <Font name="System Bold" size="14.0" />
+        </font>
+    </Text>
+    <TabPane>
+        <!-- Onglet Dépôt -->
+        <Tab text="Dépôt">
+            <VBox prefHeight="433.0" prefWidth="373.0" spacing="10">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <Label text="Numéro de compte:" />
+                <TextField fx:id="depotCompteField" promptText="Entrez le numéro de compte" />
+                <Label text="Montant:" />
+                <TextField fx:id="depotMontantField" promptText="Entrez le montant" />
+                <Button onAction="#handleDepot" style="-fx-background-color: #132A13;" text="Effectuer le dépôt" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+            </VBox>
+        </Tab>
+
+        <!-- Onglet Retrait -->
+        <Tab text="Retrait">
+            <VBox spacing="10">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <Label text="Numéro de compte:" />
+                <TextField fx:id="retraitCompteField" promptText="Entrez le numéro de compte" />
+                <Label text="Montant:" />
+                <TextField fx:id="retraitMontantField" promptText="Entrez le montant" />
+                <Button onAction="#handleRetrait" style="-fx-background-color: #007aff;" text="Effectuer le retrait" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+            </VBox>
+        </Tab>
+
+        <!-- Onglet Virement -->
+        <Tab text="Virement">
+            <VBox spacing="10">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <Label text="Compte source:" />
+                <TextField fx:id="virementSourceField" promptText="Entrez le numéro du compte source" />
+                <Label text="Compte destination:" />
+                <TextField fx:id="virementDestinationField" promptText="Entrez le numéro du compte destination" />
+                <Label text="Montant:" />
+                <TextField fx:id="virementMontantField" promptText="Entrez le montant" />
+                <Button onAction="#handleVirement" style="-fx-background-color: #007aff;" text="Effectuer le virement" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+            </VBox>
+        </Tab>
+
+        <!-- Onglet Historique des transactions -->
+        <Tab text="Historique">
+            <VBox spacing="10">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <Label text="Numéro de compte:" />
+                <TextField fx:id="historiqueCompteField" promptText="Entrez le numéro de compte" />
+                <Button onAction="#handleConsulterHistorique" style="-fx-background-color: #132A13;" text="Consulter l'historique" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <TableView fx:id="historiqueTable">
+                    <columns>
+                        <TableColumn fx:id="dateColumn" prefWidth="150" text="Date" />
+                        <TableColumn fx:id="typeColumn" prefWidth="100" text="Type" />
+                        <TableColumn fx:id="montantColumn" prefWidth="100" text="Montant" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

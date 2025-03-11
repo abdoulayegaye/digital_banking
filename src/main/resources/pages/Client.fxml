@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projet_java_fx.controllers.ClientController">
+   <children>
+      <Text layoutX="5.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registre Client ">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+      <Label layoutX="14.0" layoutY="67.0" text="NOM">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="prenomTfd" layoutX="5.0" layoutY="84.0" prefHeight="25.0" prefWidth="231.0" />
+      <Label layoutX="14.0" layoutY="123.0" text="PRENOM">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="nomTfd" layoutX="14.0" layoutY="147.0" prefHeight="25.0" prefWidth="231.0" />
+      <Label layoutX="14.0" layoutY="185.0" text="EMAIL">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="emailTfd" layoutX="14.0" layoutY="209.0" prefHeight="25.0" prefWidth="231.0" />
+      <Button fx:id="ajoutBtn" layoutX="84.0" layoutY="251.0" mnemonicParsing="false" onAction="#save" prefHeight="32.0" prefWidth="91.0" style="-fx-background-color: #007007;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <TableView fx:id="serverTb" layoutX="254.0" prefHeight="344.0" prefWidth="347.0" style="-fx-background-color: #002b36;">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="51.99998474121094" text="Id" />
+          <TableColumn fx:id="nomCol" prefWidth="99.33331298828125" text="Nom" />
+            <TableColumn fx:id="prenomCol" prefWidth="94.66668701171875" text="Prenom" />
+            <TableColumn fx:id="emailCol" prefWidth="100.00003051757812" text="Email" />
+        </columns>
+      </TableView>
+      <Button fx:id="supprimeBtn" layoutX="290.0" layoutY="353.0" mnemonicParsing="false" onAction="#delete" prefHeight="32.0" prefWidth="85.0" style="-fx-background-color: #ff001e;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="modifieBtn" layoutX="462.0" layoutY="353.0" mnemonicParsing="false" onAction="#edit" prefHeight="32.0" prefWidth="85.0" style="-fx-background-color: #007aff;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
