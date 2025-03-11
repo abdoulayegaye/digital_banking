@@ -25,4 +25,6 @@ public class Outils {
     public static void load(ActionEvent event, String title, String url) throws IOException{
         new Outils().loadPage(event, title, url);
     }
+
+
 }

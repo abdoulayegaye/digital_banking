@@ -1,26 +1,44 @@
 package com.banking.digitalbankingproject.tools;
 
-import javafx.util.Duration;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import java.util.Optional;
 
 public class Notification {
 
-    public static void NotifSuccess(String titre, String message){
-        NotificationType type = NotificationType.SUCCESS;
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(titre);
-        tray.setMessage(message);
-        tray.setNotificationType(type);
-        tray.showAndDismiss(Duration.seconds(2));
+    /**
+     * Afficher une alerte d'erreur.
+     */
+    public static void NotifError(String titre, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
-    public static void NotifError(String titre, String message){
-        NotificationType type = NotificationType.ERROR;
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(titre);
-        tray.setMessage(message);
-        tray.setNotificationType(type);
-        tray.showAndDismiss(Duration.seconds(2));
+    /**
+     * Afficher une notification de succès.
+     */
+    public static void NotifSuccess(String titre, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    /**
+     * Afficher une boîte de confirmation avant de supprimer un client.
+     */
+    public static boolean ConfirmDialog(String titre, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == ButtonType.OK;
     }
 }

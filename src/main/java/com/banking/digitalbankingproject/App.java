@@ -1,5 +1,11 @@
 package com.banking.digitalbankingproject;
 
+import com.banking.digitalbankingproject.entity.Client;
+import com.banking.digitalbankingproject.entity.User;
+import com.banking.digitalbankingproject.service.IClient;
+import com.banking.digitalbankingproject.service.IUser;
+import com.banking.digitalbankingproject.service.impl.ClientImpl;
+import com.banking.digitalbankingproject.service.impl.UserImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +25,11 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+
+
+
         launch();
     }
+
+
 }

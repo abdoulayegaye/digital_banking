@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserImpl implements IUser {
+public class    UserImpl implements IUser {
 
     private Db db = new Db();
     private ResultSet rs;

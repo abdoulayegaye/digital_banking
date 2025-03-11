@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.AccueilController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="377.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.AccueilController">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="262.0" prefWidth="337.0">
+         <children>
+            <AnchorPane layoutY="-2.0" prefHeight="400.0" prefWidth="598.0">
+               <children>
+                  <ImageView fitHeight="431.0" fitWidth="600.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/téléchargement.jpeg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnClient" layoutX="52.0" layoutY="111.0" mnemonicParsing="false" onAction="#gestion_des_clients" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="GESTION DES CLIENTS" textFill="#ebeaea">
+                     <font>
+                        <Font name="Baskerville Old Face" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnGestiondescompte" layoutX="52.0" layoutY="190.0" mnemonicParsing="false" onAction="#gestion_des_comptes" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #2c2c2c;" text="GESTION DES COMPTES" textFill="#f8f6f6">
+                     <font>
+                        <Font name="Berlin Sans FB" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnOperation" layoutX="52.0" layoutY="273.0" mnemonicParsing="false" onAction="#operations" prefHeight="35.0" prefWidth="200.0" text="OPERATIONS">
+                     <font>
+                        <Font name="Bell MT" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

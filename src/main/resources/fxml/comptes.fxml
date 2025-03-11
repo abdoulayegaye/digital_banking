@@ -5,10 +5,48 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.banking.digitalbankingproject.controller.CompteController"
-            prefHeight="400.0" prefWidth="600.0">
-
+            prefHeight="600.0" prefWidth="800.0">
+    <children>
+        <VBox spacing="10" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" 
+              AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+            
+            <!-- Formulaire de création de compte -->
+            <GridPane hgap="10" vgap="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                
+                <Label text="Client:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <ComboBox fx:id="comboClients" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                
+                <Label text="Numéro de compte:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtNumero" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                
+                <Label text="Solde initial:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="txtSoldeInitial" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                
+                <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <Button fx:id="btnCreer" text="Créer compte" onAction="#creerCompte"/>
+                    <Button fx:id="btnSupprimer" text="Supprimer compte" onAction="#supprimerCompte"/>
+                    <Button fx:id="btnRetour" text="Retour" onAction="#retourAccueil"/>
+                </HBox>
+            </GridPane>
+            
+            <!-- Liste des comptes -->
+            <TableView fx:id="tableComptes" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colNumero" text="Numéro" prefWidth="150"/>
+                    <TableColumn fx:id="colSolde" text="Solde" prefWidth="100"/>
+                    <TableColumn fx:id="colClient" text="Client" prefWidth="200"/>
+                    <TableColumn fx:id="colDateCreation" text="Date de création" prefWidth="150"/>
+                </columns>
+            </TableView>
+            
+        </VBox>
+    </children>
 </AnchorPane>
