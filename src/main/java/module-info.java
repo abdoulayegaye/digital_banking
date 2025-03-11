@@ -11,7 +11,6 @@ module com.banking.digitalbankingproject {
     requires org.apache.pdfbox;
     requires barcodes;
 
-
     opens com.banking.digitalbankingproject to javafx.fxml;
     exports com.banking.digitalbankingproject;
 

@@ -69,5 +69,15 @@
                 prefWidth="100.0" text="Supprimer"/>
         <Button fx:id="btnRefresh" layoutX="350.0" layoutY="470.0" onAction="#rafraichirComptes" prefHeight="30.0"
                 prefWidth="100.0" text="Refresh"/>
+        <Button fx:id="btnRetour" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#retourAccueil">
+            <graphic>
+                <ImageView fx:id="imgRetour" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/retour.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <text>Retour</text>
+        </Button>
     </children>
 </AnchorPane>

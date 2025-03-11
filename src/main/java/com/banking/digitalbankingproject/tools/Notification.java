@@ -1,38 +1,21 @@
 package com.banking.digitalbankingproject.tools;
 
-import javafx.util.Duration;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import javafx.scene.control.Alert;
 
 public class Notification {
-
-    /**
-     * Affiche une notification de succès.
-     *
-     * @param titre   Le titre de la notification.
-     * @param message Le message de la notification.
-     */
-    public static void NotifSuccess(String titre, String message) {
-        NotificationType type = NotificationType.SUCCESS;
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(titre);
-        tray.setMessage(message);
-        tray.setNotificationType(type);
-        tray.showAndDismiss(Duration.seconds(2));
+    public static void NotifSuccess(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
-    /**
-     * Affiche une notification d'erreur.
-     *
-     * @param titre   Le titre de la notification.
-     * @param message Le message de la notification.
-     */
-    public static void NotifError(String titre, String message) {
-        NotificationType type = NotificationType.ERROR;
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(titre);
-        tray.setMessage(message);
-        tray.setNotificationType(type);
-        tray.showAndDismiss(Duration.seconds(2));
+    public static void NotifError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

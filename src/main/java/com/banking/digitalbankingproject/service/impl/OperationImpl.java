@@ -4,76 +4,62 @@ import com.banking.digitalbankingproject.database.Db;
 import com.banking.digitalbankingproject.entity.Compte;
 import com.banking.digitalbankingproject.entity.Operation;
 import com.banking.digitalbankingproject.service.IOperation;
-
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class OperationImpl implements IOperation {
 
-    private static final Logger logger = Logger.getLogger(OperationImpl.class.getName());
     private Db db = new Db();
 
     @Override
-    public boolean createOperation(Operation operation) {
-        if (operation == null) {
-            logger.warning("Tentative de création d'une opération null.");
-            return false;
-        }
+    public void ajouterOperation(Operation operation) {
+        String sql = "INSERT INTO operations (compte_numero, date, description, montant, solde) VALUES (?, ?, ?, ?, ?)";
+        try (Connection con = db.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-        String sql = "INSERT INTO operations (operation_date, description, montant, solde, compte_id, type) VALUES (?, ?, ?, ?, ?, ?)";
-        try (var connection = db.getConnection();
-             var preparedStatement = connection.prepareStatement(sql)) {
+            // Utilisation du nouveau getter getCompte() pour récupérer le numéro du compte associé
+            ps.setString(1, operation.getCompte().getNumero());
+            ps.setTimestamp(2, Timestamp.valueOf(operation.getDate()));
+            ps.setString(3, operation.getDescription());
+            ps.setDouble(4, operation.getMontant());
+            ps.setDouble(5, operation.getSolde());
+            ps.executeUpdate();
 
-            preparedStatement.setTimestamp(1, Timestamp.valueOf(operation.getDate()));
-            preparedStatement.setString(2, operation.getDescription());
-            preparedStatement.setDouble(3, operation.getMontant());
-            preparedStatement.setDouble(4, operation.getSolde());
-            preparedStatement.setInt(5, operation.getCompte().getId());
-            preparedStatement.setString(6, operation.getType());
-
-            int rowsAffected = preparedStatement.executeUpdate();
-            return rowsAffected == 1;
-
+            // Optionnel : récupérer la clé générée si nécessaire
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                // Par exemple, on peut récupérer l'identifiant généré si la table dispose d'un id auto-incrémenté
+            }
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Erreur lors de la création de l'opération", e);
-            return false;
+            e.printStackTrace();
         }
     }
 
     @Override
-    public List<Operation> getOperationsByCompte(int compteId) {
-        String sql = "SELECT * FROM operations WHERE compte_id = ? ORDER BY operation_date ASC";
+    public List<Operation> getOperationsByCompte(Compte compte) {
         List<Operation> operations = new ArrayList<>();
+        String sql = "SELECT * FROM operations WHERE compte_numero = ?";
+        try (Connection con = db.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
 
-        try (var connection = db.getConnection();
-             var preparedStatement = connection.prepareStatement(sql)) {
-
-            preparedStatement.setInt(1, compteId);
-            try (ResultSet rs = preparedStatement.executeQuery()) {
-                while (rs.next()) {
-                    LocalDateTime date = rs.getTimestamp("operation_date").toLocalDateTime();
-                    String description = rs.getString("description");
-                    double montant = rs.getDouble("montant");
-                    double solde = rs.getDouble("solde");
-                    String type = rs.getString("type");
-
-                    Compte compte = new Compte();
-                    compte.setId(compteId);
-
-                    Operation operation = new Operation(date, description, montant, solde, type, compte);
-                    operation.setId(rs.getInt("id"));
-                    operations.add(operation);
-                }
+            ps.setString(1, compte.getNumero());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Operation operation = new Operation();
+                // Conversion de la colonne date en LocalDateTime
+                operation.setDate(rs.getTimestamp("date").toLocalDateTime());
+                operation.setDescription(rs.getString("description"));
+                operation.setMontant(rs.getDouble("montant"));
+                operation.setSolde(rs.getDouble("solde"));
+                // Affectation du compte associé à l'opération
+                operation.setCompte(compte);
+                operations.add(operation);
             }
-
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Erreur lors de la récupération des opérations", e);
+            e.printStackTrace();
         }
-
         return operations;
     }
 }

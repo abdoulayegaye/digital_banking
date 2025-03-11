@@ -85,13 +85,11 @@
             <version>1.18.34</version>
         </dependency>
 
-        <!-- TrayNotification Dependency -->
+        <!-- Remplacer TrayNotification par -->
         <dependency>
-            <groupId>com.github.dorkbox</groupId>
-            <artifactId>TrayNotification</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/TrayNotification.jar</systemPath>
+            <groupId>com.dustinredmond.fxtrayicon</groupId>
+            <artifactId>FXTrayIcon</artifactId>
+            <version>3.1.2</version>
         </dependency>
 
     </dependencies>

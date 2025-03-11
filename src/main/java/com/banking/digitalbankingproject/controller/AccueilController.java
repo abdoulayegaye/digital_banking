@@ -4,19 +4,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import com.banking.digitalbankingproject.tools.Outils;
 import javafx.event.ActionEvent;
-
-import java.io.IOException;
+import java.lang.Exception;
 
 public class AccueilController {
 
     @FXML
-    private Button btnClients; // Correspond à fx:id="btnClients" dans le FXML
+    private Button btnClients;
     @FXML
-    private Button btnComptes; // Correspond à fx:id="btnComptes" dans le FXML
+    private Button btnComptes;
     @FXML
-    private Button btnOperations; // Correspond à fx:id="btnOperations" dans le FXML
+    private Button btnOperations;
     @FXML
-    private Button btnLogout; // Correspond à fx:id="btnLogout" dans le FXML
+    private Button btnLogout;
 
     @FXML
     private void initialize() {
@@ -27,8 +26,9 @@ public class AccueilController {
     private void allerGestionClients(ActionEvent event) {
         try {
             Outils.load(event, "Gestion des Clients", "/fxml/gestionClients.fxml");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Outils.showError("Erreur", "Impossible de charger la page Gestion des Clients.");
         }
     }
 
@@ -36,8 +36,9 @@ public class AccueilController {
     private void allerGestionComptes(ActionEvent event) {
         try {
             Outils.load(event, "Gestion des Comptes", "/fxml/gestionComptes.fxml");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Outils.showError("Erreur", "Impossible de charger la page Gestion des Comptes.");
         }
     }
 
@@ -45,8 +46,9 @@ public class AccueilController {
     private void allerGestionOperations(ActionEvent event) {
         try {
             Outils.load(event, "Gestion des Opérations", "/fxml/gestionOperations.fxml");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Outils.showError("Erreur", "Impossible de charger la page Gestion des Opérations.");
         }
     }
 
@@ -54,8 +56,9 @@ public class AccueilController {
     private void deconnexion(ActionEvent event) {
         try {
             Outils.load(event, "Connexion", "/fxml/login.fxml");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Outils.showError("Erreur", "Impossible de charger la page de connexion.");
         }
     }
 }

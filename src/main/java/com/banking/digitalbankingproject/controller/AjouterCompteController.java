@@ -1,8 +1,11 @@
 package com.banking.digitalbankingproject.controller;
 
+import com.banking.digitalbankingproject.entity.Client;
 import com.banking.digitalbankingproject.entity.Compte;
 import com.banking.digitalbankingproject.service.ICompte;
+import com.banking.digitalbankingproject.service.IClient;
 import com.banking.digitalbankingproject.service.impl.CompteImpl;
+import com.banking.digitalbankingproject.service.impl.ClientImpl;
 import com.banking.digitalbankingproject.tools.Outils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,50 +16,44 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.security.SecureRandom;
 import java.time.Instant;
 
 public class AjouterCompteController {
-
-    @FXML
-    private TextField txtSolde;
-
-    @FXML
-    private CheckBox chkActif;
-
-    @FXML
-    private Button btnAjouter;
-
-    @FXML
-    private Button btnRetour;
+    @FXML private TextField txtSolde;
+    @FXML private CheckBox chkActif;
+    @FXML private TextField txtClientNom;   // Champ pour le nom du client
+    @FXML private TextField txtClientEmail; // Champ pour l'email du client
+    @FXML private Button btnAjouter;
+    @FXML private Button btnRetour;
 
     private ICompte compteService = new CompteImpl();
+    private IClient clientService = new ClientImpl();
 
     @FXML
     private void ajouterCompte(ActionEvent event) {
         try {
-            double solde = Double.parseDouble(txtSolde.getText());
-            boolean actif = chkActif.isSelected();
-
-            // Vérifier que les champs ne sont pas vides
-            if (txtSolde.getText().isEmpty()) {
+            if (txtSolde.getText().isEmpty() || txtClientNom.getText().isEmpty() || txtClientEmail.getText().isEmpty()) {
                 Outils.showError("Erreur", "Tous les champs doivent être remplis.");
                 return;
             }
+            double solde = Double.parseDouble(txtSolde.getText());
+            boolean actif = chkActif.isSelected();
 
-            // Générer un numéro de compte alphanumérique de 10 caractères
+            // Création du client à partir des champs renseignés
+            String nomClient = txtClientNom.getText();
+            String emailClient = txtClientEmail.getText();
+            Client client = new Client(nomClient, "", emailClient);
+            clientService.ajouterClient(client);
+
+            // Génération d'un numéro de compte alphanumérique
             String numero = generateAccountNumber();
 
-            // Créer un nouveau compte sans client associé
-            Compte compte = new Compte(numero, solde, actif, Instant.now(), null);
+            // Création du compte avec le client associé
+            Compte compte = new Compte(numero, solde, actif, Instant.now(), client);
             compteService.createCompte(compte);
 
-            // Afficher un message de succès
             Outils.showSuccess("Succès", "Compte ajouté avec succès.");
-            
-            // Revenir à la vue de gestion des comptes
             retourGestionComptes(event);
         } catch (NumberFormatException e) {
             Outils.showError("Erreur", "Le solde doit être un nombre valide.");
@@ -81,8 +78,9 @@ public class AjouterCompteController {
             stage.setScene(new Scene(root));
             stage.setTitle("Gestion des Comptes");
             stage.show();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Outils.showError("Erreur", "Impossible de retourner à la page Gestion des Comptes.");
         }
     }
 }

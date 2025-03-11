@@ -6,17 +6,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class App extends Application {
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Connexion");
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setTitle("Digital Banking");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
+
     public static void main(String[] args) {
         launch(args);
     }

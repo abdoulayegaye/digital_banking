@@ -21,8 +21,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -30,30 +28,16 @@ import java.time.format.FormatStyle;
 import java.util.Locale;
 
 public class GestionComptesController {
-
+    @FXML private AnchorPane gestionComptesPane;
+    @FXML private TextField txtRecherche;
+    @FXML private TableView<Compte> tableViewComptes;
+    @FXML private TableColumn<Compte, String> colNumero;
+    @FXML private TableColumn<Compte, String> colClient;
+    @FXML private TableColumn<Compte, Double> colSolde;
+    @FXML private TableColumn<Compte, String> colEtat;
+    @FXML private TableColumn<Compte, String> colDate;
     @FXML
-    private AnchorPane gestionComptesPane;
-
-    @FXML
-    private TextField txtRecherche;
-
-    @FXML
-    private TableView<Compte> tableViewComptes;
-
-    @FXML
-    private TableColumn<Compte, String> colNumero;
-
-    @FXML
-    private TableColumn<Compte, String> colClient;
-
-    @FXML
-    private TableColumn<Compte, Double> colSolde;
-
-    @FXML
-    private TableColumn<Compte, String> colEtat;
-
-    @FXML
-    private TableColumn<Compte, String> colDate;
+    private Button btnRetour;
 
     private IClient clientService = new ClientImpl();
     private ICompte compteService = new CompteImpl();
@@ -61,18 +45,14 @@ public class GestionComptesController {
 
     @FXML
     public void initialize() {
-        // Configurer les colonnes du TableView
         colNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         colClient.setCellValueFactory(cellData -> {
             Compte compte = cellData.getValue();
             Client client = compte.getClient();
-            return client != null ? new SimpleStringProperty(client.getPrenom() + " " + client.getNom()) : new SimpleStringProperty("Non attribué");
+            return client != null ? new SimpleStringProperty(client.getPrenom() + " " + client.getNom() + " (" + client.getEmail() + ")") : new SimpleStringProperty("Non attribué");
         });
         colSolde.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        colEtat.setCellValueFactory(cellData -> {
-            Compte compte = cellData.getValue();
-            return new SimpleStringProperty(compte.isActif() ? "Actif" : "Fermé");
-        });
+        colEtat.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isActif() ? "Actif" : "Fermé"));
         colDate.setCellValueFactory(cellData -> {
             Instant instant = cellData.getValue().getCreatedAt();
             DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
@@ -80,44 +60,32 @@ public class GestionComptesController {
                     .withZone(ZoneId.systemDefault());
             return new SimpleStringProperty(formatter.format(instant));
         });
-
-        // Charger les comptes dans le TableView
         chargerComptes();
-
-        // Configurer la barre de recherche
         configurerBarreRecherche();
-
-        // Ajouter le menu contextuel
         tableViewComptes.setRowFactory(tv -> {
             TableRow<Compte> row = new TableRow<>();
             ContextMenu contextMenu = new ContextMenu();
-
             MenuItem modifierItem = new MenuItem("Modifier");
             modifierItem.setOnAction(event -> {
                 Compte compte = row.getItem();
                 allerModifierCompte(compte);
             });
-
             MenuItem supprimerItem = new MenuItem("Supprimer");
             supprimerItem.setOnAction(event -> {
                 Compte compte = row.getItem();
                 allerSupprimerCompte(compte);
             });
-
             MenuItem associerClientItem = new MenuItem("Associer Client");
             associerClientItem.setOnAction(event -> {
                 Compte compte = row.getItem();
                 associerClient(compte);
             });
-
             contextMenu.getItems().addAll(modifierItem, supprimerItem, associerClientItem);
-
             row.contextMenuProperty().bind(
                     javafx.beans.binding.Bindings.when(row.emptyProperty())
                             .then((ContextMenu) null)
                             .otherwise(contextMenu)
             );
-
             return row;
         });
     }
@@ -125,54 +93,49 @@ public class GestionComptesController {
     private void chargerComptes() {
         comptesList.clear();
         comptesList.addAll(compteService.getAllComptes());
+
+        if (comptesList.isEmpty()) {
+            System.out.println("⚠️ Aucun compte trouvé !");
+        } else {
+            comptesList.forEach(c -> System.out.println("✅ Compte : " + c.getNumero() + " - Solde : " + c.getBalance() + " - Client : " + (c.getClient() != null ? c.getClient().getNom() : "Aucun")));
+        }
+
         tableViewComptes.setItems(comptesList);
     }
 
     private void configurerBarreRecherche() {
-        // Créer une FilteredList pour filtrer les comptes
         FilteredList<Compte> filteredList = new FilteredList<>(comptesList, p -> true);
-
-        // Lier la barre de recherche au filtre
         txtRecherche.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredList.setPredicate(compte -> {
-                // Si la barre de recherche est vide, afficher tous les comptes
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-
-                // Convertir la recherche en minuscules pour une recherche insensible à la casse
                 String rechercheMinuscule = newValue.toLowerCase();
-
-                // Vérifier si le numéro de compte ou le nom du client contient la recherche
                 if (compte.getNumero().toLowerCase().contains(rechercheMinuscule) ||
-                        (compte.getClient() != null && (compte.getClient().getNom() + " " + compte.getClient().getPrenom()).toLowerCase().contains(rechercheMinuscule))) {
+                        (compte.getClient() != null &&
+                                (compte.getClient().getNom() + " " + compte.getClient().getPrenom() + " " + compte.getClient().getEmail()).toLowerCase().contains(rechercheMinuscule))) {
                     return true;
                 }
-
-                // Aucun résultat trouvé
                 return false;
             });
         });
-
-        // Créer une SortedList pour trier les résultats filtrés
         SortedList<Compte> sortedList = new SortedList<>(filteredList);
-
-        // Lier le TableView à la SortedList
         sortedList.comparatorProperty().bind(tableViewComptes.comparatorProperty());
         tableViewComptes.setItems(sortedList);
     }
 
     @FXML
     private void rechercherCompte(ActionEvent event) {
-        // La recherche est déjà gérée par le Listener, cette méthode peut rester vide
+        // La recherche est gérée par le listener.
     }
 
     @FXML
     private void allerAjouterCompte(ActionEvent event) {
         try {
             Outils.load(event, "Ajouter Compte", "/fxml/ajouterCompte.fxml");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Outils.showError("Erreur", "Impossible de charger la page d'ajout de compte.");
         }
     }
 
@@ -183,7 +146,6 @@ public class GestionComptesController {
             Outils.showError("Erreur", "Veuillez sélectionner un compte à modifier.");
             return;
         }
-
         allerModifierCompte(compteSelectionne);
     }
 
@@ -191,18 +153,15 @@ public class GestionComptesController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/modifierCompte.fxml"));
             Parent root = loader.load();
-
-            // Passer le compte sélectionné au contrôleur
             ModifierCompteController controller = loader.getController();
             controller.setCompte(compteSelectionne);
-
-            // Afficher la vue
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Modifier Compte");
             stage.show();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Outils.showError("Erreur", "Impossible de charger la page de modification de compte.");
         }
     }
 
@@ -213,35 +172,27 @@ public class GestionComptesController {
             Outils.showError("Erreur", "Veuillez sélectionner un compte à supprimer.");
             return;
         }
-
         allerSupprimerCompte(compteSelectionne);
     }
 
     private void allerSupprimerCompte(Compte compteSelectionne) {
-        // Supprimer le compte
         compteService.supprimerCompte(compteSelectionne);
-
-        // Rafraîchir la liste des comptes
         chargerComptes();
     }
 
     private void associerClient(Compte compteSelectionne) {
-        // Ouvrir une fenêtre pour sélectionner un client et associer le compte
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/associerClient.fxml"));
             Parent root = loader.load();
-
-            // Passer le compte sélectionné au contrôleur
             AssocierClientController controller = loader.getController();
             controller.setCompte(compteSelectionne);
-
-            // Afficher la vue
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Associer Client");
             stage.show();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Outils.showError("Erreur", "Impossible de charger la page d'association du client.");
         }
     }
 
@@ -254,8 +205,9 @@ public class GestionComptesController {
     private void retourAccueil(ActionEvent event) {
         try {
             Outils.load(event, "Accueil", "/fxml/accueil.fxml");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Outils.showError("Erreur", "Impossible de retourner à la page Accueil.");
         }
     }
 }

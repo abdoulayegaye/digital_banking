@@ -1,12 +1,16 @@
 package com.banking.digitalbankingproject.controller;
 
-import com.banking.digitalbankingproject.tools.Notification;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import com.banking.digitalbankingproject.tools.Outils; // ✅ Ajout de l'import
+import com.banking.digitalbankingproject.entity.Client;
 import com.banking.digitalbankingproject.service.IClient;
 import com.banking.digitalbankingproject.service.impl.ClientImpl;
-import com.banking.digitalbankingproject.entity.Client;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 
 public class SupprimerClientController {
 
@@ -32,9 +36,13 @@ public class SupprimerClientController {
     }
 
     private void supprimerClient() {
-        clientService.supprimerClient(client);
-        Notification.NotifSuccess("Succès", "Client supprimé avec succès");
-        fermerFenetre();
+        if (client != null) {
+            clientService.supprimerClient(client);
+            Outils.showSuccess("Succès", "Client supprimé avec succès");
+            fermerFenetre();
+        } else {
+            Outils.showError("Erreur", "Aucun client sélectionné !");
+        }
     }
 
     private void fermerFenetre() {
@@ -44,15 +52,15 @@ public class SupprimerClientController {
     @FXML
     private void retourGestionClients(ActionEvent event) {
         try {
-            // Charger la vue de gestion des clients
-            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/fxml/gestionClients.fxml"));
-            javafx.scene.Parent root = loader.load();
-            javafx.stage.Stage stage = (javafx.stage.Stage) btnRetour.getScene().getWindow();
-            stage.setScene(new javafx.scene.Scene(root));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/gestionClients.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) btnRetour.getScene().getWindow();
+            stage.setScene(new Scene(root));
             stage.setTitle("Gestion des Clients");
             stage.show();
-        } catch (java.io.IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Outils.showError("Erreur", "Impossible de retourner à la page Gestion des Clients.");
         }
     }
 }

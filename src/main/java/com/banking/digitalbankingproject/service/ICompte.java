@@ -2,19 +2,13 @@ package com.banking.digitalbankingproject.service;
 
 import com.banking.digitalbankingproject.entity.Compte;
 import com.banking.digitalbankingproject.entity.Operation;
-
 import java.util.List;
 
 public interface ICompte {
-    boolean createCompte(Compte compte);
+    void createCompte(Compte compte);
+    void updateCompte(Compte compte);
+    void supprimerCompte(Compte compte);
     List<Compte> getAllComptes();
-    Compte getCompteById(int id);
-    void supprimerCompte(Compte compteSelectionne);
-    void modifierCompte(Compte compte);
-    boolean updateCompte(Compte compte);
-    void retrait(Compte compteSelectionne, double montant);
-    void depot(Compte compteSelectionne, double montant);
-    void virement(Compte compteSource, Compte compteDestinataire, double montant);
-
-    List<Operation> getOperations(Compte compteSelectionne);
+    List<Operation> getOperations(Compte compte);
+    void virement(Compte source, Compte destinataire, double montant);
 }

@@ -1,0 +1,22 @@
+/* Nouveau style */
+.root {
+    -fx-primary: #2c3e50;
+    -fx-secondary: #3498db;
+    -fx-light: #ecf0f1;
+}
+
+.button {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.table-view {
+    -fx-background-color: -fx-light;
+    -fx-selection-bar: derive(-fx-secondary, 50%);
+}
+
+.table-cell {
+    -fx-padding: 8px;
+}

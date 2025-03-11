@@ -6,9 +6,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="gestionClientsPane" prefHeight="600.0" prefWidth="857.0"
-            xmlns="http://javafx.com/javafx/23.0.1"
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.banking.digitalbankingproject.controller.GestionClientsController">
+
     <children>
         <HBox layoutX="10.0" layoutY="10.0">
             <Button fx:id="btnRetour" onAction="#retourAccueil" style="-fx-background-color: transparent;">
@@ -55,5 +56,15 @@
                 prefWidth="100.0" text="Supprimer"/>
         <Button fx:id="btnRefresh" layoutX="350.0" layoutY="470.0" onAction="#rafraichirClients" prefHeight="30.0"
                 prefWidth="100.0" text="Refresh"/>
+        <Button fx:id="btnRetour" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#retourAccueil">
+            <graphic>
+                <ImageView fx:id="imgRetour" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/retour.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <text>Retour</text>
+        </Button>
     </children>
 </AnchorPane>
