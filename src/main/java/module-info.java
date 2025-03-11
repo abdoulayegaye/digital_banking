@@ -5,6 +5,11 @@ module com.banking.digitalbankingproject {
     requires static lombok;
     requires TrayNotification;
     requires jbcrypt;
+    requires commons.validator;
+    requires kernel;
+    requires layout;
+    requires io;
+    requires pdfa;
 
 
     opens com.banking.digitalbankingproject to javafx.fxml;

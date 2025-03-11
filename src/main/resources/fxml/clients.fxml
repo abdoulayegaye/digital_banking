@@ -1,14 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="560.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.ClientController">
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.ClientController"
-            prefHeight="400.0" prefWidth="600.0">
-
+   <children>
+      <Button layoutX="59.0" layoutY="88.0" mnemonicParsing="false" onAction="#Accueil" prefHeight="37.0" prefWidth="103.0" style="-fx-background-color: RED;" text="Accueuil" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Text layoutX="203.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTION DES CLIENTS" textAlignment="CENTER">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="468.0" layoutY="88.0" mnemonicParsing="false" onAction="#Ajout_Client" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: green;" text="Ajouter un Client" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TableView fx:id="tableview" layoutX="22.0" layoutY="236.0" prefWidth="616.0" visible="false" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="236.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="68.0" text="#" />
+          <TableColumn fx:id="nomCol" prefWidth="170.0" text="NOM" />
+            <TableColumn fx:id="prenomCol" prefWidth="166.0" text="PRENOM" />
+            <TableColumn fx:id="emailCol" prefWidth="203.0" text="EMAIL" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Pane fx:id="pane" layoutX="7.0" layoutY="486.0" prefHeight="100.0" prefWidth="647.0" visible="false">
+         <children>
+            <TextField fx:id="nomTFD" layoutX="14.0" layoutY="32.0" prefHeight="37.0" prefWidth="149.0">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="prenomTFD" layoutX="190.0" layoutY="32.0" prefHeight="37.0" prefWidth="149.0">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="emailTFD" layoutX="367.0" layoutY="32.0" prefHeight="37.0" prefWidth="149.0">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </TextField>
+            <Button layoutX="550.0" layoutY="32.0" mnemonicParsing="false" onAction="#Modifier_Client" prefHeight="37.0" prefWidth="77.0" style="-fx-background-color: blue;" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TextField fx:id="idTFD" layoutX="18.0" layoutY="67.0" prefHeight="17.0" prefWidth="54.0" visible="false" />
+            <Text layoutX="14.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+               <font>
+                  <Font name="Roboto" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="190.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom">
+               <font>
+                  <Font name="Roboto" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="367.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+               <font>
+                  <Font name="Roboto" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="LASPan" layoutX="22.0" layoutY="191.0" prefHeight="45.0" prefWidth="616.0" visible="false">
+         <children>
+            <Text fx:id="TextL" layoutX="63.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Clients" textAlignment="CENTER" wrappingWidth="258.462890625">
+               <font>
+                  <Font name="Roboto Medium" size="24.0" />
+               </font>
+            </Text>
+            <TextField fx:id="searchTFD" layoutX="403.0" layoutY="7.0" prefHeight="32.0" prefWidth="199.0" promptText="Rechercher un client">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>

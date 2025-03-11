@@ -1,14 +1,373 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="527.0" prefWidth="675.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.OperationController">
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.OperationController"
-            prefHeight="400.0" prefWidth="600.0">
-
+   <children>
+      <Button layoutX="22.0" layoutY="85.0" mnemonicParsing="false" onAction="#Accueil" prefHeight="37.0" prefWidth="101.0" text="Accueil">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Text layoutX="174.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTION DES OPERATIONS">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="193.0" layoutY="85.0" mnemonicParsing="false" onAction="#Depot" prefHeight="37.0" prefWidth="74.0" text="Depot">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="367.0" layoutY="85.0" mnemonicParsing="false" onAction="#Retrait" prefHeight="37.0" prefWidth="74.0" text="Retrait">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="529.0" layoutY="85.0" mnemonicParsing="false" onAction="#Virement" prefHeight="37.0" prefWidth="101.0" text="Virement">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Pane fx:id="depotPANE" layoutX="83.0" layoutY="143.0" prefHeight="364.0" prefWidth="510.0" visible="false">
+         <children>
+            <Text layoutX="214.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEPOT">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Text>
+            <Pane fx:id="infoPANE" layoutY="41.0" prefHeight="283.0" prefWidth="510.0" visible="false">
+               <children>
+                  <Text layoutX="40.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations du Compte">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="numCompteTXT" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Num Compte: CC7-20250305-120111">
+                     <font>
+                        <Font name="Times New Roman" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="soldeTXT" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solde: ">
+                     <font>
+                        <Font name="Times New Roman" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="47.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations du Client">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="clientDTXT" layoutX="9.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+                     <font>
+                        <Font name="Times New Roman" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="depotTFD" layoutX="304.0" layoutY="73.0" prefHeight="37.0" prefWidth="149.0" promptText="Saisir le montant">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="304.0" layoutY="47.0" text="Montant du Depot">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="335.0" layoutY="181.0" mnemonicParsing="false" onAction="#Deposer" text="Déposer">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fx:id="dErreur" fill="RED" layoutX="309.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum 1 000F" visible="false">
+                     <font>
+                        <Font name="Times New Roman" size="13.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="rercheComptePANE" layoutX="58.0" layoutY="33.0" prefHeight="260.0" prefWidth="374.0" visible="false">
+               <children>
+                  <Text fill="RED" layoutX="79.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aucun Compte Selectionné!!">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="35.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saisir un Numero de Compte">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="rechercheTFD1" layoutX="35.0" layoutY="105.0" prefHeight="37.0" prefWidth="216.0" promptText="Entrer le numero de compte">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="277.0" layoutY="108.0" mnemonicParsing="false" onAction="#TrouveCompte" prefHeight="32.0" prefWidth="83.0" text="Rechercher">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fx:id="erreur" fill="RED" layoutX="106.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erreur!! Compte non Trouvé" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="retraitPANE" layoutX="83.0" layoutY="149.0" prefHeight="364.0" prefWidth="510.0" visible="false">
+         <children>
+            <Text layoutX="200.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RETRAIT">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Text>
+            <Pane fx:id="infoPANE1" layoutX="3.0" layoutY="52.0" prefHeight="260.0" prefWidth="504.0" visible="false">
+               <children>
+                  <Text layoutX="40.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations du Compte">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="numCompteTXT1" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Num Compte: CC7-20250305-120111">
+                     <font>
+                        <Font name="Times New Roman" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="soldeTXT1" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solde: ">
+                     <font>
+                        <Font name="Times New Roman Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="47.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations du Client">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="clientR" layoutX="9.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+                     <font>
+                        <Font name="Times New Roman" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="retraitTFD" layoutX="304.0" layoutY="73.0" prefHeight="37.0" prefWidth="164.0" promptText="Saisir le montant">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="304.0" layoutY="47.0" text="Montant du Retrait">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="335.0" layoutY="181.0" mnemonicParsing="false" onAction="#Retitrer" text="Retirier">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fx:id="rErreur" fill="RED" layoutX="309.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum 1 000F" visible="false">
+                     <font>
+                        <Font name="Times New Roman" size="13.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="rercheComptePANE1" layoutX="58.0" layoutY="33.0" prefHeight="260.0" prefWidth="374.0" visible="false">
+               <children>
+                  <Text fill="RED" layoutX="79.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aucun Compte Selectionné!!">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="35.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saisir un Numero de Compte">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="rechercheTFD2" layoutX="35.0" layoutY="105.0" prefHeight="37.0" prefWidth="216.0" promptText="Entrer le numero de compte">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="277.0" layoutY="108.0" mnemonicParsing="false" onAction="#TrouveCompte" prefHeight="32.0" prefWidth="83.0" text="Rechercher">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fx:id="erreur1" fill="RED" layoutX="106.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erreur!! Compte non Trouvé" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="virementPANE" layoutX="83.0" layoutY="149.0" prefHeight="364.0" prefWidth="510.0" visible="false">
+         <children>
+            <Text fx:id="retraitPANE1" layoutX="184.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIREMENT">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Text>
+            <Pane fx:id="infoVirPANE" layoutY="33.0" prefHeight="323.0" prefWidth="510.0" visible="false">
+               <children>
+                  <Text layoutX="40.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations du Compte">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="numCompteOp" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Num Compte: CC7-20250305-120111">
+                     <font>
+                        <Font name="Times New Roman" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="soldeOpTXT" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solde: ">
+                     <font>
+                        <Font name="Times New Roman" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="47.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations du Client">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="clientV" layoutX="9.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+                     <font>
+                        <Font name="Times New Roman" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="virementTFD" layoutX="72.0" layoutY="252.0" prefHeight="37.0" prefWidth="172.0" promptText="Saisir le montant">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="72.0" layoutY="226.0" text="Montant du Virement">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="284.0" layoutY="250.0" mnemonicParsing="false" onAction="#Virer" prefHeight="37.0" prefWidth="92.0" text="Virer">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fx:id="rErreur1" fill="RED" layoutX="72.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum 1 000F" visible="false">
+                     <font>
+                        <Font name="Times New Roman" size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="341.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Virer vers: ">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="numCompteBen" layoutX="276.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Num Compte: ">
+                     <font>
+                        <Font name="Times New Roman" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="359.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beneficiaire">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="clientBenTXT" layoutX="276.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom:">
+                     <font>
+                        <Font name="Times New Roman" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="rercheCompteVirPANE" layoutX="58.0" layoutY="33.0" prefHeight="260.0" prefWidth="374.0" visible="false">
+               <children>
+                  <Text fx:id="comTXT" layoutX="79.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aucun Compte Selectionné!!">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="35.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saisir un Numero de Compte">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="rechercheTFD3" layoutX="35.0" layoutY="105.0" prefHeight="37.0" prefWidth="216.0" promptText="Entrer le numero de compte">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="277.0" layoutY="108.0" mnemonicParsing="false" onAction="#TrouveCompte" prefHeight="32.0" prefWidth="83.0" text="Rechercher">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fx:id="erreur11" fill="RED" layoutX="106.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erreur!! Compte non Trouvé" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <TableView fx:id="opTableView" fixedCellSize="0.0" layoutX="31.0" layoutY="225.0" prefHeight="260.0" prefWidth="604.0" visible="false">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="59.0" text="#" />
+          <TableColumn fx:id="typeCol" prefWidth="117.0" text="TYPE" />
+            <TableColumn fx:id="montantCol" prefWidth="118.0" text="MONTANT" />
+            <TableColumn fx:id="dateCol" prefWidth="154.0" text="DATE OPERATION" />
+            <TableColumn fx:id="compteCol" prefWidth="136.0" text="NUM COMPTE" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Pane fx:id="entetePANE" layoutX="33.0" layoutY="185.0" prefHeight="37.0" prefWidth="604.0" visible="false">
+         <children>
+            <Text layoutX="54.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Operations">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Text>
+            <TextField fx:id="filtreTFD" layoutX="360.0" layoutY="3.0" prefHeight="32.0" prefWidth="230.0" promptText="saisir un type d'operation">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>

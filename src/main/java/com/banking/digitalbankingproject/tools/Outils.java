@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,7 +24,10 @@ public class Outils {
         stage.show();
     }
 
+
+
     public static void load(ActionEvent event, String title, String url) throws IOException{
         new Outils().loadPage(event, title, url);
     }
+
 }
