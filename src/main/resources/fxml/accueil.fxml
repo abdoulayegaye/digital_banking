@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.AccueilController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.AccueilController">
+   <children>
+      <ImageView fitHeight="421.0" fitWidth="729.0" layoutX="-22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/arriere_plan1.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="clientsBtn" layoutX="171.0" layoutY="299.0" mnemonicParsing="false" onAction="#getClients" text="Clients">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.9686274528503418" green="0.6784313917160034" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button fx:id="comptesBtn" layoutX="303.0" layoutY="299.0" mnemonicParsing="false" onAction="#getComptes" text="Comptes">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.9686274528503418" green="0.6784313917160034" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="operationsBtn" layoutX="436.0" layoutY="299.0" mnemonicParsing="false" onAction="#getOperations" text="Opérations">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.9686274528503418" green="0.6784313917160034" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="262.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/img_bank2.png" />
+         </image>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.9599999785423279" />
+               </color>
+            </DropShadow>
+         </effect>
+      </ImageView>
+      <Text fill="WHITE" layoutX="174.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aksil ak diam si Digital Bank">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+   </children>
 </AnchorPane>

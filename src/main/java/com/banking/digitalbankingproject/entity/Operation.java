@@ -5,8 +5,6 @@ import lombok.*;
 
 import java.time.Instant;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -16,4 +14,15 @@ public class Operation {
     private double amount;
     private TypeOperation type;
     private Compte compte;
+
+    public Operation() {
+    }
+
+    public Operation(int id, Instant dateOp, double amount, TypeOperation type, Compte compte) {
+        this.id = id;
+        this.dateOp = dateOp;
+        this.amount = amount;
+        this.type = type;
+        this.compte = compte;
+    }
 }

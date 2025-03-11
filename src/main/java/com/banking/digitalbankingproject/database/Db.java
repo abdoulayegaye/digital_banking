@@ -1,19 +1,16 @@
 package com.banking.digitalbankingproject.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 import static com.banking.digitalbankingproject.database.Constants.*;
 
 public class Db {
-    private Connection cnx;
-    private PreparedStatement pstm;
-    private ResultSet rs;
+    private static Connection cnx;
+    private static PreparedStatement pstm;
+    private static ResultSet rs;
     private int ok;
 
-    private void connect(){
+    private static void connect(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             cnx = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -22,7 +19,7 @@ public class Db {
         }
     }
 
-    public void initPrepar(String sql){
+    public static void initPrepar(String sql){
         try{
             connect();
             pstm = cnx.prepareStatement(sql);
@@ -31,7 +28,7 @@ public class Db {
         }
     }
 
-    public ResultSet executeSelect(){
+    public static ResultSet executeSelect(){
         rs = null;
         try{
             rs = pstm.executeQuery();
@@ -39,6 +36,10 @@ public class Db {
             e.printStackTrace();
         }
         return rs;
+    }
+
+    public static CallableStatement getPstmt() {
+        return null;
     }
 
     public int executeMaj(){
@@ -59,7 +60,10 @@ public class Db {
         }
     }
 
-    public PreparedStatement getPstm() {
-        return pstm;
+    public PreparedStatement getPstm() {return pstm;}
+
+
+    public static Connection getConnection() {
+        return null;
     }
 }

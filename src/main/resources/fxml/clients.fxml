@@ -1,14 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.ClientController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.ClientController">
+   <children>
+      <ImageView fitHeight="580.0" fitWidth="817.0" layoutY="-71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/arriere_plan2.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="creationClients" layoutX="29.0" layoutY="420.0" mnemonicParsing="false" onAction="#getcreationClients" text="Création">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1226215660572052" green="1.0" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button fx:id="modificationClients" layoutX="130.0" layoutY="420.0" mnemonicParsing="false" onAction="#getmodificationClients" text="Modification">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.8833333253860474" green="1.0" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="supprimerClients" layoutX="250.0" layoutY="420.0" mnemonicParsing="false" onAction="#getsupprimerClients" text="Supprimer">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="1.0" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <TableView fx:id="tableClient" layoutX="14.0" layoutY="31.0" onMouseClicked="#getdata" onMouseDragged="#getdata" opacity="0.93" prefHeight="359.0" prefWidth="489.0">
+        <columns>
+          <TableColumn fx:id="colNomClients" prefWidth="87.33334636688232" text="Nom" />
+          <TableColumn fx:id="colPrenomClients" prefWidth="157.3333511352539" text="Prénom" />
+            <TableColumn fx:id="colEmailClients" prefWidth="245.33331298828125" text="Email" />
+        </columns>
+      </TableView>
+      <Button fx:id="EffacerClients" layoutX="367.0" layoutY="420.0" mnemonicParsing="false" onAction="#getEffacerClients" text="Effacer champs">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.009259259328246117" green="0.24043209850788116" blue="1.0" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="75.0" fitWidth="83.0" layoutX="682.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/gestion_client.png" />
+         </image>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="1.0" green="1.0" blue="1.0" />
+               </color>
+            </DropShadow>
+         </effect>
+      </ImageView>
+      <VBox layoutX="532.0" layoutY="115.0" prefHeight="190.0" prefWidth="187.0">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="nomClients" onAction="#getnomClients" promptText="Votre nom ici">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="prenomClients" onAction="#getprenomClients" promptText="Votre prénom ici">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="emailClients" onAction="#getemailClients" promptText="Votre email ici">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
