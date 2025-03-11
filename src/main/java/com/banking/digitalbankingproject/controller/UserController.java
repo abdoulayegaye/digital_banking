@@ -41,5 +41,22 @@ public class UserController {
             }
         }
     }
+    @FXML
+    void signin(ActionEvent event) {
+        String username = usernameTfd.getText().trim();
+        String password = passwordTfd.getText().trim();
+        if (username.isEmpty() || password.isEmpty()) {
+            Notification.NotifError("Error", "Tous les champs sont obligatoires");
+        }else {
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(password);
+            userDao.createUser(user);
+            usernameTfd.clear();
+            passwordTfd.clear();
+            Notification.NotifSuccess("Inscription", "Incription reussi");
+        }
+
+    }
 
 }

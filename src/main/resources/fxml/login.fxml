@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.UserController">
+<AnchorPane prefHeight="400.0" prefWidth="522.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.UserController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="251.0">
          <children>
@@ -30,6 +29,8 @@
       <TextField fx:id="usernameTfd" layoutX="274.0" layoutY="160.0" prefHeight="25.0" prefWidth="224.0" promptText="Votre username ici" />
       <Text layoutX="274.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
       <PasswordField fx:id="passwordTfd" layoutX="274.0" layoutY="242.0" prefHeight="25.0" prefWidth="224.0" promptText="Votre mot de passe ici" />
-      <Button layoutX="343.0" layoutY="313.0" mnemonicParsing="false" onAction="#login" text="Se Connecter" />
+      <Button layoutX="240.0" layoutY="314.0" mnemonicParsing="false" onAction="#login" styleClass="btn-primary" text="Se Connecter" />
+      <Button layoutX="393.0" layoutY="314.0" mnemonicParsing="false" onAction="#signin" styleClass="btn-success" text="S'inscrire" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

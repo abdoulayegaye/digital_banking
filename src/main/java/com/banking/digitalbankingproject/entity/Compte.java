@@ -9,6 +9,7 @@ public class Compte {
     private int id;
     private String numero;
     private double balance;
+    private String etat;
     private Instant createdAt;
     private Client client;
 }

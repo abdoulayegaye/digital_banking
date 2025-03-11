@@ -1,14 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.AccueilController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.AccueilController">
+   <children>
+      <HBox layoutX="72.0" layoutY="139.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" maxWidth="200.0" prefHeight="400.0" prefWidth="200.0" styleClass="sidebar" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER" maxHeight="80.0" prefHeight="80.0" prefWidth="100.0" styleClass="logo-container" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="75.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                           <image>
+                              <Image url="@../images/logo-exim-bank.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets left="50.0" right="50.0" />
+                     </padding>
+                  </VBox>
+                  <HBox fx:id="clientsHB" alignment="CENTER_LEFT" onMouseClicked="#GestionClients" prefHeight="50.0" prefWidth="200.0" spacing="20.0" styleClass="sidebar-btn">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/users.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" styleClass="label-text" text="Gestion Clients" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="comptesHB" alignment="CENTER_LEFT" layoutX="10.0" layoutY="90.0" onMouseClicked="#GestionComptes" prefHeight="50.0" prefWidth="200.0" spacing="20.0" styleClass="sidebar-btn">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/com.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" styleClass="label-text" text="Gestion Comptes" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="operationsHB" alignment="CENTER_LEFT" layoutX="10.0" layoutY="370.0" onMouseClicked="#Operations" prefHeight="50.0" prefWidth="200.0" spacing="20.0" styleClass="sidebar-btn">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/op.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" styleClass="label-text" text="Operations" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox fx:id="profileHB" alignment="CENTER_LEFT" onMouseClicked="#Profile" prefHeight="50.0" prefWidth="200.0" spacing="20.0" styleClass="sidebar-btn">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../images/contacts.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" styleClass="label-text" text="Profile" />
+                           </children>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </HBox>
+                        <Button layoutX="84.0" layoutY="125.0" mnemonicParsing="false" onAction="#Deconexion" styleClass="btn-danger" text="Deconnexion" VBox.vgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="400.0" prefWidth="400.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <AnchorPane maxHeight="80.0" prefHeight="80.0" prefWidth="400.0" styleClass="sidebar" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" maxHeight="80.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label fx:id="titrelbl" text="GESTION BANCAIRE :" textFill="WHITE">
+                                 <font>
+                                    <Font name="Algerian" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <BorderPane fx:id="mainPane" prefHeight="320.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>
