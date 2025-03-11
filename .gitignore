@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -36,3 +37,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+=======
+"digital_banking/" 
+>>>>>>> bef5408ddd6cd738311f7242f4174b692a105bda
