@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.ModifierClientController">
+    <children>
+        <AnchorPane layoutY="1.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css">
+            <children>
+                <ImageView fitHeight="64.0" fitWidth="70.0" layoutX="142.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/mettre-a-jour-le-profil.png" />
+                    </image>
+                </ImageView>
+                <Text layoutX="208.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE CLIENT">
+                    <font>
+                        <Font size="26.0" />
+                    </font>
+                </Text>
+                <Text layoutX="162.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero" wrappingWidth="52.34375" />
+                <TextField fx:id="numeroTfd" layoutX="161.0" layoutY="132.0" promptText="numero" />
+                <Text layoutX="161.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solde" />
+                <TextField fx:id="soldeTfd" layoutX="161.0" layoutY="200.0" promptText="solde" />
+                <Button fx:id="modifierBtn" layoutX="268.0" layoutY="342.0" mnemonicParsing="false" onAction="#update" text="Modifier" />
+                <Button fx:id="retourBtn" cancelButton="true" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#retour" prefHeight="36.0" prefWidth="52.0" text="⬅" textAlignment="CENTER">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

@@ -1,5 +1,8 @@
 package com.banking.digitalbankingproject;
 
+import com.banking.digitalbankingproject.entity.User;
+import com.banking.digitalbankingproject.service.IUser;
+import com.banking.digitalbankingproject.service.impl.UserImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +21,17 @@ public class App extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
+    //public static void main(String[] args) {
+      //  IUser iUser = new UserImpl();
+        //User user = new User();
+        //user.setUsername("limamou");
+        //user.setPassword("admin");
+        //boolean ok = iUser.createUser(user);
+        //if (ok) {
+          //  System.out.println("User Created");
+        //}
+        //launch();
+    //}
+
+
 }

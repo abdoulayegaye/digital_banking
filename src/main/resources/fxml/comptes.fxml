@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.CompteController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.CompteController">
+    <children>
+        <ImageView fitHeight="55.0" fitWidth="150.0" layoutX="197.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/compte-bancaire.png" />
+            </image>
+        </ImageView>
+        <Text layoutX="212.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATION DE COMPTE" wrappingWidth="232.8509521484375">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Text>
+        <Text layoutX="21.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez saisir un numéro compte" />
+        <TextField fx:id="numeroCompteTfd" layoutX="22.0" layoutY="101.0" promptText="Saisir numéro compte" />
+        <Button fx:id="ajouterBtn" layoutX="32.0" layoutY="341.0" mnemonicParsing="false" onAction="#save" prefHeight="36.0" prefWidth="87.0" style="-fx-background-color: red;" text="Ajouter">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+        <Button fx:id="retourBtn" cancelButton="true" layoutX="462.0" layoutY="341.0" mnemonicParsing="false" onAction="#retour" prefHeight="36.0" prefWidth="115.0" style="-fx-background-color: red;" text="Retour" textAlignment="CENTER">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <Text layoutX="21.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez donner le solde initial du compte" wrappingWidth="232.8509521484375" />
+      <TextField fx:id="soldeTfd" layoutX="22.0" layoutY="175.0" />
+      <Text layoutX="21.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez donner votre client_id" wrappingWidth="222.66668701171875" />
+      <TextField fx:id="clienidTfd" layoutX="22.0" layoutY="259.0" />
+    </children>
 </AnchorPane>
