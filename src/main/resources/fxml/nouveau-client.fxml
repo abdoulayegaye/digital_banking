@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" 
+            xmlns="http://javafx.com/javafx/17" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.banking.digitalbankingproject.controller.NouveauClientController"
+            style="-fx-background-color: white;">
+
+    <top>
+        <VBox style="-fx-background-color: #2c3e50; -fx-padding: 20;">
+            <Label text="Nouveau Client" style="-fx-text-fill: white;">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 20;">
+            <GridPane vgap="15" hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="100" prefWidth="100" />
+                    <ColumnConstraints minWidth="200" prefWidth="300" />
+                </columnConstraints>
+
+                <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Prénom:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="prenomField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Annuler" onAction="#handleAnnulerAction"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+                <Button text="Enregistrer" onAction="#handleEnregistrerAction"
+                        style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane> 

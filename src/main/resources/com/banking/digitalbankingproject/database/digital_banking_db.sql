@@ -173,4 +173,4 @@ CREATE TABLE users (
 
 -- Insérons l'utilisateur admin avec le mot de passe en clair
 INSERT INTO users (username, password) 
-VALUES ('admin', '$2a$10$deuYnZ.ab8Ab5dl3T/ng8ON5R99xFyJxoH4CjbrL/mxbgweOBTFNK');
+VALUES ('admin', '$2a$10$n9H5SyD.KQB0ZxOI3YhvPeXXJrU0Fy.89Vv6TdXDQJcOYqVXDtumu');

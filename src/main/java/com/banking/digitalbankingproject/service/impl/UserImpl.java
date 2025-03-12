@@ -5,7 +5,9 @@ import com.banking.digitalbankingproject.entity.User;
 import com.banking.digitalbankingproject.service.IUser;
 import com.banking.digitalbankingproject.tools.Utils;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,5 +71,23 @@ public class UserImpl implements IUser {
             e.printStackTrace();
         }
         return user;
+    }
+
+    @Override
+    public void updateUserPassword(User user) {
+        String sql = "UPDATE users SET password = ? WHERE username = ?";
+        try {
+            db.initPrepar(sql);
+            db.getPstm().setString(1, user.getPassword());
+            db.getPstm().setString(2, user.getUsername());
+            ok = db.executeMaj();
+            db.closeConnection();
+            if (ok != 1) {
+                throw new RuntimeException("La mise à jour du mot de passe a échoué");
+            }
+        } catch (Exception e) {
+            System.err.println("Erreur lors de la mise à jour du mot de passe : " + e.getMessage());
+            throw new RuntimeException("Erreur lors de la mise à jour du mot de passe", e);
+        }
     }
 }

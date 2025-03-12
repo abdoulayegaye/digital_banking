@@ -8,4 +8,5 @@ public interface IUser {
     public boolean createUser(User user);
     public List<User> getAllUsers();
     public User getUserByUsername(String username);
+    void updateUserPassword(User user);
 }

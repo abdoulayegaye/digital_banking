@@ -1,26 +1,35 @@
 package com.banking.digitalbankingproject.tools;
 
+import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.util.Duration;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import org.controlsfx.control.Notifications;
 
 public class Notification {
-
-    public static void NotifSuccess(String titre, String message){
-        NotificationType type = NotificationType.SUCCESS;
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(titre);
-        tray.setMessage(message);
-        tray.setNotificationType(type);
-        tray.showAndDismiss(Duration.seconds(2));
+    public enum NotificationType {
+        SUCCESS, ERROR, WARNING, INFO
     }
 
-    public static void NotifError(String titre, String message){
-        NotificationType type = NotificationType.ERROR;
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(titre);
-        tray.setMessage(message);
-        tray.setNotificationType(type);
-        tray.showAndDismiss(Duration.seconds(2));
+    public static void showNotification(String title, String text, NotificationType type) {
+        Notifications notification = Notifications.create()
+                .title(title)
+                .text(text)
+                .position(Pos.TOP_RIGHT)
+                .hideAfter(Duration.seconds(5));
+
+        switch (type) {
+            case SUCCESS:
+                notification.showInformation();
+                break;
+            case ERROR:
+                notification.showError();
+                break;
+            case WARNING:
+                notification.showWarning();
+                break;
+            case INFO:
+                notification.showInformation();
+                break;
+        }
     }
 }

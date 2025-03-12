@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<BorderPane prefHeight="600.0" prefWidth="800.0" 
+            xmlns="http://javafx.com/javafx/17" 
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.banking.digitalbankingproject.controller.ClientController"
-            prefHeight="400.0" prefWidth="600.0">
+            style="-fx-background-color: white;">
 
-</AnchorPane>
+    <top>
+        <VBox style="-fx-background-color: #2c3e50; -fx-padding: 20;">
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Label text="Gestion des Clients" style="-fx-text-fill: white;">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="Retour" onAction="#handleRetourAction"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10;" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Rechercher un client..." prefWidth="200" />
+                <Button text="Rechercher" onAction="#handleSearchAction"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="Nouveau Client" onAction="#handleNewClientAction"
+                        style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+            </HBox>
+
+            <TableView fx:id="clientsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+                    <TableColumn fx:id="nomColumn" text="Nom" prefWidth="150" />
+                    <TableColumn fx:id="prenomColumn" text="Prénom" prefWidth="150" />
+                    <TableColumn fx:id="emailColumn" text="Email" prefWidth="200" />
+                    <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="150" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

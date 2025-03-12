@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.CompteController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="com.banking.digitalbankingproject.controller.CompteController">
+    <top>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Button onAction="#handleRetourAction" style="-fx-background-color: #ff4444;" text="Retour" textFill="WHITE"/>
+                <Label text="Gestion des Comptes" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font name="System Bold" size="24.0"/>
+                    </font>
+                </Label>
+            </HBox>
+            
+            <HBox spacing="10.0">
+                <TextField fx:id="searchField" promptText="Rechercher un compte..." HBox.hgrow="ALWAYS"/>
+                <Button onAction="#handleSearchAction" style="-fx-background-color: #2196F3;" text="Rechercher" textFill="WHITE"/>
+                <Button onAction="#handleNewCompteAction" style="-fx-background-color: #4CAF50;" text="Nouveau Compte" textFill="WHITE"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <TableView fx:id="comptesTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID"/>
+                <TableColumn fx:id="numeroColumn" text="Numéro"/>
+                <TableColumn fx:id="balanceColumn" text="Solde"/>
+                <TableColumn fx:id="clientColumn" text="Client"/>
+                <TableColumn fx:id="dateColumn" text="Date de création"/>
+                <TableColumn fx:id="actionsColumn" text="Actions"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
