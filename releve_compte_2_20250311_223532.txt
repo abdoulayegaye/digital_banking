@@ -1,0 +1,13 @@
+RELEVÉ DE COMPTE
+Numéro de compte: 2
+Solde actuel: 304898.0344748208 €
+Date d'édition: 11/03/2025 22:35:32
+
+HISTORIQUE DES OPÉRATIONS
+----------------------------------------------------
+ID	Type		Montant		Date
+----------------------------------------------------
+8	DEPOT		76224.5086187052 €		Tue Mar 11 22:35:32 GMT 2025
+3	DEPOT		1000.0 €		Tue Mar 11 22:35:32 GMT 2025
+----------------------------------------------------
+Fin du relevé

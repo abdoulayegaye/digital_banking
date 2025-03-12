@@ -1,0 +1,162 @@
+/* Styles généraux */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Styles pour les titres */
+.label {
+    -fx-text-fill: #333333;
+}
+
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.subtitle {
+    -fx-font-size: 16px;
+    -fx-text-fill: #7f8c8d;
+}
+
+/* Styles pour les boutons */
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.button:pressed {
+    -fx-background-color: #1c6ea4;
+}
+
+/* Styles pour les modules de la page d'accueil */
+.module-box {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.module-box:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 15, 0, 0, 8);
+    -fx-border-color: #3498db;
+}
+
+/* Styles pour les tableaux */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+}
+
+.table-view .column-header {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #3498db;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: white;
+}
+
+/* Styles pour les champs de texte */
+.text-field, .combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 5;
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: #3498db;
+}
+
+/* Styles pour les onglets */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #f5f5f5;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #e0e0e0;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #3498db;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: white;
+}
+
+/* Styles pour les panneaux titrés */
+.titled-pane {
+    -fx-text-fill: #2c3e50;
+}
+
+.titled-pane > .title {
+    -fx-background-color: #ecf0f1;
+    -fx-font-weight: bold;
+}
+
+.titled-pane > .title > .arrow-button .arrow {
+    -fx-background-color: #3498db;
+}
+
+/* Styles pour les alertes */
+.dialog-pane {
+    -fx-background-color: white;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #3498db;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Styles pour les boutons radio et cases à cocher */
+.radio-button, .check-box {
+    -fx-text-fill: #333333;
+}
+
+.radio-button .radio, .check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 4;
+}
+
+.radio-button:selected .radio, .check-box:selected .box {
+    -fx-background-color: #3498db;
+}
+
+.radio-button:selected .dot, .check-box:selected .mark {
+    -fx-background-color: white;
+}

@@ -1,0 +1,14 @@
+RELEVÉ DE COMPTE
+Numéro de compte: 1
+Solde actuel: 110000.0 €
+Date d'édition: 11/03/2025 22:23:24
+
+HISTORIQUE DES OPÉRATIONS
+----------------------------------------------------
+ID	Type		Montant		Date
+----------------------------------------------------
+6	DEPOT		100000.0 €		Tue Mar 11 22:23:24 GMT 2025
+1	DEPOT		500.0 €		Tue Mar 11 22:23:24 GMT 2025
+2	RETRAIT		200.0 €		Tue Mar 11 22:23:24 GMT 2025
+----------------------------------------------------
+Fin du relevé

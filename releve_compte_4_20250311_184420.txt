@@ -1,0 +1,11 @@
+RELEVÉ DE COMPTE
+Numéro de compte: 4
+Solde actuel: 3000.0 €
+Date d'édition: 11/03/2025 18:44:20
+
+HISTORIQUE DES OPÉRATIONS
+----------------------------------------------------
+ID	Type		Montant		Date
+----------------------------------------------------
+----------------------------------------------------
+Fin du relevé
