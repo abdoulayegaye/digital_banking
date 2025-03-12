@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Outils {
 
-    private void loadPage(ActionEvent event, String title, String url) throws IOException{
+    public void loadPage(ActionEvent event, String title, String url) throws IOException {
         ((Node) event.getSource()).getScene().getWindow().hide();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(url));
         Parent root = fxmlLoader.load();
@@ -22,7 +22,7 @@ public class Outils {
         stage.show();
     }
 
-    public static void load(ActionEvent event, String title, String url) throws IOException{
+    public static void load(ActionEvent event, String title, String url) throws IOException {
         new Outils().loadPage(event, title, url);
     }
 }

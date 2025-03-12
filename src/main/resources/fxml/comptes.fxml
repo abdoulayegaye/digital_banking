@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<VBox spacing="10" style="-fx-padding: 10;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.CompteController">
+    <Label text="Gestion des Comptes" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.CompteController"
-            prefHeight="400.0" prefWidth="600.0">
+    <!-- Formulaire pour ajouter/modifier un compte -->
+    <HBox spacing="10">
+        <TextField fx:id="numeroField" promptText="Numéro de compte"/>
+        <TextField fx:id="balanceField" promptText="Solde initial"/>
+        <ComboBox fx:id="clientComboBox" promptText="Sélectionner un client"/>
+    </HBox>
+    <HBox spacing="10">
+        <Button text="Ajouter Compte" onAction="#handleAjouterCompte"/>
+        <Button text="Modifier Compte" onAction="#handleModifierCompte"/>
+    </HBox>
 
-</AnchorPane>
+    <!-- Tableau pour lister les comptes -->
+    <TableView fx:id="compteTable">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="numeroColumn" text="Numéro" prefWidth="150"/>
+            <TableColumn fx:id="balanceColumn" text="Solde" prefWidth="100"/>
+            <TableColumn fx:id="clientColumn" text="Client" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <!-- Boutons pour supprimer, exporter et retourner -->
+    <HBox spacing="10">
+        <Button text="Supprimer Compte" onAction="#handleSupprimerCompte"/>
+        <Button text="Retour" onAction="#handleRetour"/>
+    </HBox>
+    <HBox spacing="10">
+        <Button text="Supprimer Compte" onAction="#handleSupprimerCompte"/>
+        <Button text="Exporter en PDF" onAction="#exportComptesToPDF"/>
+        <Button text="Retour" onAction="#handleRetour"/>
+    </HBox>
+</VBox>

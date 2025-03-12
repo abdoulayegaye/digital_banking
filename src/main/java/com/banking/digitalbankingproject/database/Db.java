@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import static com.banking.digitalbankingproject.database.Constants.*;
 
@@ -13,48 +14,58 @@ public class Db {
     private ResultSet rs;
     private int ok;
 
-    private void connect(){
-        try{
+    // Nouvelle méthode publique pour obtenir une connexion
+    public static Connection getConnection() throws SQLException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Driver JDBC non trouvé : " + e.getMessage());
+        }
+    }
+
+    private void connect() {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             cnx = DriverManager.getConnection(URL, USER, PASSWORD);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Erreur de connexion á la BD : " + e.getMessage());
         }
     }
 
-    public void initPrepar(String sql){
-        try{
+    public void initPrepar(String sql) {
+        try {
             connect();
             pstm = cnx.prepareStatement(sql);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public ResultSet executeSelect(){
+    public ResultSet executeSelect() {
         rs = null;
-        try{
+        try {
             rs = pstm.executeQuery();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return rs;
     }
 
-    public int executeMaj(){
-        try{
+    public int executeMaj() {
+        try {
             ok = pstm.executeUpdate();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return ok;
     }
 
-    public void closeConnection(){
-        try{
+    public void closeConnection() {
+        try {
             if (cnx != null)
                 cnx.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

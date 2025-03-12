@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ComboBox?>
+
+<BorderPane fx:id="mainPane" prefWidth="600" prefHeight="400" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.MainController">
+    <top>
+        <VBox>
+            <Label text="BANQUE AM INTERNATIONAL" style="-fx-font-size: 20px; -fx-font-weight: bold;" alignment="CENTER"/>
+            <HBox alignment="CENTER" spacing="10">
+                <Button fx:id="gestionClientsButton" text="Gestion Clients" onAction="#handleGestionClients"/>
+                <Button fx:id="gestionComptesButton" text="Gestion Comptes" onAction="#handleGestionComptes"/>
+                <Button fx:id="transactionsButton" text="Transactions" onAction="#handleTransactions"/>
+            </HBox>
+        </VBox>
+    </top>
+    <left>
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <Button text="Accueil" onAction="#handleAccueil"/>
+            <Label text="Opérations Bancaires" style="-fx-font-weight: bold;"/>
+            <Button text="Faire un virement" onAction="#handleFaireVirement"/>
+            <Button text="Déposer de l'argent" onAction="#handleDeposerArgent"/>
+            <Button text="Consulter les relevés" onAction="#handleConsulterReleves"/>
+
+            <Button text="Déconnexion" style="-fx-background-color: #ff4444; -fx-text-fill: white;" onAction="#handleDeconnexion"/>
+        </VBox>
+    </left>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <Label text="Historique des Transactions" style="-fx-font-size: 16px;"/>
+            <ComboBox fx:id="compteComboBox" promptText="Sélectionner un compte" onAction="#loadTransactionsForCompte"/>
+            <TableView fx:id="transactionTable">
+                <columns>
+                    <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
+                    <TableColumn fx:id="montantColumn" text="Montant" prefWidth="100"/>
+                    <TableColumn fx:id="typeColumn" text="Type" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <Label text="Historique des Transactions" style="-fx-font-size: 16px;"/>
+            <ComboBox fx:id="compteComboBox" promptText="Sélectionner un compte" onAction="#loadTransactionsForCompte"/>
+            <TableView fx:id="transactionTable">
+                <columns>
+                    <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
+                    <TableColumn fx:id="montantColumn" text="Montant" prefWidth="100"/>
+                    <TableColumn fx:id="typeColumn" text="Type" prefWidth="100"/>
+                </columns>
+            </TableView>
+            <Button text="Exporter en PDF" onAction="#handleExporterHistoriquePDF"/>
+        </VBox>
+    </center>
+</BorderPane>

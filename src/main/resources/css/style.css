@@ -1,0 +1,29 @@
+/* style.css */
+.anchor-pane {
+    -fx-background-color: #f4f4f4; /* Couleur de fond douce */
+}
+
+.label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333; /* Couleur du texte */
+    -fx-padding: 10;
+}
+
+.button {
+    -fx-background-color: #007bff; /* Couleur de fond des boutons */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-padding: 10 20; /* Espacement intérieur */
+    -fx-font-size: 14px;
+    -fx-border-radius: 5; /* Coins arrondis */
+    -fx-background-radius: 5; /* Coins arrondis */
+}
+
+.button:hover {
+    -fx-background-color: #0056b3; /* Couleur au survol */
+}
+
+.vbox {
+    -fx-spacing: 15; /* Espacement entre les éléments */
+    -fx-padding: 10; /* Espacement intérieur */
+}
