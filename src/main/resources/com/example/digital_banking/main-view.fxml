@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.digital_banking.controllers.MainController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <TabPane VBox.vgrow="ALWAYS">
+        <tabs>
+            <!-- Onglet Clients -->
+            <Tab text="Gestion des Clients" closable="false">
+                <VBox spacing="10">
+                    <HBox spacing="10">
+                        <Button text="Nouveau Client" onAction="#nouveauClient"/>
+                        <Button text="Modifier Client" onAction="#modifierClient"/>
+                        <Button text="Supprimer Client" onAction="#supprimerClient"/>
+                    </HBox>
+                    <TableView fx:id="clientsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="nomColumn" text="Nom"/>
+                            <TableColumn fx:id="prenomColumn" text="Prénom"/>
+                            <TableColumn fx:id="emailColumn" text="Email"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- Onglet Comptes -->
+            <Tab text="Gestion des Comptes" closable="false">
+                <VBox spacing="10">
+                    <HBox spacing="10">
+                        <Button text="Nouveau Compte" onAction="#nouveauCompte"/>
+                        <Button text="Fermer Compte" onAction="#fermerCompte"/>
+                    </HBox>
+                    <TableView fx:id="comptesTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="numeroCompteColumn" text="Numéro de Compte"/>
+                            <TableColumn fx:id="soldeColumn" text="Solde"/>
+                            <TableColumn fx:id="dateOuvertureColumn" text="Date d'ouverture"/>
+                            <TableColumn fx:id="clientCompteColumn" text="Client"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- Onglet Opérations -->
+            <Tab text="Opérations" closable="false">
+                <VBox spacing="10">
+                    <HBox spacing="10">
+                        <Button text="Dépôt" onAction="#effectuerDepot"/>
+                        <Button text="Retrait" onAction="#effectuerRetrait"/>
+                        <Button text="Virement" onAction="#effectuerVirement"/>
+                        <Button text="Générer Relevé" onAction="#genererReleve"/>
+                    </HBox>
+                    <TableView fx:id="operationsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="dateOperationColumn" text="Date"/>
+                            <TableColumn fx:id="typeOperationColumn" text="Type"/>
+                            <TableColumn fx:id="montantOperationColumn" text="Montant"/>
+                            <TableColumn fx:id="compteOperationColumn" text="Compte"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+        </tabs>
+    </TabPane>
+</VBox> 
