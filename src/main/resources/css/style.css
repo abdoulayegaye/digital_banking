@@ -1,0 +1,246 @@
+/* Style global pour l'application */
+.root {
+    -fx-font-family: 'Arial', sans-serif;
+    -fx-font-size: 16px;
+}
+
+/* Style pour les titres */
+.label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #b40d0d;
+}
+
+.label-small {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #b40d0d;
+}
+
+.label-blue {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0924bc;
+}
+
+.label-light-blue {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #138099;
+}
+
+.label-dark-blue {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f389e;
+}
+
+.label-purple {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #381394;
+}
+
+/* Style pour les boutons */
+.button {
+    -fx-background-color: #b40d0d;
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-font-size: 16px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #d32f2f;
+}
+
+.button:pressed {
+    -fx-background-color: #9a0000;
+}
+
+.button-green {
+    -fx-background-color: #067b0a;
+    -fx-text-fill: white;
+}
+
+.button-small {
+    -fx-padding: 5px 10px;
+}
+
+/* Style pour les TextField */
+.text-field {
+    -fx-padding: 10px;
+    -fx-font-size: 16px;
+    -fx-border-color: #b40d0d;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.password-field {
+    -fx-padding: 10px;
+    -fx-font-size: 16px;
+    -fx-border-color: #b40d0d;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+/* Style pour les ComboBox */
+.combo-box {
+    -fx-padding: 10px;
+    -fx-font-size: 16px;
+    -fx-border-color: #b40d0d;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #ffffff;
+}
+
+.combo-box .list-cell:filled:selected, .combo-box .list-cell:filled:hover {
+    -fx-background-color: #d32f2f;
+    -fx-text-fill: white;
+}
+
+/* Style pour les TableView */
+.table-view {
+    -fx-background-color: #f9f9f9;
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 10px;
+    -fx-font-size: 16px;
+}
+
+.table-column-header {
+    -fx-background-color: #b40d0d;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.table-row-cell:selected, .table-row-cell:hover {
+    -fx-background-color: #d32f2f;
+    -fx-text-fill: white;
+}
+
+/* Style pour les ImageView */
+.image-view {
+    -fx-preserve-ratio: true;
+    -fx-fit-height: 20px;
+    -fx-fit-width: 20px;
+}
+
+/* Style pour les HBox */
+.hbox {
+    -fx-spacing: 10px;
+    -fx-padding: 10px;
+}
+
+/* Style pour les VBox */
+.vbox {
+    -fx-spacing: 10px;
+    -fx-padding: 10px;
+}
+
+/* Style pour les GridPane */
+.grid-pane {
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
+    -fx-padding: 10px;
+}
+
+/* Style pour les AnchorPane */
+.anchor-pane {
+    -fx-padding: 10px;
+}
+
+/* Style pour les DialogPane */
+.dialog-pane {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #b40d0d;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+/* Style pour les ToolBar */
+.tool-bar {
+    -fx-background-color: #b40d0d;
+    -fx-padding: 10px;
+}
+
+/* Style pour les MenuBar */
+.menu-bar {
+    -fx-background-color: #b40d0d;
+    -fx-padding: 10px;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+
+.menu-bar .menu {
+    -fx-text-fill: white;
+}
+
+.menu-bar .menu:hover {
+    -fx-background-color: #d32f2f;
+}
+
+/* Style pour les TabPane */
+.tab-pane {
+    -fx-tab-min-width: 100px;
+    -fx-tab-max-width: 200px;
+    -fx-tab-min-height: 30px;
+    -fx-tab-max-height: 30px;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: #b40d0d;
+}
+
+.tab-pane .tab-header-area .tab {
+    -fx-background-color: #d32f2f;
+    -fx-text-fill: white;
+}
+
+.tab-pane .tab-header-area .tab:selected {
+    -fx-background-color: #9a0000;
+}
+
+.tab-pane .tab-content-area {
+    -fx-background-color: #f5f5f5;
+}
+
+/* Style pour les images avec classes spécifiques */
+.image-view-return {
+    -fx-fit-height: 47px;
+    -fx-fit-width: 65px;
+    -fx-preserve-ratio: true;
+}
+
+.image-view-header {
+    -fx-fit-height: 65px;
+    -fx-fit-width: 96px;
+    -fx-preserve-ratio: true;
+}
+
+.image-view-small {
+    -fx-fit-height: 20px;
+    -fx-fit-width: 20px;
+    -fx-preserve-ratio: true;
+}
+
+/* Arrière-plan pour les vues spécifiques */
+.anchor-pane.accueil {
+    -fx-background-color: #f0f8ff;
+}
+
+.anchor-pane.connexion {
+    -fx-background-color: #e6e6fa;
+}
+
+.anchor-pane.gestion-clients {
+    -fx-background-color: #fff0f5;
+}
+
+.anchor-pane.gestion-comptes {
+    -fx-background-color: #f5f5dc;
+}

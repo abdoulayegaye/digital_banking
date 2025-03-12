@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.AccueilController">
+    <children>
+        <!-- Titre "Gestion de Bank" -->
+        <Label fx:id="lblBienvenue" layoutX="220.0" layoutY="34.0" prefHeight="133.0" prefWidth="451.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="             Gestion de Bank" />
+
+        <!-- Bouton "Clients" -->
+        <Button fx:id="btnClients" layoutX="134.0" layoutY="436.0" onAction="#allerGestionClients" prefHeight="26.0" prefWidth="136.0" text="Clients" />
+
+        <!-- Bouton "Comptes" -->
+        <Button fx:id="btnComptes" layoutX="322.0" layoutY="436.0" onAction="#allerGestionComptes" prefHeight="26.0" prefWidth="142.0" text="Comptes" />
+
+        <!-- Bouton "Opérations" -->
+        <Button fx:id="btnOperations" layoutX="528.0" layoutY="436.0" onAction="#allerGestionOperations" prefHeight="26.0" prefWidth="142.0" text="Opérations" />
+
+        <!-- Bouton "Déconnexion" avec image -->
+        <Button fx:id="btnLogout" layoutX="377.0" layoutY="506.0" onAction="#deconnexion" prefHeight="34.0" prefWidth="112.0">
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/ OIP.jpeg" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <text>Déconnexion</text>
+        </Button>
+    </children>
+</AnchorPane>
