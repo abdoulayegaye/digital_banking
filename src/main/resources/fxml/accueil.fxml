@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane fx:id="mainContainer" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.banking.digitalbankingproject.controller.AccueilController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="@../css/style.css">
+    
+    <top>
+        <VBox spacing="0">
+            <!-- En-tête simple -->
+            <HBox alignment="CENTER" style="-fx-background-color: #2a9d8f; -fx-padding: 15;">
+                <Text text="DIGITAL BANKING" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: white;"/>
+            </HBox>
+            
+            <!-- Menu simplifié -->
+            <HBox alignment="CENTER" spacing="20" style="-fx-background-color: #f8f9fa; -fx-padding: 10;">
+                <Button text="Clients" onAction="#naviguerVersClients"
+                        style="-fx-font-size: 14px;"/>
+                <Button text="Comptes" onAction="#naviguerVersComptes"
+                        style="-fx-font-size: 14px;"/>
+                <Button text="Opérations" onAction="#naviguerVersOperations"
+                        style="-fx-font-size: 14px;"/>
+                <Button text="Déconnexion" onAction="#deconnexion"
+                        style="-fx-font-size: 14px; -fx-text-fill: #e63946;"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox alignment="CENTER" spacing="30" style="-fx-padding: 20;">
+            <!-- Titre de bienvenue -->
+            <Label text="Bienvenue sur Digital Banking" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+            
+            <!-- Menu principal sous forme de boutons -->
+            <GridPane alignment="CENTER" hgap="20" vgap="20">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="200" prefWidth="300" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="200" prefWidth="300" />
+                </columnConstraints>
+                
+                <!-- Bouton Clients -->
+                <Button text="Gestion des Clients" 
+                        onAction="#naviguerVersClients"
+                        maxWidth="Infinity" maxHeight="Infinity"
+                        style="-fx-font-size: 16px; -fx-padding: 30;"
+                        GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                
+                <!-- Bouton Comptes -->
+                <Button text="Gestion des Comptes" 
+                        onAction="#naviguerVersComptes"
+                        maxWidth="Infinity" maxHeight="Infinity"
+                        style="-fx-font-size: 16px; -fx-padding: 30;"
+                        GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                
+                <!-- Bouton Opérations -->
+                <Button text="Gestion des Opérations" 
+                        onAction="#naviguerVersOperations"
+                        maxWidth="Infinity" maxHeight="Infinity"
+                        style="-fx-font-size: 16px; -fx-padding: 30;"
+                        GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                
+                <!-- Bouton Déconnexion -->
+                <Button text="Déconnexion" 
+                        onAction="#deconnexion"
+                        maxWidth="Infinity" maxHeight="Infinity"
+                        style="-fx-font-size: 16px; -fx-padding: 30; -fx-text-fill: #e63946;"
+                        GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            </GridPane>
+            </VBox>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #f8f9fa;">
+            <Label text="© 2024 Digital Banking" style="-fx-text-fill: #6c757d;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

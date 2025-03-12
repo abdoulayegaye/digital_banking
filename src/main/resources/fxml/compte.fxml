@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="mainContainer" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.banking.digitalbankingproject.controller.CompteController"
+            prefHeight="700.0" prefWidth="1000.0"
+            stylesheets="@../css/style.css">
+    
+    <top>
+        <VBox spacing="0">
+            <!-- Titre -->
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #2a9d8f; -fx-padding: 15;">
+                <Text text="DIGITAL BANKING" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: white;"/>
+                
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <Label text="Gestion des Comptes" style="-fx-font-size: 16px; -fx-text-fill: white;"/>
+                </HBox>
+            </HBox>
+            
+            <!-- Menu -->
+            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 10;">
+                <Button text="Accueil" onAction="#retourAccueil"/>
+                <Button text="Clients" onAction="#naviguerVersClients"/>
+                <Button text="Opérations" onAction="#naviguerVersOperations"/>
+                
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <Button text="Déconnexion" onAction="#deconnexion" style="-fx-text-fill: #e63946;"/>
+                </HBox>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <SplitPane dividerPositions="0.4" prefHeight="400.0" prefWidth="600.0">
+            <!-- Formulaire d'ajout -->
+            <VBox spacing="15" style="-fx-background-color: #f8f9fa; -fx-padding: 20;">
+                <Label text="Informations du compte" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                
+                <GridPane vgap="10" hgap="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    
+                    <Label text="Client:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="clientComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                    
+                    <Label text="Type de compte:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="typeCompteComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                    
+                    <Label text="Solde initial:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="soldeField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    
+                    <Label text="Description:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextArea fx:id="descriptionField" GridPane.rowIndex="3" GridPane.columnIndex="1" prefHeight="60"/>
+                </GridPane>
+                
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button text="Réinitialiser" onAction="#viderFormulaire"/>
+                    <Button text="Ajouter" styleClass="button-primary" onAction="#ajouterCompte"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Liste des comptes -->
+            <VBox spacing="15" style="-fx-padding: 20;">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Liste des comptes" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="Actualiser" onAction="#actualiserComptes"/>
+                </HBox>
+                
+                <TableView fx:id="compteTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="numeroColumn" text="Numéro" prefWidth="100"/>
+                        <TableColumn fx:id="clientColumn" text="Client" prefWidth="150"/>
+                        <TableColumn fx:id="typeColumn" text="Type" prefWidth="100"/>
+                        <TableColumn fx:id="soldeColumn" text="Solde" prefWidth="100"/>
+                        <TableColumn fx:id="dateCreationColumn" text="Date de création" prefWidth="150"/>
+                    </columns>
+                </TableView>
+                
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button text="Supprimer" onAction="#supprimerCompte"/>
+                    <Button text="Voir les opérations" onAction="#voirOperations"/>
+                </HBox>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane> 

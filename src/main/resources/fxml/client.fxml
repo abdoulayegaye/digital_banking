@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="mainContainer" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.banking.digitalbankingproject.controller.ClientController"
+            prefHeight="700.0" prefWidth="1000.0"
+            stylesheets="@../css/style.css">
+    
+    <top>
+        <VBox spacing="0">
+            <!-- Titre -->
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: white; -fx-padding: 15 25;">
+                <Text text="DIGITAL BANKING" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #2a9d8f;"/>
+                
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <Label text="Gestion des Clients" style="-fx-font-size: 14px;"/>
+                </HBox>
+            </HBox>
+            
+            <!-- Menu -->
+            <HBox styleClass="nav-bar" alignment="CENTER_LEFT" spacing="10">
+                <Button text="Retour au tableau de bord" styleClass="nav-item" onAction="#retourAccueil"/>
+                
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <Button text="Déconnexion" styleClass="nav-item, nav-item-logout" onAction="#deconnexion"/>
+                </HBox>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="20" style="-fx-background-color: #f8f9fa; -fx-padding: 20;">
+            <Label text="Gestion des Clients" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            
+            <!-- Formulaire simple -->
+            <GridPane vgap="10" hgap="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                
+                <Label text="Nom:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="nomField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <Label text="Prénom:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="prenomField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                
+                <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                
+                <Label text="Téléphone:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="telephoneField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                
+                <Label text="Adresse:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextArea fx:id="adresseField" GridPane.rowIndex="4" GridPane.columnIndex="1" prefHeight="60"/>
+                
+                <HBox spacing="10" alignment="CENTER_RIGHT" GridPane.rowIndex="5" GridPane.columnIndex="1">
+                    <Button text="Effacer" onAction="#viderFormulaire"/>
+                    <Button text="Ajouter" styleClass="button-primary" onAction="#ajouterClient"/>
+                </HBox>
+            </GridPane>
+            
+            <!-- Liste des clients -->
+            <TableView fx:id="clientTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="nomColumn" text="Nom" prefWidth="150"/>
+                    <TableColumn fx:id="prenomColumn" text="Prénom" prefWidth="150"/>
+                    <TableColumn fx:id="emailColumn" text="Email" prefWidth="200"/>
+                    <TableColumn fx:id="telephoneColumn" text="Téléphone" prefWidth="150"/>
+                </columns>
+            </TableView>
+            
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Actualiser" onAction="#actualiserClients"/>
+                <Button text="Supprimer" onAction="#supprimerClient"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane> 

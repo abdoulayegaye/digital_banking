@@ -1,14 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<VBox spacing="15.0" styleClass="main-container"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.banking.digitalbankingproject.controller.ClientController"
-            prefHeight="400.0" prefWidth="600.0">
+      stylesheets="@../styles/styles.css">
+    
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
 
-</AnchorPane>
+    <!-- En-tête -->
+    <HBox alignment="CENTER" styleClass="header">
+        <Label text="Gestion des Clients" styleClass="page-title">
+            <font>
+                <Font name="System Bold" size="20.0"/>
+            </font>
+        </Label>
+    </HBox>
+
+    <!-- Barre de recherche -->
+    <HBox spacing="10.0" alignment="CENTER_RIGHT">
+        <Label text="Rechercher:"/>
+        <TextField fx:id="searchField" promptText="Nom, prénom ou email..." 
+                  prefWidth="250.0"/>
+    </HBox>
+
+    <!-- Formulaire -->
+    <GridPane hgap="10" vgap="10" styleClass="form-container">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100.0"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Prénom:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="prenomField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Téléphone:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="telephoneField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="Adresse:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <TextArea fx:id="adresseField" prefRowCount="2" wrapText="true"
+                  GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+
+    <!-- Boutons d'action -->
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button fx:id="ajouterBtn" text="Ajouter" onAction="#creerClient" 
+                styleClass="action-button"/>
+        <Button fx:id="modifierBtn" text="Modifier" onAction="#modifierClient" 
+                styleClass="action-button"/>
+        <Button fx:id="supprimerBtn" text="Supprimer" onAction="#supprimerClient" 
+                styleClass="action-button"/>
+        <Button fx:id="viderBtn" text="Vider" onAction="#viderChamps" 
+                styleClass="action-button"/>
+    </HBox>
+
+    <!-- Tableau des clients -->
+    <TableView fx:id="clientTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50.0"/>
+            <TableColumn fx:id="nomColumn" text="Nom" prefWidth="150.0"/>
+            <TableColumn fx:id="prenomColumn" text="Prénom" prefWidth="150.0"/>
+            <TableColumn fx:id="emailColumn" text="Email" prefWidth="200.0"/>
+            <TableColumn fx:id="telephoneColumn" text="Téléphone" prefWidth="120.0"/>
+            <TableColumn fx:id="adresseColumn" text="Adresse" prefWidth="200.0"/>
+        </columns>
+        <contextMenu>
+            <ContextMenu>
+                <items>
+                    <MenuItem text="Créer un compte" onAction="#creerCompteClient"/>
+                    <MenuItem text="Voir les comptes" onAction="#voirComptesClient"/>
+                </items>
+            </ContextMenu>
+        </contextMenu>
+    </TableView>
+
+    <!-- Barre de navigation -->
+    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+        <Button fx:id="retourBtn" text="Retour à l'accueil" onAction="#retourAccueil" 
+                styleClass="nav-button"/>
+    </HBox>
+</VBox>
