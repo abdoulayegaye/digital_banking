@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.banking.digitalbankingproject.controller.OperationController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f4f4f4;">
+    <HBox spacing="20" alignment="CENTER" prefWidth="800.0" prefHeight="400.0">
+
+        <!-- Titre -->
+        <!--    <Label text="Gestion des Opérations" layoutX="300.0" layoutY="20.0" font="Arial 20"/>-->
+        <VBox spacing="10" prefWidth="400.0" prefHeight="380.0">
+
+            <Button fx:id="btnRetourAccueil" text="Retour à l'accueil" onAction="#retourAccueil"/>
+            <TableView fx:id="historiqueTableView" prefHeight="300.0" prefWidth="350.0">
+                <!--            <Label text="Historique des Opérations" font="Arial 16"/>-->
+                <columns>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="100.0"/>
+                    <TableColumn fx:id="colMontant" text="Montant" prefWidth="100.0"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="150.0"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+        <!-- Section Détails de l'opération -->
+        <VBox spacing="10" alignment="CENTER_LEFT" layoutX="320.0" layoutY="220.0" >
+            <Label text="Numéro de Compte :"/>
+            <TextField fx:id="numeroCompteField" promptText="Entrer le numéro de compte" prefWidth="250.0"/>
+            <Button text="Rechercher" onAction="#rechercherCompte" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10 20; -fx-font-size: 14px; -fx-border-radius: 5;"/>
+            <Label text="Montant :"/>
+            <TextField fx:id="montantField" promptText="Entrer le montant" prefWidth="250.0"/>
+            <Label text="Type d'Opération :"/>
+            <ComboBox fx:id="operationTypeComboBox" prefWidth="250.0">
+            </ComboBox>
+            <Button fx:id="btnEffectuerOperation" text="Effectuer l'Opération" onAction="#effectuerOperation"
+                    style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-padding: 10 20; -fx-font-size: 14px; -fx-border-radius: 5;"/>
+        </VBox>
+
+        <!-- Section Historique des opérations -->
+
+    </HBox>
 
 </AnchorPane>

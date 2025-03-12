@@ -1,5 +1,6 @@
 package com.banking.digitalbankingproject;
 
+import com.banking.digitalbankingproject.tools.Utils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,10 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+       launch();
+        //String password = "123456"; // Remplace par ton mot de passe
+        //String hashedPassword = Utils.hashPassword(password);
+       // System.out.println("Mot de passe hashé : " + hashedPassword);
     }
+
 }

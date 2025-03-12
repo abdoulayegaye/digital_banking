@@ -1,9 +1,6 @@
 package com.banking.digitalbankingproject.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 import static com.banking.digitalbankingproject.database.Constants.*;
 
@@ -13,6 +10,9 @@ public class Db {
     private ResultSet rs;
     private int ok;
 
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
     private void connect(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

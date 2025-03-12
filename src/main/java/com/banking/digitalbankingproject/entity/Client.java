@@ -8,4 +8,25 @@ public class Client {
     private String nom;
     private String prenom;
     private String email;
+
+    public Client(int id, String nom, String prenom, String email) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+    }
+
+    public Client() {
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", prenom='" + prenom + '\'' +
+                ", nom='" + nom + '\'' +
+                '}';
+    }
 }
+
+
