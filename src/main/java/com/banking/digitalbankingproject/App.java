@@ -1,5 +1,8 @@
 package com.banking.digitalbankingproject;
 
+import com.banking.digitalbankingproject.entity.User;
+import com.banking.digitalbankingproject.service.IUser;
+import com.banking.digitalbankingproject.service.impl.UserImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,12 +16,18 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         Scene scene = new Scene(root);
-        stage.setTitle("Page de connexion");
+        stage.setTitle("Connexion");
         stage.setScene(scene);
         stage.show();
     }
-
     public static void main(String[] args) {
-        launch();
+        /*IUser iUser = new UserImpl();
+        User user = new User();
+        user.setUsername("user");
+        user.setPassword("passer");
+        boolean ok = iUser.createUser(user);
+        if (ok) System.out.println("cree");
+        else System.out.println("pas cree");*/
+        launch(args);
     }
 }

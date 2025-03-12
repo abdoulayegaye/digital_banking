@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane fx:id="gestionClientsPane" prefHeight="600.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.GestionClientsController">
+    <children>
+        <HBox layoutX="10.0" layoutY="10.0">
+            <Button fx:id="btnRetour" onAction="#retourAccueil" style="-fx-background-color: transparent;">
+                <graphic>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../../../../../Users/CnG/Pictures/fleche%20de%20retour.jpg" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+        <Label layoutX="20.0" layoutY="40.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Gestion des Clients" />
+        <Label layoutX="20.0" layoutY="70.0" text="Rechercher :" />
+        <TextField fx:id="txtRecherche" layoutX="100.0" layoutY="70.0" prefWidth="200.0" promptText="Entrez un nom ou un prénom" />
+        <Button fx:id="btnRechercher" layoutX="310.0" layoutY="70.0" onAction="#rechercherClient" prefHeight="30.0" prefWidth="100.0" text="Rechercher" />
+        <TableView fx:id="tableViewClients" layoutX="20.0" layoutY="110.0" prefHeight="350.0" prefWidth="800.0">
+            <columns>
+                <TableColumn fx:id="colNom" prefWidth="150" text="Nom">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="nom" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colPrenom" prefWidth="150" text="Prénom">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="prenom" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colEmail" prefWidth="200" text="Email">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="email" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+
+        <!-- Boutons -->
+        <Button fx:id="btnAjouterClient" layoutX="20.0" layoutY="470.0" onAction="#allerAjouterClient" prefHeight="30.0" prefWidth="100.0" text="Ajouter" />
+        <Button fx:id="btnModifierClient" layoutX="130.0" layoutY="470.0" onAction="#allerModifierClient" prefHeight="30.0" prefWidth="100.0" text="Modifier" />
+        <Button fx:id="btnSupprimerClient" layoutX="240.0" layoutY="470.0" onAction="#allerSupprimerClient" prefHeight="30.0" prefWidth="100.0" text="Supprimer" />
+        <Button fx:id="btnRefresh" layoutX="350.0" layoutY="470.0" onAction="#rafraichirClients" prefHeight="30.0" prefWidth="100.0" text="Refresh" />
+      <Button layoutX="465.0" layoutY="470.0" mnemonicParsing="false" onAction="#Retour_Accueil" prefHeight="30.0" prefWidth="100.0" text="Return" />
+    </children>
+</AnchorPane>

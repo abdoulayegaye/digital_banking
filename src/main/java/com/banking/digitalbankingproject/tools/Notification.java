@@ -6,7 +6,13 @@ import tray.notification.TrayNotification;
 
 public class Notification {
 
-    public static void NotifSuccess(String titre, String message){
+    /**
+     * Affiche une notification de succès.
+     *
+     * @param titre   Le titre de la notification.
+     * @param message Le message de la notification.
+     */
+    public static void NotifSuccess(String titre, String message) {
         NotificationType type = NotificationType.SUCCESS;
         TrayNotification tray = new TrayNotification();
         tray.setTitle(titre);
@@ -15,7 +21,13 @@ public class Notification {
         tray.showAndDismiss(Duration.seconds(2));
     }
 
-    public static void NotifError(String titre, String message){
+    /**
+     * Affiche une notification d'erreur.
+     *
+     * @param titre   Le titre de la notification.
+     * @param message Le message de la notification.
+     */
+    public static void NotifError(String titre, String message) {
         NotificationType type = NotificationType.ERROR;
         TrayNotification tray = new TrayNotification();
         tray.setTitle(titre);

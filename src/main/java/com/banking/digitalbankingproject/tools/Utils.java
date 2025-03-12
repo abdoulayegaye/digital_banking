@@ -1,7 +1,6 @@
 package com.banking.digitalbankingproject.tools;
 
 import org.mindrot.jbcrypt.BCrypt;
-
 public class Utils {
 
     public static String hashPassword(String plainTextPassword) {

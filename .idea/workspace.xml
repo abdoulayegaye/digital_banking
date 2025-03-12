@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dd495757-3df6-4f70-a7ed-63ef7ad1fcd1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/AjouterClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/AjouterCompteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/AssocierClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/GestionComptesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/GestionOperationsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/HistoriqueController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/ModifierClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/ModifierCompteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/util/CallbackFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/ajouterClient.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/ajouterCompte.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/associerClient.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/depot.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/gestionComptes.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/gestionOperations.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/historique.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/modifierClient.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/modifierCompte.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/retrait.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/supprimerClient.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/virement.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/retour.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/AccueilController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/AccueilController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/CompteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/CompteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/OperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/database/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/database/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/database/Db.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/database/Db.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/entity/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/entity/Compte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/entity/Compte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/entity/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/entity/Operation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/enums/TypeOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/enums/TypeOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/IClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/ICompte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/ICompte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/IOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/IOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/IUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/IUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/impl/ClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/impl/ClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/impl/CompteImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/impl/CompteImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/impl/OperationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/impl/OperationImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/impl/UserImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/service/impl/UserImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/tools/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/tools/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/tools/Outils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/tools/Outils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/tools/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banking/digitalbankingproject/tools/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/accueil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/accueil.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/clients.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/clients.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/comptes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/comptes.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/operations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/operations.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2uBxHrY3RsQOhBr8pjdI2ZqsmZI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Karl Max/Desktop/L3/java/digital_banking/digital_banking/digital_banking",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="digital_banking" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="digital_banking" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dd495757-3df6-4f70-a7ed-63ef7ad1fcd1" name="Changes" comment="" />
+      <created>1741735684174</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741735684174</updated>
+      <workItem from="1741735685135" duration="94000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
