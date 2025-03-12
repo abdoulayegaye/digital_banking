@@ -2,13 +2,13 @@ package com.banking.digitalbankingproject.entity;
 
 import lombok.Data;
 
-import java.time.Instant;
+import java.sql.Timestamp;
 
 @Data
 public class Compte {
     private int id;
     private String numero;
     private double balance;
-    private Instant createdAt;
+    private Timestamp createdAt;
     private Client client;
 }

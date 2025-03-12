@@ -1,10 +1,15 @@
-module com.banking.digitalbankingproject {
+module com.banking.com.banking.digitalbankingproject {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
     requires static lombok;
     requires TrayNotification;
     requires jbcrypt;
+    requires layout;
+    requires kernel;
+    requires io;
+    requires org.apache.pdfbox;
+    requires barcodes;
 
 
     opens com.banking.digitalbankingproject to javafx.fxml;

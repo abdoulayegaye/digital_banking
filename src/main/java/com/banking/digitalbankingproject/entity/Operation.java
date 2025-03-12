@@ -3,6 +3,7 @@ package com.banking.digitalbankingproject.entity;
 import com.banking.digitalbankingproject.enums.TypeOperation;
 import lombok.*;
 
+import java.sql.Timestamp;
 import java.time.Instant;
 
 @AllArgsConstructor
@@ -12,7 +13,7 @@ import java.time.Instant;
 @ToString
 public class Operation {
     private int id;
-    private Instant dateOp;
+    private Timestamp dateOp;
     private double amount;
     private TypeOperation type;
     private Compte compte;
