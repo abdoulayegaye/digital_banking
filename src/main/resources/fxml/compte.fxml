@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="mainContainer" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.banking.digitalbankingproject.controller.CompteController"
+            prefHeight="700.0" prefWidth="1000.0"
+            stylesheets="@../css/style.css">
+    
+    <top>
+        <VBox spacing="0">
+            <!-- Titre -->
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: white; -fx-padding: 15 25;">
+                <Text text="DIGITAL BANKING" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #2a9d8f;"/>
+                
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <Label text="Gestion des Comptes" style="-fx-font-size: 14px;"/>
+                </HBox>
+            </HBox>
+            
+            <!-- Menu -->
+            <HBox styleClass="nav-bar" alignment="CENTER_LEFT" spacing="10">
+                <Button text="Retour au tableau de bord" styleClass="nav-item" onAction="#retourAccueil"/>
+                
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <Button text="Déconnexion" styleClass="nav-item, nav-item-logout" onAction="#deconnexion"/>
+                </HBox>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <padding>
+                <Insets top="50" right="50" bottom="50" left="50"/>
+            </padding>
+            
+            <Label text="Gestion des Comptes" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label text="Cette fonctionnalité est en cours de développement" style="-fx-font-size: 18px;"/>
+            
+            <Button text="Retour à l'accueil" styleClass="button-primary" onAction="#retourAccueil" />
+        </VBox>
+    </center>
+</BorderPane> 

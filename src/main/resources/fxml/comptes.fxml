@@ -1,14 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.CompteController"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox spacing="15.0" styleClass="main-container"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.banking.digitalbankingproject.controller.CompteController"
+      stylesheets="@../styles/styles.css">
 
-</AnchorPane>
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
+
+    <!-- En-tête -->
+    <HBox alignment="CENTER" styleClass="header">
+        <Label text="Gestion des Comptes" styleClass="page-title">
+            <font>
+                <Font name="System Bold" size="20.0"/>
+            </font>
+        </Label>
+    </HBox>
+
+    <!-- Formulaire de création/modification -->
+    <GridPane hgap="10" vgap="10" styleClass="form-container">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100.0"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Client:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="clientCombo" prefWidth="250.0" 
+                  GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Type de compte:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <ComboBox fx:id="typeCompteCombo" prefWidth="250.0" 
+                  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Solde initial:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="soldeInitialField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    </GridPane>
+
+    <!-- Boutons d'action -->
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button fx:id="creerBtn" text="Créer compte" onAction="#creerCompte" 
+                styleClass="action-button"/>
+        <Button fx:id="consulterSoldeBtn" text="Consulter solde" onAction="#consulterSolde" 
+                styleClass="action-button"/>
+        <Button fx:id="historiqueBtn" text="Historique" onAction="#consulterHistorique" 
+                styleClass="action-button"/>
+    </HBox>
+
+    <!-- Tableau des comptes -->
+    <TableView fx:id="compteTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="numeroColumn" text="Numéro" prefWidth="120.0"/>
+            <TableColumn fx:id="typeColumn" text="Type" prefWidth="100.0"/>
+            <TableColumn fx:id="clientColumn" text="Client" prefWidth="200.0"/>
+            <TableColumn fx:id="soldeColumn" text="Solde" prefWidth="100.0"/>
+            <TableColumn fx:id="dateCreationColumn" text="Date création" prefWidth="150.0"/>
+        </columns>
+        <contextMenu>
+            <ContextMenu>
+                <items>
+                    <MenuItem text="Effectuer un dépôt" onAction="#effectuerDepot"/>
+                    <MenuItem text="Effectuer un retrait" onAction="#effectuerRetrait"/>
+                    <MenuItem text="Effectuer un virement" onAction="#effectuerVirement"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Voir les opérations" onAction="#voirOperations"/>
+                </items>
+            </ContextMenu>
+        </contextMenu>
+    </TableView>
+
+    <!-- Barre de navigation -->
+    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+        <Button fx:id="retourBtn" text="Retour à l'accueil" onAction="#retourAccueil" 
+                styleClass="nav-button"/>
+    </HBox>
+</VBox>

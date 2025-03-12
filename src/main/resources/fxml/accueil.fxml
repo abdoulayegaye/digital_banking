@@ -1,14 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane fx:id="mainContainer" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.banking.digitalbankingproject.controller.AccueilController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+            prefHeight="700.0" prefWidth="1000.0"
+            stylesheets="@../css/style.css">
+    
+    <top>
+        <VBox spacing="0">
+            <!-- Barre de titre -->
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: white; -fx-padding: 15 25;">
+                <Text text="DIGITAL BANKING" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #2a9d8f;"/>
+                
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <Label text="Bienvenue, Administrateur" style="-fx-font-size: 14px;"/>
+                </HBox>
+            </HBox>
+            
+            <!-- Menu de navigation -->
+            <HBox styleClass="nav-bar" alignment="CENTER_LEFT" spacing="10">
+                <Button text="Tableau de bord" styleClass="nav-item" onAction="#naviguerVersAccueil"/>
+                <Button text="Clients" styleClass="nav-item" onAction="#naviguerVersClients"/>
+                <Button text="Comptes" styleClass="nav-item" onAction="#naviguerVersComptes"/>
+                <Button text="Opérations" styleClass="nav-item" onAction="#naviguerVersOperations"/>
+                <Button text="Rapports" styleClass="nav-item" onAction="#naviguerVersRapports"/>
+                
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <Button text="Déconnexion" styleClass="nav-item, nav-item-logout" onAction="#deconnexion"/>
+                </HBox>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-width: 0;">
+            <VBox spacing="30" style="-fx-background-color: #f8f9fa; -fx-padding: 30;">
+                <!-- En-tête -->
+                <VBox spacing="5">
+                    <Text text="Tableau de bord" styleClass="title"/>
+                    <Text text="Gérez facilement votre banque digitale" styleClass="subtitle"/>
+                </VBox>
+                
+                <!-- Statistiques -->
+                <HBox spacing="20">
+                    <VBox styleClass="dashboard-card, stat-card-blue" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" 
+                          alignment="CENTER" spacing="15" prefWidth="225" minHeight="150">
+                        <Text text="CLIENTS" styleClass="stat-title"/>
+                        <Text text="254" styleClass="stat-number"/>
+                        <Button text="Gérer les clients" styleClass="button-primary" onAction="#naviguerVersClients"/>
+                    </VBox>
+                    
+                    <VBox styleClass="dashboard-card, stat-card-green" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"
+                          alignment="CENTER" spacing="15" prefWidth="225" minHeight="150">
+                        <Text text="COMPTES" styleClass="stat-title"/>
+                        <Text text="418" styleClass="stat-number"/>
+                        <Button text="Gérer les comptes" styleClass="button-primary" onAction="#naviguerVersComptes"/>
+                    </VBox>
+                    
+                    <VBox styleClass="dashboard-card, stat-card-yellow" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"
+                          alignment="CENTER" spacing="15" prefWidth="225" minHeight="150">
+                        <Text text="OPÉRATIONS" styleClass="stat-title"/>
+                        <Text text="1,246" styleClass="stat-number"/>
+                        <Button text="Voir les opérations" styleClass="button-primary" onAction="#naviguerVersOperations"/>
+                    </VBox>
+                    
+                    <VBox styleClass="dashboard-card, stat-card-red" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"
+                          alignment="CENTER" spacing="15" prefWidth="225" minHeight="150">
+                        <Text text="SOLDE TOTAL" styleClass="stat-title"/>
+                        <Text text="4,862,520 €" styleClass="stat-number"/>
+                        <Button text="Voir les rapports" styleClass="button-primary" onAction="#naviguerVersRapports"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Section Activités Récentes -->
+                <VBox spacing="15" styleClass="container">
+                    <Text text="Activités Récentes" styleClass="subtitle"/>
+                    
+                    <TableView VBox.vgrow="ALWAYS" minHeight="200">
+                        <columns>
+                            <TableColumn text="Date" prefWidth="120"/>
+                            <TableColumn text="Type" prefWidth="100"/>
+                            <TableColumn text="Compte" prefWidth="150"/>
+                            <TableColumn text="Client" prefWidth="200"/>
+                            <TableColumn text="Montant" prefWidth="120"/>
+                            <TableColumn text="Statut" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                    
+                    <HBox alignment="CENTER_RIGHT">
+                        <Button text="Voir toutes les opérations" styleClass="button-primary" onAction="#naviguerVersOperations"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Section Actions Rapides -->
+                <HBox spacing="20">
+                    <VBox spacing="15" styleClass="container" HBox.hgrow="ALWAYS" minWidth="300">
+                        <Text text="Actions Rapides" styleClass="subtitle"/>
+                        
+                        <VBox spacing="10">
+                            <Button text="Ajouter un nouveau client" styleClass="button-primary" maxWidth="Infinity" onAction="#naviguerVersClients"/>
+                            <Button text="Créer un nouveau compte" styleClass="button-primary" maxWidth="Infinity" onAction="#naviguerVersComptes"/>
+                            <Button text="Effectuer un virement" styleClass="button-primary" maxWidth="Infinity" onAction="#naviguerVersOperations"/>
+                            <Button text="Générer un rapport" styleClass="button-primary" maxWidth="Infinity" onAction="#naviguerVersRapports"/>
+                        </VBox>
+                    </VBox>
+                    
+                    <VBox spacing="15" styleClass="container" HBox.hgrow="ALWAYS" minWidth="300">
+                        <Text text="Informations Système" styleClass="subtitle"/>
+                        
+                        <VBox spacing="10">
+                            <HBox spacing="10">
+                                <Label text="Version:" style="-fx-font-weight: bold;"/>
+                                <Label text="Digital Banking v1.0"/>
+                            </HBox>
+                            
+                            <HBox spacing="10">
+                                <Label text="Statut Système:" style="-fx-font-weight: bold;"/>
+                                <Label text="En ligne" style="-fx-text-fill: #52b788;"/>
+                            </HBox>
+                            
+                            <HBox spacing="10">
+                                <Label text="Dernière Mise à Jour:" style="-fx-font-weight: bold;"/>
+                                <Label text="Aujourd'hui à 08:45"/>
+                            </HBox>
+                            
+                            <HBox spacing="10">
+                                <Label text="Base de Données:" style="-fx-font-weight: bold;"/>
+                                <Label text="Connectée" style="-fx-text-fill: #52b788;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 10 20;">
+            <Label text="© 2024 Digital Banking. Tous droits réservés." style="-fx-text-fill: #6c757d;"/>
+            
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                <Label text="Connecté en tant qu'Administrateur" style="-fx-text-fill: #6c757d;"/>
+            </HBox>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,14 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<VBox spacing="15.0" styleClass="main-container"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.banking.digitalbankingproject.controller.OperationController"
-            prefHeight="400.0" prefWidth="600.0">
+      stylesheets="@../styles/styles.css">
 
-</AnchorPane>
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
+
+    <!-- En-tête -->
+    <HBox alignment="CENTER" styleClass="header">
+        <Label text="Opérations Bancaires" styleClass="page-title">
+            <font>
+                <Font name="System Bold" size="20.0"/>
+            </font>
+        </Label>
+    </HBox>
+
+    <!-- Formulaire d'opération -->
+    <GridPane hgap="10" vgap="10" styleClass="form-container">
+        <columnConstraints>
+            <ColumnConstraints minWidth="120.0"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Compte source:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="compteSourceCombo" prefWidth="250.0" 
+                  GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Compte destination:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <ComboBox fx:id="compteDestinationCombo" prefWidth="250.0" 
+                  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Montant:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="montantField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextArea fx:id="descriptionField" prefRowCount="2" wrapText="true"
+                  GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <!-- Boutons d'opérations -->
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button fx:id="depotBtn" text="Dépôt" onAction="#effectuerDepot" 
+                styleClass="action-button"/>
+        <Button fx:id="retraitBtn" text="Retrait" onAction="#effectuerRetrait" 
+                styleClass="action-button"/>
+        <Button fx:id="virementBtn" text="Virement" onAction="#effectuerVirement" 
+                styleClass="action-button"/>
+        <Button fx:id="releveBtn" text="Générer relevé" onAction="#genererReleve" 
+                styleClass="action-button"/>
+    </HBox>
+
+    <!-- Historique des opérations -->
+    <TableView fx:id="operationTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="dateColumn" text="Date" prefWidth="150.0"/>
+            <TableColumn fx:id="typeColumn" text="Type" prefWidth="100.0"/>
+            <TableColumn fx:id="montantColumn" text="Montant" prefWidth="100.0"/>
+            <TableColumn fx:id="compteColumn" text="Compte" prefWidth="150.0"/>
+            <TableColumn fx:id="destinataireColumn" text="Destinataire" prefWidth="150.0"/>
+            <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="200.0"/>
+        </columns>
+    </TableView>
+
+    <!-- Filtres de recherche -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Label text="Période:"/>
+        <DatePicker fx:id="dateDebutPicker" promptText="Date début"/>
+        <DatePicker fx:id="dateFinPicker" promptText="Date fin"/>
+        <Button text="Filtrer" onAction="#filtrerOperations" 
+                styleClass="filter-button"/>
+    </HBox>
+
+    <!-- Barre de navigation -->
+    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+        <Button fx:id="retourBtn" text="Retour à l'accueil" onAction="#retourAccueil" 
+                styleClass="nav-button"/>
+    </HBox>
+</VBox>
