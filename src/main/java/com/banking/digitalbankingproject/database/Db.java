@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import static com.banking.digitalbankingproject.database.Constants.*;
 
@@ -13,53 +14,68 @@ public class Db {
     private ResultSet rs;
     private int ok;
 
-    private void connect(){
-        try{
+    private void connect() throws SQLException {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             cnx = DriverManager.getConnection(URL, USER, PASSWORD);
-        }catch (Exception e){
-            System.out.println("Erreur de connexion á la BD : " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Pilote JDBC non trouvé : " + e.getMessage());
+        } catch (SQLException e) {
+            throw new SQLException("Erreur de connexion à la BD : " + e.getMessage());
         }
     }
 
-    public void initPrepar(String sql){
-        try{
+    public void initPrepar(String sql) {
+        try {
             connect();
             pstm = cnx.prepareStatement(sql);
-        }catch (Exception e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public ResultSet executeSelect(){
+    public ResultSet executeSelect() {
         rs = null;
-        try{
+        try {
             rs = pstm.executeQuery();
-        }catch (Exception e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return rs;
     }
 
-    public int executeMaj(){
-        try{
+    public int executeMaj() {
+        try {
             ok = pstm.executeUpdate();
-        }catch (Exception e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return ok;
     }
 
-    public void closeConnection(){
-        try{
-            if (cnx != null)
+    public void closeConnection() {
+        try {
+            if (cnx != null && !cnx.isClosed()) {
                 cnx.close();
-        }catch (Exception e){
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public PreparedStatement getPstm() {
         return pstm;
+    }
+
+    public Connection getConnection() {
+        try {
+            if (cnx == null || cnx.isClosed()) {
+                connect();
+            }
+            return cnx;
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la récupération de la connexion : " + e.getMessage());
+            return null;
+        }
     }
 }

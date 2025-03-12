@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class OperationController {
+public class GestionOperationsController {
 
     @FXML
     private Button btnDepot;
@@ -16,16 +16,11 @@ public class OperationController {
     @FXML
     private Button btnVirement;
     @FXML
+    private Button btnHistorique;
+    @FXML
     private Button btnRetour;
 
     @FXML
-    private void initialize() {
-        btnDepot.setOnAction(event -> allerDepot(event));
-        btnRetrait.setOnAction(event -> allerRetrait(event));
-        btnVirement.setOnAction(event -> allerVirement(event));
-        btnRetour.setOnAction(event -> retourAccueil(event));
-    }
-
     private void allerDepot(ActionEvent event) {
         try {
             Outils.load(event, "Dépôt", "/fxml/depot.fxml");
@@ -34,6 +29,7 @@ public class OperationController {
         }
     }
 
+    @FXML
     private void allerRetrait(ActionEvent event) {
         try {
             Outils.load(event, "Retrait", "/fxml/retrait.fxml");
@@ -42,6 +38,7 @@ public class OperationController {
         }
     }
 
+    @FXML
     private void allerVirement(ActionEvent event) {
         try {
             Outils.load(event, "Virement", "/fxml/virement.fxml");
@@ -50,6 +47,16 @@ public class OperationController {
         }
     }
 
+    @FXML
+    private void allerHistorique(ActionEvent event) {
+        try {
+            Outils.load(event, "Historique des Transactions", "/fxml/historique.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void retourAccueil(ActionEvent event) {
         try {
             Outils.load(event, "Accueil", "/fxml/accueil.fxml");

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="ajouterComptePane" prefHeight="350.0" prefWidth="400.0"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.AjouterCompteController">
+    <children>
+        <Label layoutX="50.0" layoutY="20.0" text="Numéro du compte :" />
+        <TextField fx:id="txtNumero" layoutX="150.0" layoutY="20.0" prefWidth="200.0" prefHeight="30.0" promptText="Numéro du compte" />
+        <Label layoutX="50.0" layoutY="70.0" text="Solde initial :" />
+        <TextField fx:id="txtSolde" layoutX="150.0" layoutY="70.0" prefWidth="200.0" prefHeight="30.0" promptText="Solde initial" />
+        <Label layoutX="50.0" layoutY="120.0" text="Client :" />
+        <ComboBox fx:id="cmbClient" layoutX="150.0" layoutY="120.0" prefWidth="200.0" promptText="Sélectionner un client" />
+        <Button fx:id="btnAjouter" layoutX="150.0" layoutY="180.0" onAction="#ajouterCompte" text="Ajouter" />
+        <Button fx:id="btnRetour" layoutX="150.0" layoutY="230.0" onAction="#retourGestionComptes" text="Retour" />
+    </children>
+</AnchorPane>

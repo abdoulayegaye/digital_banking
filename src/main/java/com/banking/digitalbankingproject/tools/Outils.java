@@ -11,6 +11,12 @@ import java.io.IOException;
 
 public class Outils {
 
+    public static void showError(String erreur, String s) {
+    }
+
+    public static void showSuccess(String succès, String s) {
+    }
+
     private void loadPage(ActionEvent event, String title, String url) throws IOException{
         ((Node) event.getSource()).getScene().getWindow().hide();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(url));
