@@ -12,6 +12,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("/fxml/accueil.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Page de connexion");
         stage.setScene(scene);
@@ -22,3 +23,4 @@ public class App extends Application {
         launch();
     }
 }
+ 

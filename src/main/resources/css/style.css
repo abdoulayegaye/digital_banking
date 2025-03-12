@@ -1,0 +1,14 @@
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+.menu-button:hover {
+    -fx-background-color: #34495E;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}

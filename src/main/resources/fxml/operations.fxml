@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.OperationController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane prefHeight="700" prefWidth="1000" style="-fx-background-color: #1E2A38; -fx-padding: 20px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.OperationController">
 
-</AnchorPane>
+    <!-- Titre -->
+    <top>
+        <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #00D4FF; -fx-padding: 10px;" text="💰 Gestion des Transactions Bancaires" />
+    </top>
+
+    <!-- Opérations Bancaires (Dépôt & Retrait) -->
+    <left>
+        <VBox prefWidth="250.0" spacing="15" style="-fx-background-color: #2C3E50; -fx-padding: 15px; -fx-border-radius: 10px;">
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white; -fx-underline: true;" text="💵 Dépôt  Retrait" />
+
+            <HBox spacing="10">
+                <Label style="-fx-text-fill: white;" text="Montant :" />
+                <TextField fx:id="montantDepotRetraitField" prefWidth="150" promptText="Entrez le montant" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label style="-fx-text-fill: white;" text="Compte :" />
+                <ComboBox fx:id="compteSourceDepotRetraitComboBox" prefWidth="150" promptText="Sélectionnez un compte" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Button onAction="#effectuerDepot" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold;" styleClass="menu-button" stylesheets="@css/style.css" text="💵 Déposer" />
+                <Button onAction="#effectuerRetrait" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold;" styleClass="menu-button" stylesheets="@css/style.css" text="💳 Retirer" />
+            </HBox>
+           <VBox alignment="BOTTOM_CENTER" prefWidth="250" spacing="15" style="-fx-background-color: #2C3E50; -fx-padding: 15px; -fx-border-radius: 10px;">
+               <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white; -fx-underline: true;" text="🔄 Virement Bancaire" />
+   
+                     <HBox spacing="10">
+                   <Label style="-fx-text-fill: white;" text="Source :" />
+                   <ComboBox fx:id="compteSourceVirementComboBox" prefWidth="150" promptText="Compte source" />
+               </HBox>
+   
+                     <HBox spacing="10">
+                   <Label style="-fx-text-fill: white;" text="Destinataire :" />
+                   <ComboBox fx:id="compteDestVirementComboBox" prefWidth="150" promptText="Compte destination" />
+               </HBox>
+   
+                     <HBox spacing="10">
+                   <Label style="-fx-text-fill: white;" text="Montant :" />
+                   <TextField fx:id="montantVirementField" prefWidth="150" promptText="Entrez le montant" />
+               </HBox>
+   
+                        <Button onAction="#effectuerVirement" style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold;" styleClass="menu-button" stylesheets="@css/style.css" text="🔄 Effectuer Virement" />
+           </VBox>
+             <Label alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" style="-fx-font-size: 16px; -fx-text-fill: #FFFFFF;" text="Total des opérations :" wrapText="true">
+            <graphic>
+                   <Label fx:id="totalOperationsLabel" alignment="TOP_RIGHT" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-font-size: 16px; -fx-text-fill: #FFD700; -fx-font-weight: bold; -fx-alignment: center;" text="0" />
+            </graphic>
+         </Label>
+        </VBox>
+    </left>
+
+    <!-- Section Historique des Transactions -->
+    <center>
+        <VBox alignment="CENTER" spacing="15" style="-fx-background-color: #34495E; -fx-padding: 20px; -fx-border-radius: 10px;">
+            <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #FFD700;" text="📜 Historique des Transactions" />
+
+            <ScrollPane fitToHeight="true" fitToWidth="true">
+                <TableView fx:id="transactionTable" prefHeight="400" prefWidth="600">
+                    <columns>
+                        <TableColumn fx:id="typeColumn" prefWidth="120" text="📌 Type" />
+                        <TableColumn fx:id="montantColumn" prefWidth="150" text="💰 Montant" />
+                        <TableColumn fx:id="dateColumn" prefWidth="200" text="📅 Date" />
+                        <TableColumn fx:id="numeroCompteColumn" prefWidth="150" text="🏦 N° Compte" />
+                    </columns>
+                </TableView>
+            </ScrollPane>
+
+            <HBox alignment="CENTER" spacing="10">
+            <Button fx:id="retourClientsButton" alignment="TOP_CENTER" contentDisplay="TEXT_ONLY" graphicTextGap="1.0" onAction="#retourAccueil" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold;" styleClass="menu-button" stylesheets="@css/style.css" text="🏠 Accueil" />
+   
+                     <Button fx:id="fermerButton" alignment="TOP_CENTER" contentDisplay="TEXT_ONLY" graphicTextGap="1.0" onAction="#fermerFenetre" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" styleClass="menu-button" stylesheets="@css/style.css" text="❌ Fermer" />
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

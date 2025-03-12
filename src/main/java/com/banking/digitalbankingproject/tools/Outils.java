@@ -11,6 +11,10 @@ import java.io.IOException;
 
 public class Outils {
 
+    public static boolean isEmailValid(String email) {
+        return false;
+    }
+
     private void loadPage(ActionEvent event, String title, String url) throws IOException{
         ((Node) event.getSource()).getScene().getWindow().hide();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(url));

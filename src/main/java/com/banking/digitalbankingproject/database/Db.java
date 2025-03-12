@@ -62,4 +62,13 @@ public class Db {
     public PreparedStatement getPstm() {
         return pstm;
     }
+
+    public void startTransaction() {
+    }
+
+    public void commitTransaction() {
+    }
+
+    public void rollbackTransaction() {
+    }
 }

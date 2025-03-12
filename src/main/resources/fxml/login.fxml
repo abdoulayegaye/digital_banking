@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.ParallelCamera?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -9,27 +10,32 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.UserController">
+<AnchorPane prefHeight="400.0" prefWidth="522.0" style="-fx-background-color: #193940;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.UserController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="251.0">
+      <AnchorPane prefHeight="400.0" prefWidth="251.0" style="-fx-background-color: #ABDCE7;">
          <children>
-            <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="26.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="26.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/logo-user.png" />
+                  <Image url="@../images/bank(1).png" />
                </image>
             </ImageView>
+            <Text layoutX="44.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
-      <Text layoutX="304.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connexion">
+      <Text fill="#eeebeb" layoutX="304.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connexion">
          <font>
             <Font size="31.0" />
          </font>
       </Text>
-      <Text layoutX="274.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+      <Text fill="#f2eded" layoutX="274.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
       <TextField fx:id="usernameTfd" layoutX="274.0" layoutY="160.0" prefHeight="25.0" prefWidth="224.0" promptText="Votre username ici" />
-      <Text layoutX="274.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
+      <Text fill="#f2eded" layoutX="274.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
       <PasswordField fx:id="passwordTfd" layoutX="274.0" layoutY="242.0" prefHeight="25.0" prefWidth="224.0" promptText="Votre mot de passe ici" />
       <Button layoutX="343.0" layoutY="313.0" mnemonicParsing="false" onAction="#login" text="Se Connecter" />
+      <ParallelCamera />
    </children>
 </AnchorPane>

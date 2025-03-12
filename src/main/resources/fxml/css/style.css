@@ -1,0 +1,73 @@
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+.menu-button:hover {
+    -fx-background-color: #34495E;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+.table-view {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #0077b6;
+    -fx-border-radius: 10px;
+    -fx-padding: 5px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
+}
+
+/* Colonnes */
+.table-column {
+    -fx-alignment: CENTER;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* En-tête de la table */
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to right, #0077b6, #0096c7);
+    -fx-background-radius: 10px 10px 0 0;
+}
+
+.table-view .column-header {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+
+
+/* Effet hover sur les lignes */
+.table-row-cell:hover {
+    -fx-background-color: #caf0f8;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+/* Sélection d'une ligne */
+.table-row-cell:selected {
+    -fx-background-color: linear-gradient(to right, #0077b6, #0096c7);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* ScrollBar styling */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #0077b6;
+    -fx-background-radius: 5px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #0096c7;
+}
+

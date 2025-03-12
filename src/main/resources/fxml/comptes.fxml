@@ -1,14 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.CompteController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane style="-fx-background-color: linear-gradient(to bottom right, #193940, #2C3E50);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.CompteController">
 
-</AnchorPane>
+    <!-- Titre en haut -->
+    <top>
+        <HBox alignment="CENTER" spacing="10" style="-fx-padding: 20px;">
+            <ImageView fitHeight="50" fitWidth="50">
+                <Image url="@../images/bank(1).png" /> <!-- Ajoutez une icône de banque -->
+            </ImageView>
+            <Label style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #ABDCE7;" text="Gestion des Comptes" />
+        </HBox>
+    </top>
+
+    <!-- Contenu central -->
+    <center>
+        <VBox alignment="CENTER">
+            <!-- Formulaire de création de compte -->
+            <GridPane hgap="15" style="-fx-padding: 20px; -fx-background-color: rgba(255, 255, 255, 0.1); -fx-background-radius: 15px;" vgap="15">
+                <Label style="-fx-text-fill: #ABDCE7; -fx-font-size: 16px;" text="Client:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <ComboBox fx:id="clientComboBox" style="-fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label style="-fx-text-fill: #ABDCE7; -fx-font-size: 16px;" text="Numéro de compte:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="numeroField" promptText="Ex: 12345678" style="-fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label style="-fx-text-fill: #ABDCE7; -fx-font-size: 16px;" text="Type de compte:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <ComboBox fx:id="typeCompteComboBox" style="-fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Courant" />
+                            <String fx:value="Épargne" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label style="-fx-text-fill: #ABDCE7; -fx-font-size: 16px;" text="Solde Initial:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextField fx:id="balanceField" promptText="Ex: 5000.00" style="-fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <!-- Boutons pour actions -->
+                <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <Button fx:id="ajouterButton" onAction="#ajouterCompte" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;" styleClass="menu-button" stylesheets="@css/style.css" text="Créer" />
+                    <Button onAction="#fermerCompte" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;" styleClass="menu-button" stylesheets="@css/style.css" text="Fermer le compte" />
+                    <Button onAction="#ouvrirCompte" style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;" styleClass="menu-button" stylesheets="@css/style.css" text="Ouvrir le compte" />
+                </HBox>
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+
+            <!-- Tableau des comptes -->
+            <TableView fx:id="compteTable" prefHeight="200" prefWidth="500" style="-fx-background-color: rgba(255, 255, 255, 0.1); -fx-background-radius: 15px;">
+                <columns>
+                    <TableColumn fx:id="idColumn" style="-fx-font-size: 14px;" text="ID" />
+                    <TableColumn fx:id="numeroColumn" style="-fx-font-size: 14px;" text="Numéro" />
+                    <TableColumn fx:id="balanceColumn" style="-fx-font-size: 14px;" text="Solde" />
+                    <TableColumn fx:id="typeColumn" style="-fx-font-size: 14px;" text="Type" />
+                    <TableColumn fx:id="createdAtColumn" style="-fx-font-size: 14px;" text="Date de création" />
+                    <TableColumn fx:id="statutColumn" style="-fx-font-size: 14px;" text="Statut" />
+                    <TableColumn fx:id="clientColumn" style="-fx-font-size: 14px;" text="Client" />
+                </columns>
+            </TableView>
+
+            <!-- Boutons pour actions supplémentaires -->
+            <HBox alignment="CENTER" spacing="20">
+                <Button onAction="#consulterSolde" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;" styleClass="menu-button" stylesheets="@css/style.css" text="Consulter solde" />
+                <Button onAction="#voirHistorique" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;" styleClass="menu-button" stylesheets="@css/style.css" text="Voir l'historique" />
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- Pied de page avec boutons retour -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10px; -fx-background-color: rgba(0, 0, 0, 0.2);">
+            <Button fx:id="retourClientsButton" onAction="#retourClients" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;" styleClass="menu-button" stylesheets="@css/style.css" text="Accueil" />
+            <Button fx:id="retourAccueilButton" onAction="#retourAccueil" style="-fx-background-color: #2C3E50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;" styleClass="menu-button" stylesheets="@css/style.css" text="Retour" />
+            </HBox>
+    </bottom>
+
+</BorderPane>
