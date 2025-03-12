@@ -22,20 +22,18 @@ import java.util.ResourceBundle;
 public class ClientController implements Initializable {
     private IClient dao = new ClientImpl();
     private int ok;
-    private Client selectedClient; // Pour stocker le client sélectionné dans la table
+    private Client selectedClient;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Liaison des colonnes de la table avec les propriétés de l'objet Client
         idcolum.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomcolum.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomcolum.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         emailcolum.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        // Chargement des données dans la table
+
         load();
 
-        // Gestion de la sélection d'un client dans la table
         clientTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 selectedClient = newSelection;
@@ -46,7 +44,6 @@ public class ClientController implements Initializable {
         });
     }
 
-    // Méthode pour charger les clients dans la table
     public void load() {
         ObservableList<Client> clients = FXCollections.observableArrayList();
         List<Client> clientList = dao.getAllClients();
@@ -89,16 +86,14 @@ public class ClientController implements Initializable {
 
     @FXML
     private Button validerbtn;
-
-    // Méthode pour supprimer un client
     @FXML
     void delete(ActionEvent event) {
         if (selectedClient != null) {
             ok = dao.delete(selectedClient.getId());
             if (ok != 0) {
                 Notification.NotifSuccess("Succès", "Client supprimé avec succès");
-                load(); // Recharger les données après suppression
-                reset(null); // Réinitialiser les champs du formulaire
+                load();
+                reset(null);
             } else {
                 Notification.NotifError("Erreur", "Échec de la suppression du client");
             }
@@ -106,8 +101,6 @@ public class ClientController implements Initializable {
             Notification.NotifError("Erreur", "Aucun client sélectionné");
         }
     }
-
-    // Méthode pour ajouter un client
     @FXML
     void insert(ActionEvent event) {
         Client client = new Client();
@@ -118,24 +111,23 @@ public class ClientController implements Initializable {
         ok = dao.create(client);
         if (ok != 0) {
             Notification.NotifSuccess("Succès", "Client ajouté avec succès");
-            load(); // Recharger les données après ajout
-            reset(null); // Réinitialiser les champs du formulaire
+            load();
+            reset(null);
         } else {
             Notification.NotifError("Erreur", "Échec de l'ajout du client");
         }
     }
 
-    // Méthode pour réinitialiser les champs du formulaire
     @FXML
     void reset(ActionEvent event) {
         nomTfd.clear();
         prenomTfd.clear();
         emailTfd.clear();
-        selectedClient = null; // Réinitialiser la sélection
-        clientTable.getSelectionModel().clearSelection(); // Désélectionner la ligne dans la table
+        selectedClient = null;
+        clientTable.getSelectionModel().clearSelection();
     }
 
-    // Méthode pour mettre à jour un client
+
     @FXML
     void update(ActionEvent event) {
         if (selectedClient != null) {
@@ -146,8 +138,8 @@ public class ClientController implements Initializable {
             ok = dao.update(selectedClient);
             if (ok != 0) {
                 Notification.NotifSuccess("Succès", "Client mis à jour avec succès");
-                load(); // Recharger les données après mise à jour
-                reset(null); // Réinitialiser les champs du formulaire
+                load();
+                reset(null);
             } else {
                 Notification.NotifError("Erreur", "Échec de la mise à jour du client");
             }

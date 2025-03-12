@@ -54,7 +54,7 @@ public class CreerCompte implements Initializable {
     private Button annulertfd;
 
     @FXML
-    private TableColumn<Compte, Integer> clientcolum;
+    private TableColumn<Compte, Integer> clientcolum; 
 
     @FXML
     private ComboBox<Client> clienttfd;
@@ -95,7 +95,6 @@ public class CreerCompte implements Initializable {
             return;
         }
         Compte compte = new Compte();
-        // Récupérer les données saisies
         compte.setNumero(numerotfd.getText());
         compte.setSolde(Double.parseDouble(soldetfd.getText()));
         LocalDate localDate = datetfd.getValue();

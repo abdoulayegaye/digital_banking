@@ -48,8 +48,6 @@ public class FermetureController {
             resultLabel.setText("ID invalide !");
         }
     }
-
-    // Méthode pour récupérer le solde
     public double getSolde(int compteId) {
         String sql = "SELECT solde FROM Comptes WHERE id = ?";
         double solde = -1;
@@ -68,7 +66,6 @@ public class FermetureController {
         return solde;
     }
 
-    // Méthode pour fermer le compte
     public int closeAccount(int compteId) {
         String sql = "DELETE FROM Comptes WHERE id = ? AND solde = 0";
         int ok = 0;

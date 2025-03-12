@@ -19,8 +19,8 @@
                         <Menu mnemonicParsing="false" text="Créer">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#afficherClient" text="Client" />
-                                <MenuItem mnemonicParsing="false" text="Compte" />
-                                <MenuItem mnemonicParsing="false" text="Operation" />
+                                <MenuItem mnemonicParsing="false"  onAction="#compte" text="Compte" />
+                                <MenuItem mnemonicParsing="false" onAction="#Operation" text="Operation" />
                             </items>
                         </Menu>
                         <MenuItem mnemonicParsing="false" text="Fermer" />

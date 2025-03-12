@@ -29,16 +29,11 @@ public class GenererPDFController {
     private TextField numeroCompteField;
 
     @FXML
-    private Label resultLabel; // Label pour afficher le résultat
-
+    private Label resultLabel;
     private DBConnexion db = new DBConnexion();
-
-    // Méthode pour générer le PDF
     @FXML
     private void genererPDF() {
-        String numeroCompte = numeroCompteField.getText(); // Récupérer le numéro de compte saisi
-
-        // Vérifier si le champ est vide
+        String numeroCompte = numeroCompteField.getText();
         if (numeroCompte.isEmpty()) {
             resultLabel.setText("Veuillez saisir un numéro de compte.");
             return;
@@ -62,23 +57,21 @@ public class GenererPDFController {
 
     // Méthode pour récupérer les informations du compte
     private Compte getCompteFromDatabase(String numeroCompte) {
-        String sql = "SELECT * FROM Comptes WHERE numero = ?"; // Assurez-vous que la colonne s'appelle "numero"
+        String sql = "SELECT * FROM Comptes WHERE numero = ?";
         Compte compte = null;
         try {
             db.initPrepar(sql);
             db.getPstm().setString(1, numeroCompte);
             var rs = db.executeSelect();
             if (rs.next()) {
-                // Récupérer les informations du client
                 Client client = getClientFromDatabase(rs.getInt("client_id"));
 
-                // Utilisation des setters
                 compte = new Compte();
                 compte.setId(rs.getInt("id"));
                 compte.setNumero(rs.getString("numero"));
                 compte.setSolde(rs.getDouble("solde"));
-                compte.setDate_ouverture(rs.getTimestamp("date_ouverture")); // Date d'ouverture
-                compte.setClient(client); // Objet Client
+                compte.setDate_ouverture(rs.getTimestamp("date_ouverture"));
+                compte.setClient(client);
             }
         } catch (Exception e) {
             e.printStackTrace();

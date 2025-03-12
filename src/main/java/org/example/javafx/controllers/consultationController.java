@@ -8,35 +8,33 @@ import org.example.javafx.dao.DBConnexion;
 public class consultationController {
 
     @FXML
-    private TextField numeroCompteField; // Champ de saisie du numéro de compte
+    private TextField numeroCompteField;
 
     @FXML
-    private Label soldeLabel; // Label pour afficher le solde
+    private Label soldeLabel;
 
     private DBConnexion db = new DBConnexion();
 
-    // Méthode pour consulter le solde
     @FXML
     private void consulterSolde() {
-        String numeroCompte = numeroCompteField.getText(); // Récupérer le numéro de compte saisi
+        String numeroCompte = numeroCompteField.getText();
 
-        // Vérifier si le champ est vide
+
         if (numeroCompte.isEmpty()) {
             soldeLabel.setText("Veuillez saisir un numéro de compte.");
             return;
         }
 
-        // Récupérer le solde depuis la base de données
+
         double solde = getSoldeFromDatabase(numeroCompte);
 
         if (solde >= 0) {
-            soldeLabel.setText("Solde : " + solde + " XOF"); // Afficher le solde
+            soldeLabel.setText("Solde : " + solde + " XOF");
         } else {
-            soldeLabel.setText("Compte introuvable."); // Message d'erreur
+            soldeLabel.setText("Compte introuvable.");
         }
     }
 
-    // Méthode pour récupérer le solde depuis la base de données
     private double getSoldeFromDatabase(String numeroCompte) {
         String sql = "SELECT solde FROM Comptes WHERE numero = ?";
         double solde = -1;

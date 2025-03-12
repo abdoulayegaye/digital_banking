@@ -14,12 +14,9 @@ public class UserImpl implements IUser {
         User user = null;
         String sql = "select * from users where username = ? and password = ?";
         try{
-           //initialisation
             db.initPrepar(sql);
-            //passage de valeur
             db.getPstm().setString(1, usernam);
             db.getPstm().setString(2, pass);
-            //execution
             rs = db.executeSelect();
             if(rs.next()){
                 user = new User();
@@ -28,7 +25,6 @@ public class UserImpl implements IUser {
                 user.setPassword(rs.getString("password"));
 
             }
-            //fermeture
             db.closeConnection();
         } catch (Exception e) {
            e.printStackTrace();

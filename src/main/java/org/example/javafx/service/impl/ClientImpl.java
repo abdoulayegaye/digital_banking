@@ -46,28 +46,6 @@ public class ClientImpl implements IClient {
         }
         return clients;
     }
-
-    @Override
-    public Client get(int id) {
-        Client client = null;
-        String sql = "SELECT * FROM Clients WHERE id_client = ?";
-        try {
-            db.initPrepar(sql);
-            db.getPstm().setInt(1, id);
-            rs = db.executeSelect();
-            if (rs.next()) {
-                client = new Client();
-                client.setId(rs.getInt("id_client"));
-                client.setNom(rs.getString("nom"));
-                client.setPrenom(rs.getString("prenom"));
-                client.setEmail(rs.getString("email"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return client;
-    }
-
     @Override
     public int update(Client client) {
         String sql = "UPDATE Clients SET nom = ?, prenom = ?, email = ? WHERE id_client = ?";

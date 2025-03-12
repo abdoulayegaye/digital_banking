@@ -21,10 +21,7 @@ public class OperationImpl implements IOperation {
         int okCredit = 0;
 
         try {
-            // Début de la transaction
             db.getConnection().setAutoCommit(false);
-
-            // Débiter le compte source
             db.initPrepar(sqlDebit);
             db.getPstm().setDouble(1, montant);
             db.getPstm().setString(2, numeroCompteSource);
@@ -32,31 +29,23 @@ public class OperationImpl implements IOperation {
             okDebit = db.executeMaj();
 
             if (okDebit > 0) {
-                // Créditer le compte destination
                 db.initPrepar(sqlCredit);
                 db.getPstm().setDouble(1, montant);
                 db.getPstm().setString(2, numeroCompteDestination);
                 okCredit = db.executeMaj();
 
                 if (okCredit > 0) {
-                    // Enregistrer la transaction pour le débit
                     enregistrerTransaction(numeroCompteSource, montant, TypeOperation.RETRAIT);
-                    // Enregistrer la transaction pour le crédit
                     enregistrerTransaction(numeroCompteDestination, montant, TypeOperation.VERSEMENT);
-
-                    // Commit de la transaction
                     db.getConnection().commit();
                 } else {
-                    // Rollback en cas d'échec du crédit
                     db.getConnection().rollback();
                 }
             } else {
-                // Rollback en cas d'échec du débit
                 db.getConnection().rollback();
             }
         } catch (Exception e) {
             try {
-                // Rollback en cas d'exception
                 db.getConnection().rollback();
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -64,7 +53,6 @@ public class OperationImpl implements IOperation {
             e.printStackTrace();
         } finally {
             try {
-                // Rétablir l'auto-commit
                 db.getConnection().setAutoCommit(true);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -82,9 +70,7 @@ public class OperationImpl implements IOperation {
             db.getPstm().setDouble(1, montant);
             db.getPstm().setString(2, numeroCompte);
             ok = db.executeMaj();
-
             if (ok > 0) {
-                // Enregistrer la transaction
                 enregistrerTransaction(numeroCompte, montant, TypeOperation.VERSEMENT);
             }
         } catch (Exception e) {
@@ -102,9 +88,7 @@ public class OperationImpl implements IOperation {
             db.getPstm().setString(2, numeroCompte);
             db.getPstm().setDouble(3, montant);
             ok = db.executeMaj();
-
             if (ok > 0) {
-                // Enregistrer la transaction
                 enregistrerTransaction(numeroCompte, montant, TypeOperation.RETRAIT);
             }
         } catch (Exception e) {
