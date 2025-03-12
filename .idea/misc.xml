@@ -8,6 +8,16 @@
       </list>
     </option>
   </component>
+  <component name="PWA">
+    <option name="wasEnabledAtLeastOnce" value="true" />
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://javafx.com/fxml" location="$PROJECT_DIR$" />
+    <resource url="http://javafx.com/fxml&#9;C:\Users\PC\Documents\Mes Documents\L3_IAGE\JAVA_Mr_Ablaye_Gaye\Projet-Examen\digital_banking&#9;false" location="$PROJECT_DIR$" />
+    <resource url="http://javafx.com/javafx" location="$PROJECT_DIR$" />
+    <resource url="http://javafx.com/javafx&#9;C:\Users\PC\Documents\Mes Documents\L3_IAGE\JAVA_Mr_Ablaye_Gaye\Projet-Examen\digital_banking&#9;false" location="$PROJECT_DIR$" />
+    <resource url="http://javafx.com/javafx&#9;C:\Users\PC\Documents\Mes Documents\L3_IAGE\JAVA_Mr_Ablaye_Gaye\Projet-Examen\digital_banking&#9;true" location="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

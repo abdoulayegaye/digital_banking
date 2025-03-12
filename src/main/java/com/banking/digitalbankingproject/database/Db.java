@@ -22,6 +22,7 @@ public class Db {
         }
     }
 
+
     public void initPrepar(String sql){
         try{
             connect();
