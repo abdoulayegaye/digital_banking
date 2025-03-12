@@ -1,14 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.banking.digitalbankingproject.controller.OperationController"
-            prefHeight="400.0" prefWidth="600.0">
+            stylesheets="@../css/styles.css">
 
-</AnchorPane>
+    <!-- Header -->
+    <top>
+        <VBox styleClass="header">
+            <HBox alignment="CENTER">
+                <Label text="Opérations Bancaires" styleClass="header-title"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <VBox styleClass="content-area" spacing="20">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+
+            <!-- Operation Form -->
+            <VBox styleClass="card" spacing="15">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Détails de l'Opération" styleClass="label-header"/>
+
+                <GridPane hgap="15" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+
+                    <!-- Account Selection -->
+                    <Label text="Compte:" styleClass="form-label"
+                           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <ComboBox fx:id="comboCompte" prefWidth="300"
+                              GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <!-- Amount Input -->
+                    <Label text="Montant:" styleClass="form-label"
+                           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField fx:id="txtMontant" prefWidth="300"
+                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <!-- Current Balance -->
+                    <Label text="Solde actuel:" styleClass="form-label"
+                           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="lblSolde" text="0.00 FCFA" styleClass="balance-label"
+                           GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                </GridPane>
+
+                <!-- Action Buttons -->
+                <HBox spacing="10" alignment="CENTER">
+                    <Button fx:id="btnDepot" text="Dépôt" styleClass="button-success">
+                        <graphic>
+                            <Region styleClass="icon-deposit"/>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="btnRetrait" text="Retrait" styleClass="button-danger">
+                        <graphic>
+                            <Region styleClass="icon-withdraw"/>
+                        </graphic>
+                    </Button>
+                </HBox>
+            </VBox>
+
+            <!-- Operations History -->
+            <VBox styleClass="card" VBox.vgrow="ALWAYS" spacing="15">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+<!--                <HBox alignment="CENTER_LEFT" spacing="20">-->
+<!--                    <Label text="Historique des Opérations" styleClass="label-header"/>-->
+<!--                    <Region HBox.hgrow="ALWAYS"/>-->
+<!--                    <Button fx:id="btnReleve" text="Générer Relevé PDF" styleClass="button">-->
+<!--                        <graphic>-->
+<!--                            <Region styleClass="icon-pdf"/>-->
+<!--                        </graphic>-->
+<!--                    </Button>-->
+<!--                </HBox>-->
+
+                <TableView fx:id="tableOperations" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colDate" text="Date" prefWidth="150"/>
+                        <TableColumn fx:id="colType" text="Type" prefWidth="100"/>
+                        <TableColumn fx:id="colMontant" text="Montant" prefWidth="120"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="Aucune opération à afficher"/>
+                    </placeholder>
+                </TableView>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

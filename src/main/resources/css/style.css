@@ -1,0 +1,61 @@
+/* style.css */
+
+/* Style général pour la scène */
+.root {
+    -fx-background-color: #f4f4f4; /* Couleur de fond */
+    -fx-font-family: "Arial";
+}
+
+/* Style pour les boutons */
+.button {
+    -fx-background-color: #2a9d8f; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #21867a; /* Couleur de fond au survol */
+}
+
+/* Style pour les labels */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+
+/* Style pour les text fields */
+.text-field {
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3px;
+}
+
+/* Style pour les titres */
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2a9d8f;
+}
+
+/* Style pour les tableaux */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+}
+
+.table-view .column-header {
+    -fx-background-color: #2a9d8f;
+    -fx-text-fill: white;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #21867a;
+    -fx-text-fill: white;
+}

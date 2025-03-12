@@ -1,5 +1,7 @@
 package com.banking.digitalbankingproject.database;
 
+import lombok.Getter;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,6 +11,7 @@ import static com.banking.digitalbankingproject.database.Constants.*;
 
 public class Db {
     private Connection cnx;
+    @Getter
     private PreparedStatement pstm;
     private ResultSet rs;
     private int ok;
@@ -59,7 +62,4 @@ public class Db {
         }
     }
 
-    public PreparedStatement getPstm() {
-        return pstm;
-    }
 }

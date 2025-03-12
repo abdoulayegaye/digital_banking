@@ -3,16 +3,17 @@ module com.banking.digitalbankingproject {
     requires javafx.fxml;
     requires java.sql;
     requires static lombok;
-    requires TrayNotification;
     requires jbcrypt;
-
+    requires itextpdf;
+    requires mysql.connector.j;
 
     opens com.banking.digitalbankingproject to javafx.fxml;
-    exports com.banking.digitalbankingproject;
-
-    exports com.banking.digitalbankingproject.controller;
     opens com.banking.digitalbankingproject.controller to javafx.fxml;
+    opens com.banking.digitalbankingproject.entity to javafx.base;
 
+    exports com.banking.digitalbankingproject;
+    exports com.banking.digitalbankingproject.controller;
     exports com.banking.digitalbankingproject.entity;
-    opens com.banking.digitalbankingproject.entity to javafx.fxml;
+    exports com.banking.digitalbankingproject.service;
+    exports com.banking.digitalbankingproject.enums;
 }
