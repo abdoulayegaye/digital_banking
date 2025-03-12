@@ -13,6 +13,8 @@ public class Db {
     private ResultSet rs;
     private int ok;
 
+
+
     private void connect(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

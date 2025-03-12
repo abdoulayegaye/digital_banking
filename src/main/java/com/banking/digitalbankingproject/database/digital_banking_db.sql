@@ -58,7 +58,7 @@ CREATE TABLE `operations` (
   `id` int(11) NOT NULL,
   `date_op` timestamp NOT NULL DEFAULT current_timestamp(),
   `amount` double NOT NULL,
-  `type` enum('DEPOT','RETRAIT','VERSEMENT','') NOT NULL,
+  `type` enum('DEPOT','RETRAIT') NOT NULL,
   `compte_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

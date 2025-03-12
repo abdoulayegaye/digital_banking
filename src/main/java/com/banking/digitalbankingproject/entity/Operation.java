@@ -16,4 +16,20 @@ public class Operation {
     private double amount;
     private TypeOperation type;
     private Compte compte;
+
+    public Operation(String dépôt, double montant, String numeroCompte) {
+    }
+
+    public void setCompteId(int compteId) {
+    }
+
+    public void setType(String type) {
+    }
+
+    public void setDateOp(String dateOp) {
+    }
+
+    public Object getNumeroCompte() {
+        return null;
+    }
 }

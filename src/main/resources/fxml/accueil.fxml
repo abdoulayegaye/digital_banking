@@ -5,10 +5,20 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.banking.digitalbankingproject.controller.AccueilController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="400.0" prefWidth="600.0"
+            stylesheets="@../css/style.css">
+    <Label fx:id="title" text="Bienvenue dans votre Application Bancaire " style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="50" AnchorPane.leftAnchor="50">
+        <Button text="Gestion des Clients" fx:id="btnGestionClients" onAction="#handleGestionClients" />
+        <Button text="Gestion des Comptes" fx:id="btnGestionComptes" onAction="#handleGestionComptes" />
+        <Button text="Gestion des Opérations" fx:id="btnGestionOperations" onAction="#handleGestionOperations" />
+    </VBox>
 
 </AnchorPane>
