@@ -1,0 +1,96 @@
+.button-hover:hover {
+    -fx-background-color: #2980b9; /* Couleur plus foncée au survol */
+    -fx-scale-y: 1.05; /* Légère augmentation de taille */
+    -fx-scale-x: 1.05;
+    -fx-transition: all 0.2s ease-in-out; /* Animation fluide */
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #3498db; /* Bordure bleue au focus */
+    -fx-border-width: 2; /* Épaisseur augmentée */
+}
+
+.custom-button {
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+    -fx-background-color: derive(-fx-background-color, -10%);
+}
+
+.custom-button:pressed {
+    -fx-scale-y: 0.95;
+    -fx-scale-x: 0.95;
+}
+
+/* styles.css */
+.button:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);
+}
+
+.text-field:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+.table-view .column-header {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+/* styles.css */
+.button:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);
+}
+
+.text-field:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+.combobox:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+.table-view .column-header {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-family: 'Segoe UI';
+}
+
+
+/* Styles pour les boutons avec effet de survol et clic */
+.button-hover:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: derive(-fx-background-color, -10%);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);
+}
+
+.button-hover:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-background-color: derive(-fx-background-color, -20%);
+}
+
+/* Styles pour les boutons avec effet de survol et clic */
+.button-hover:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: derive(-fx-background-color, -10%);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);
+}
+
+.button-hover:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-background-color: derive(-fx-background-color, -20%);
+}

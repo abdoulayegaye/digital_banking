@@ -1,35 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.effect.DropShadow?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.UserController">
-   <children>
-      <AnchorPane prefHeight="400.0" prefWidth="251.0">
-         <children>
-            <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="26.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/logo-user.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <Text layoutX="304.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connexion">
+<?import java.lang.String?>
+<?import java.net.URL?>
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom right, #2c3e50, #3498db);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.UserController">
+   <?import javafx.scene.layout.*?>
+   <stylesheets>
+      <URL value="@../css/styles.css" />
+   </stylesheets>
+
+   <!-- Section gauche : Illustration et texte -->
+   <VBox alignment="CENTER" prefWidth="350.0" style="-fx-background-color: #ffffff15; -fx-background-radius: 20 0 0 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <padding>
+         <Insets top="20.0" bottom="20.0" left="20.0" right="20.0" />
+      </padding>
+      <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logo-user.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" text="Bienvenue sur Digital Banking" style="-fx-font-weight: bold; -fx-font-family: 'Arial';">
          <font>
-            <Font size="31.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="274.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-      <TextField fx:id="usernameTfd" layoutX="274.0" layoutY="160.0" prefHeight="25.0" prefWidth="224.0" promptText="Votre username ici" />
-      <Text layoutX="274.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
-      <PasswordField fx:id="passwordTfd" layoutX="274.0" layoutY="242.0" prefHeight="25.0" prefWidth="224.0" promptText="Votre mot de passe ici" />
-      <Button layoutX="343.0" layoutY="313.0" mnemonicParsing="false" onAction="#login" text="Se Connecter" />
-   </children>
+      <Text fill="WHITE" text="Votre banque 100% digitale" style="-fx-opacity: 0.9; -fx-font-family: 'Arial';">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+   </VBox>
+
+   <!-- Section droite : Formulaire -->
+   <VBox alignment="CENTER" prefHeight="500.0" prefWidth="450.0" spacing="30" style="-fx-background-color: #ffffff; -fx-background-radius: 20 0 0 20; -fx-effect: dropshadow(gaussian, #00000020, 10, 0, 0, 5);" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <padding>
+         <Insets top="50.0" bottom="50.0" left="50.0" right="50.0" />
+      </padding>
+
+      <!-- Titre -->
+      <Text fill="#2c3e50" text="Connexion" style="-fx-font-weight: bold; -fx-font-family: 'Arial';">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+
+      <!-- Formulaire -->
+      <VBox spacing="20" style="-fx-padding: 30 0 0 0; -fx-alignment: center;">
+         <!-- Nom d'utilisateur -->
+         <VBox spacing="8">
+            <Text fill="#2c3e50" text="Nom d'utilisateur" style="-fx-font-weight: bold; -fx-font-family: 'Arial';"/>
+            <TextField fx:id="usernameTfd" prefHeight="45.0" prefWidth="300.0" promptText="Entrez votre nom d'utilisateur" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #bdc3c7; -fx-background-color: #f9f9f9; -fx-font-family: 'Arial'; -fx-focus-color: #3498db;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+         </VBox>
+
+         <!-- Mot de passe -->
+         <VBox spacing="8">
+            <Text fill="#2c3e50" text="Mot de passe" style="-fx-font-weight: bold; -fx-font-family: 'Arial';"/>
+            <PasswordField fx:id="passwordTfd" prefHeight="45.0" prefWidth="300.0" promptText="Entrez votre mot de passe" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #bdc3c7; -fx-background-color: #f9f9f9; -fx-font-family: 'Arial'; -fx-focus-color: #3498db;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+         </VBox>
+
+         <!-- Bouton Connexion -->
+         <Button onAction="#login" prefHeight="50.0" prefWidth="300.0" text="Se Connecter" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 10; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-cursor: hand;" >
+            <font>
+               <Font size="16.0" />
+            </font>
+            <effect>
+               <DropShadow color="#00000020" radius="5" />
+            </effect>
+            <!-- Effet au survol -->
+            <styleClass>
+               <String fx:value="button-hover" />
+            </styleClass>
+         </Button>
+      </VBox>
+   </VBox>
+
 </AnchorPane>

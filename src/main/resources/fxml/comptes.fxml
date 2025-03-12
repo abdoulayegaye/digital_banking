@@ -1,14 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<BorderPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #f5f6fa;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banking.digitalbankingproject.controller.CompteController">
+    <stylesheets>
+        <URL value="@../css/styles.css" />
+    </stylesheets>
+    <!-- Header -->
+    <top>
+        <VBox spacing="10" style="-fx-background-color: linear-gradient(to bottom, #ffffff, #f5f6fa); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 0);">
+            <padding>
+                <Insets bottom="15" left="20" right="20" top="15" />
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Text fill="#2c3e50" style="-fx-font-weight: bold;" text="Gestion des Comptes">
+                    <font><Font size="24.0" /></font>
+                </Text>
+                <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-background-color: #ecf0f1; -fx-background-radius: 20; -fx-padding: 5 10 5 10;" HBox.hgrow="ALWAYS">
+                    <TextField fx:id="searchField" promptText="Rechercher un compte..." style="-fx-background-radius: 20; -fx-border-color: transparent;" onAction="#filterComptes" />
+                    <Button text="🔍" style="-fx-background-color: transparent; -fx-font-size: 16;" onAction="#filterComptes" />
+                </HBox>
+            </HBox>
+        </VBox>
+    </top>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banking.digitalbankingproject.controller.CompteController"
-            prefHeight="400.0" prefWidth="600.0">
+    <!-- Main Content -->
+    <center>
+        <VBox>
+            <!-- TableView -->
+            <TableView fx:id="comptesTable" onMouseClicked="#getData" prefHeight="528.0" prefWidth="1000.0" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 0);">
+                <columns>
+                    <TableColumn fx:id="idCol" prefWidth="100.0" text="Id" sortable="true" />
+                    <TableColumn fx:id="numeroCol" prefWidth="150.0" text="Numéro" sortable="true" />
+                    <TableColumn fx:id="balanceCol" prefWidth="100.0" text="Solde" sortable="true" />
+                    <TableColumn fx:id="createdAtCol" prefWidth="150.0" text="Date de Création" sortable="true" />
+                    <TableColumn fx:id="clientCol" prefWidth="200.0" text="Client" sortable="true" />
+                    <TableColumn fx:id="typeCol" prefWidth="150.0" text="Type de Compte" sortable="true" />
+                    <TableColumn fx:id="etatCol" prefWidth="150.0" text="État du Compte" sortable="true" />
+                </columns>
+                <placeholder>
+                    <Label text="Aucun compte trouvé" style="-fx-text-fill: #7f8c8d; -fx-font-size: 16;" />
+                </placeholder>
+            </TableView>
 
-</AnchorPane>
+            <!-- Compte Form -->
+            <VBox fx:id="compteForm" spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 0);" visible="false">
+                <Text fill="#2c3e50" style="-fx-font-weight: bold; -fx-font-size: 18;" text="Formulaire Compte" />
+                <GridPane hgap="10" vgap="10">
+                    <Label text="Numéro:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-min-width: 80;" />
+                    <TextField fx:id="numeroField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-background-radius: 5; -fx-border-color: #dcdde1; -fx-border-radius: 5;" visible="false" />
+                    <Label text="Solde:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-min-width: 80;" />
+                    <TextField fx:id="balanceField" promptText="Entrez le solde" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-background-radius: 5; -fx-border-color: #dcdde1; -fx-border-radius: 5;" />
+                    <Label text="Client:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-min-width: 80;" />
+                    <ComboBox fx:id="clientCombo" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-background-radius: 5; -fx-border-color: #dcdde1; -fx-border-radius: 5;" />
+                    <Label text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-min-width: 80;" />
+                    <ComboBox fx:id="typeCombo" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-background-radius: 5; -fx-border-color: #dcdde1; -fx-border-radius: 5;" />
+                    <Label text="État:" GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-min-width: 80;" />
+                    <ComboBox fx:id="etatCombo" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-background-radius: 5; -fx-border-color: #dcdde1; -fx-border-radius: 5;" />
+                    <Label text="Créé le:" GridPane.columnIndex="0" GridPane.rowIndex="5" style="-fx-min-width: 80;" />
+                    <TextField fx:id="createdAtField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" style="-fx-background-radius: 5; -fx-border-color: #dcdde1; -fx-border-radius: 5;" visible="false" />
+                </GridPane>
+                <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 10 0 0 0;">
+                    <Button fx:id="saveBtn" onAction="#handleSaveCompte" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-family: 'Segoe UI'; -fx-font-size: 14; -fx-cursor: hand; -fx-padding: 8 20;" text="Enregistrer" />
+                    <Button fx:id="cancelBtn" onAction="#handleCancel" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-family: 'Segoe UI'; -fx-font-size: 14; -fx-cursor: hand; -fx-padding: 8 20;" text="Retour" />
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+
+    <!-- Action Bar -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-padding: 15;">
+            <Button onAction="#Retour" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-family: 'Segoe UI'; -fx-font-size: 14; -fx-padding: 10 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);" text="Retour">
+                <tooltip><Tooltip text="Retour à l'accueil" /></tooltip>
+            </Button>
+            <Button fx:id="newCompteBtn" onAction="#handleAddCompte" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-family: 'Segoe UI'; -fx-font-size: 14; -fx-cursor: hand; -fx-padding: 8 20;" text="Nouveau Compte (+)">
+                <tooltip><Tooltip text="Ajouter un nouveau compte" /></tooltip>
+            </Button>
+            <Button fx:id="updateBtn" onAction="#handleUpdateCompte" style="-fx-background-color: #f1c40f; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-family: 'Segoe UI'; -fx-font-size: 14; -fx-cursor: hand; -fx-padding: 8 20;" text="Modifier (✎)">
+                <tooltip><Tooltip text="Modifier le compte sélectionné" /></tooltip>
+            </Button>
+            <Button fx:id="deleteBtn" onAction="#handleDeleteCompte" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-family: 'Segoe UI'; -fx-font-size: 14; -fx-cursor: hand; -fx-padding: 8 20;" text="Fermer (🗑)">
+                <tooltip><Tooltip text="Fermer le compte sélectionné" /></tooltip>
+            </Button>
+            <Button fx:id="generateReleveBtn" onAction="#handleGenerateReleve" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-family: 'Segoe UI'; -fx-font-size: 14; -fx-cursor: hand; -fx-padding: 8 20;" text="Relevé (📄)">
+                <tooltip><Tooltip text="Générer un relevé bancaire" /></tooltip>
+            </Button>
+        </HBox>
+    </bottom>
+</BorderPane>

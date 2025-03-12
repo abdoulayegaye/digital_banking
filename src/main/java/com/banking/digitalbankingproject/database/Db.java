@@ -1,9 +1,6 @@
 package com.banking.digitalbankingproject.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 import static com.banking.digitalbankingproject.database.Constants.*;
 
@@ -31,7 +28,7 @@ public class Db {
         }
     }
 
-    public ResultSet executeSelect(){
+    public ResultSet executeSelect(String sql){
         rs = null;
         try{
             rs = pstm.executeQuery();
@@ -62,4 +59,5 @@ public class Db {
     public PreparedStatement getPstm() {
         return pstm;
     }
+
 }

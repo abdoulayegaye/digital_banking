@@ -36,7 +36,7 @@ public class UserImpl implements IUser {
         List<User> users = new ArrayList<User>();
         try {
             db.initPrepar(sql);
-            rs = db.executeSelect();
+            rs = db.executeSelect(sql);
             while (rs.next()) {
                 User user = new User();
                 user.setUsername(rs.getString("username"));
@@ -57,7 +57,7 @@ public class UserImpl implements IUser {
         try {
             db.initPrepar(sql);
             db.getPstm().setString(1, username);
-            rs = db.executeSelect();
+            rs = db.executeSelect(sql);
             if (rs.next()) {
                 user = new User();
                 user.setId(rs.getInt("id"));
